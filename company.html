@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社情報｜合同会社Henceforth</title>
+<meta name="description" content="合同会社Henceforthの会社概要・経営理念。教育を入口に社会を変える挑戦をしています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #0065d4;
+  --primary-dark: #22327a;
+  --primary-light: #3b8be8;
+  --primary-pale: #e8f1fc;
+  --bg-main: #f7faff;
+  --bg-white: #ffffff;
+  --bg-gray: #f0f4f9;
+  --text-dark: #242424;
+  --text-body: #4a5568;
+  --text-muted: #8a96a8;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --radius-sm: 12px;
+  --section-space: 100px;
+  --content-width: 1080px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-body); line-height: 1.9; background: var(--bg-main); font-size: 15px; overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* HEADER */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
+.header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
+.header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: -0.02em; }
+.header-nav { display: flex; align-items: center; gap: 8px; }
+.header-nav a { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); padding: 8px 16px; border-radius: 8px; transition: all 0.2s; }
+.header-nav a:hover { background: var(--primary-pale); color: var(--primary); }
+.header-nav .active { color: var(--primary); background: var(--primary-pale); }
+.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 24px; border-radius: 50px; margin-left: 8px; }
+.header-nav .header-cta:hover { background: var(--primary-dark); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
+
+/* PAGE HERO */
+.page-hero {
+  padding: 140px 24px 60px;
+  background: linear-gradient(135deg, #f7faff 0%, #e0edff 40%, #c7dcf9 70%, #f7faff 100%);
+  text-align: center;
+}
+.page-hero .en {
+  font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px;
+}
+.page-hero h1 {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 900; color: var(--text-dark);
+}
+
+/* PAGE NAV */
+.page-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 24px;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+}
+.page-nav a {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 10px 28px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.page-nav a:hover,
+.page-nav a.active {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-pale);
+}
+
+/* SECTION HEADING */
+.sec-heading { text-align: center; margin-bottom: 56px; }
+.sec-heading .en { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
+.sec-heading h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; }
+.sec-heading h2::after { content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin: 16px auto 0; border-radius: 2px; }
+
+/* PHILOSOPHY */
+.philosophy {
+  padding: var(--section-space) 24px;
+  background: var(--bg-white);
+}
+.philosophy-content { max-width: 720px; margin: 0 auto; }
+.philosophy-lead {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 900;
+  color: var(--text-dark); text-align: center; line-height: 1.8; margin-bottom: 36px;
+}
+.philosophy-text {
+  font-size: 0.95rem; line-height: 2.2; color: var(--text-body); margin-bottom: 20px;
+}
+.philosophy-text strong { color: var(--text-dark); font-weight: 700; }
+
+/* COMPANY TABLE */
+.company-info {
+  padding: var(--section-space) 24px;
+  background: var(--bg-gray);
+}
+.company-table {
+  max-width: 720px; margin: 0 auto; border-collapse: collapse; width: 100%;
+}
+.company-table th,
+.company-table td {
+  padding: 20px 24px; font-size: 0.92rem; line-height: 1.8;
+  border-bottom: 1px solid var(--border); text-align: left; vertical-align: top;
+}
+.company-table th {
+  font-weight: 700; color: var(--text-dark); white-space: nowrap; width: 140px;
+}
+.company-table td { color: var(--text-body); }
+
+/* FOOTER */
+.footer { background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 48px 24px 32px; }
+.footer-inner { max-width: var(--content-width); margin: 0 auto; text-align: center; }
+.footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
+.footer-links { margin-bottom: 20px; }
+.footer-links a { color: rgba(255,255,255,0.5); font-size: 0.78rem; margin: 0 14px; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-copy { font-size: 0.7rem; font-family: 'Roboto', sans-serif; }
+
+@media (max-width: 781px) {
+  .header-nav { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 551px) {
+  :root { --section-space: 72px; }
+  .page-hero { padding: 120px 20px 48px; }
+  .company-table th, .company-table td { padding: 14px 16px; font-size: 0.85rem; }
+  .company-table th { width: 110px; }
+  .page-nav { gap: 8px; }
+  .page-nav a { padding: 8px 20px; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Henceforth</a>
+    <nav class="header-nav">
+      <a href="business.html">事業紹介</a>
+      <a href="company.html" class="active">会社情報</a>
+      <a href="index.html#contact" class="header-cta">お問い合わせ</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="this.classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <p class="en">Company</p>
+  <h1>会社情報</h1>
+</section>
+
+<nav class="page-nav">
+  <a href="#philosophy" class="active">経営理念</a>
+  <a href="#overview">会社概要</a>
+</nav>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="en">Philosophy</span>
+      <h2>経営理念</h2>
+    </div>
+    <div class="philosophy-content fade-up">
+      <p class="philosophy-lead">「わかった」の先に、<br>可能性が広がる。</p>
+      <p class="philosophy-text">
+        高校時代は、人生で最も大きく成長できる時期のひとつです。<br>
+        しかし多くの学生が、正しい学び方を知らないまま、その可能性を閉じてしまっています。
+      </p>
+      <p class="philosophy-text">
+        私たちは<strong>「教え方」ではなく「学び方」を変える</strong>ことで、一人ひとりの中にある力を引き出します。
+      </p>
+      <p class="philosophy-text">
+        目の前の成績を上げるだけでなく、自分で考え、自分で解ける力を育てること。<br>
+        それが、この先の社会で生きる本当の学力だと信じています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY OVERVIEW -->
+<section class="company-info" id="overview">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="en">Overview</span>
+      <h2>会社概要</h2>
+    </div>
+    <table class="company-table fade-up">
+      <tr>
+        <th>会社名</th>
+        <td>合同会社Henceforth（ヘンスフォース）</td>
+      </tr>
+      <tr>
+        <th>代表社員</th>
+        <td>緒方 宏記</td>
+      </tr>
+      <tr>
+        <th>所在地</th>
+        <td>〒134-0088<br>東京都江戸川区西葛西六丁目3番17号 Solaremiwa201号室</td>
+      </tr>
+      <tr>
+        <th>設立</th>
+        <td>2024年8月26日</td>
+      </tr>
+      <tr>
+        <th>資本金</th>
+        <td>170万円</td>
+      </tr>
+      <tr>
+        <th>事業内容</th>
+        <td>教育事業（数学特化塾バディスタの運営）</td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td>070-3790-4535</td>
+      </tr>
+      <tr>
+        <th>メール</th>
+        <td>info@henceforce.com</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Henceforth</div>
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="business.html">事業紹介</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </div>
+    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
