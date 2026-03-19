@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>合同会社Henceforth｜教育を、もっと本質的に。</title>
-<meta name="description" content="合同会社Henceforthは、教育を入口に社会を変える挑戦をしています。数学特化塾バディスタを運営。">
+<meta name="description" content="合同会社Henceforthは、教育を入口に社会を変える挑戦をしています。">
 <meta property="og:title" content="合同会社Henceforth｜教育を、もっと本質的に。">
 <meta property="og:description" content="合同会社Henceforthは、教育を入口に社会を変える挑戦をしています。">
 <meta property="og:type" content="website">
@@ -29,12 +29,9 @@
   --text-body: #4a5568;
   --text-muted: #8a96a8;
   --border: #e2e8f0;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.1);
   --radius: 16px;
-  --radius-sm: 12px;
-  --section-space: 100px;
   --content-width: 1080px;
 }
 
@@ -57,10 +54,6 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -69,6 +62,18 @@ a { text-decoration: none; color: inherit; }
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===== PLACEHOLDER IMAGE ===== */
+.ph-image {
+  background: linear-gradient(135deg, #c7dcf9 0%, #a8c4e8 50%, #8aaedb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
 }
 
 /* ===== HEADER ===== */
@@ -102,13 +107,13 @@ a { text-decoration: none; color: inherit; }
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 .header-nav a {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-dark);
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 8px;
   transition: all 0.2s;
 }
@@ -119,19 +124,23 @@ a { text-decoration: none; color: inherit; }
 .header-nav .header-cta {
   background: var(--primary);
   color: #fff;
-  padding: 10px 24px;
+  padding: 10px 22px;
   border-radius: 50px;
   margin-left: 8px;
 }
 .header-nav .header-cta:hover {
   background: var(--primary-dark);
 }
+
+/* Mobile menu */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
   padding: 8px;
+  background: none;
+  border: none;
 }
 .hamburger span {
   display: block;
@@ -141,70 +150,88 @@ a { text-decoration: none; color: inherit; }
   border-radius: 2px;
   transition: all 0.3s;
 }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(20px);
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+}
+.mobile-nav.open { display: block; }
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav a:last-child { border-bottom: none; }
 
 /* ===== HERO ===== */
 .hero {
-  padding: 160px 24px 120px;
-  background: linear-gradient(135deg, #f7faff 0%, #e0edff 40%, #c7dcf9 70%, #f7faff 100%);
   position: relative;
+  height: 90vh;
+  min-height: 560px;
+  max-height: 800px;
   overflow: hidden;
-  text-align: center;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
-  top: -200px; right: -150px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(0, 101, 212, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
+  background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 40%, #1a3a6a 100%);
 }
-.hero::after {
-  content: '';
+.hero-bg .ph-image {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+.hero-overlay {
   position: absolute;
-  bottom: -100px; left: -100px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(34, 50, 122, 0.06) 0%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
 }
-.hero-inner {
+.hero-content {
+  position: absolute;
+  bottom: 100px;
+  left: 0; right: 0;
+  z-index: 2;
+  padding: 0 48px;
   max-width: var(--content-width);
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
 }
 .hero-catch {
-  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 900;
-  color: var(--text-dark);
-  line-height: 1.4;
-  letter-spacing: 0.04em;
-  margin-bottom: 24px;
-  animation: fadeInUp 0.8s ease both;
+  color: #fff;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 .hero-sub {
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  color: var(--text-body);
-  max-width: 560px;
-  margin: 0 auto;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: rgba(255,255,255,0.85);
   line-height: 2;
-  animation: fadeInUp 0.8s ease 0.15s both;
+  max-width: 480px;
 }
 .hero-company {
-  margin-top: 40px;
+  margin-top: 24px;
   font-family: 'Roboto', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.5);
   letter-spacing: 0.15em;
-  animation: fadeInUp 0.8s ease 0.3s both;
 }
 
 /* ===== SECTION HEADING ===== */
-.sec-heading {
-  text-align: center;
-  margin-bottom: 56px;
-}
-.sec-heading .en {
+.sec-label {
   font-family: 'Roboto', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
@@ -214,13 +241,13 @@ a { text-decoration: none; color: inherit; }
   display: inline-block;
   margin-bottom: 10px;
 }
-.sec-heading h2 {
+.sec-title {
   font-size: clamp(1.4rem, 3.5vw, 1.9rem);
   font-weight: 900;
   color: var(--text-dark);
   line-height: 1.5;
 }
-.sec-heading h2::after {
+.sec-title::after {
   content: '';
   display: block;
   width: 40px;
@@ -229,35 +256,105 @@ a { text-decoration: none; color: inherit; }
   margin: 16px auto 0;
   border-radius: 2px;
 }
+.sec-heading {
+  text-align: center;
+  margin-bottom: 56px;
+}
 
-/* ===== PHILOSOPHY ===== */
-.philosophy {
-  padding: var(--section-space) 24px;
-  background: var(--bg-white);
+/* ===== VISION SECTION ===== */
+.vision {
+  padding: 120px 24px;
+  background: var(--primary-pale);
+  text-align: center;
 }
-.philosophy-content {
-  max-width: 720px;
-  margin: 0 auto;
-}
-.philosophy-lead {
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+.vision-phrase {
+  font-size: clamp(1.3rem, 3vw, 2rem);
   font-weight: 900;
   color: var(--text-dark);
-  text-align: center;
   line-height: 1.8;
-  margin-bottom: 36px;
+  letter-spacing: 0.06em;
+  margin-bottom: 32px;
 }
-.philosophy-text {
-  font-size: 0.95rem;
-  line-height: 2.2;
-  color: var(--text-body);
-  margin-bottom: 20px;
-}
-.philosophy-text strong {
-  color: var(--text-dark);
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 0.88rem;
   font-weight: 700;
+  transition: all 0.3s;
 }
-.philosophy-cta {
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
+.btn-outline-white .arrow { transition: transform 0.3s; }
+.btn-outline-white:hover .arrow { transform: translateX(4px); }
+
+/* ===== BUSINESS SECTION ===== */
+.business {
+  padding: 100px 24px;
+  background: var(--bg-white);
+}
+.business-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.business-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+  background: var(--bg-white);
+}
+.business-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+.business-card-image {
+  height: 240px;
+  overflow: hidden;
+}
+.business-card-image .ph-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+.business-card:hover .business-card-image .ph-image {
+  transform: scale(1.05);
+}
+.business-card-body {
+  padding: 28px 28px 32px;
+}
+.business-card-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-pale);
+  padding: 4px 14px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+.business-card-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.business-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-body);
+}
+.business-cta {
   text-align: center;
   margin-top: 48px;
 }
@@ -279,132 +376,13 @@ a { text-decoration: none; color: inherit; }
   background: var(--primary);
   color: #fff;
 }
-.btn-outline .arrow {
-  transition: transform 0.3s;
-}
-.btn-outline:hover .arrow {
-  transform: translateX(4px);
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--primary);
-  color: #fff;
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: all 0.3s;
-  box-shadow: 0 4px 16px rgba(0, 101, 212, 0.25);
-}
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 101, 212, 0.3);
-}
-
-/* ===== COMPANY INFO ===== */
-.company-info {
-  padding: var(--section-space) 24px;
-  background: var(--bg-gray);
-}
-.company-table {
-  max-width: 720px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  width: 100%;
-}
-.company-table th,
-.company-table td {
-  padding: 20px 24px;
-  font-size: 0.92rem;
-  line-height: 1.8;
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  vertical-align: top;
-}
-.company-table th {
-  font-weight: 700;
-  color: var(--text-dark);
-  white-space: nowrap;
-  width: 140px;
-}
-.company-table td {
-  color: var(--text-body);
-}
-@media (max-width: 551px) {
-  .company-table th,
-  .company-table td { padding: 14px 16px; font-size: 0.85rem; }
-  .company-table th { width: 110px; }
-}
-
-/* ===== BUSINESS ===== */
-.business {
-  padding: var(--section-space) 24px;
-  background: var(--bg-gray);
-}
-.business-lead {
-  text-align: center;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  font-weight: 700;
-  color: var(--text-dark);
-  max-width: 600px;
-  margin: 0 auto 48px;
-  line-height: 1.9;
-}
-.business-card {
-  max-width: 720px;
-  margin: 0 auto;
-  background: var(--bg-white);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  transition: all 0.3s;
-}
-.business-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-.business-card-accent {
-  height: 5px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  border-radius: var(--radius) var(--radius) 0 0;
-}
-.business-card-body {
-  padding: 32px 36px;
-}
-.business-card-title {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-}
-.business-card-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-pale);
-  padding: 4px 12px;
-  border-radius: 50px;
-  margin-bottom: 16px;
-}
-.business-card-desc {
-  font-size: 0.9rem;
-  line-height: 1.9;
-  color: var(--text-body);
-}
-.business-cta {
-  text-align: center;
-  margin-top: 48px;
-}
+.btn-outline .arrow { transition: transform 0.3s; }
+.btn-outline:hover .arrow { transform: translateX(4px); }
 
 /* ===== NEWS ===== */
 .news {
-  padding: var(--section-space) 24px;
-  background: var(--bg-white);
+  padding: 100px 24px;
+  background: var(--bg-gray);
 }
 .news-list {
   max-width: 720px;
@@ -450,16 +428,16 @@ a { text-decoration: none; color: inherit; }
   margin-top: 48px;
 }
 
-/* ===== CONTACT ===== */
-.contact {
-  padding: 80px 24px;
+/* ===== CONTACT CTA ===== */
+.contact-cta {
+  padding: 100px 24px;
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   text-align: center;
   color: #fff;
   position: relative;
   overflow: hidden;
 }
-.contact::before {
+.contact-cta::before {
   content: '';
   position: absolute;
   top: -50%; right: -20%;
@@ -467,17 +445,17 @@ a { text-decoration: none; color: inherit; }
   background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
   border-radius: 50%;
 }
-.contact-inner {
+.contact-cta-inner {
   position: relative;
   z-index: 1;
 }
-.contact h2 {
+.contact-cta h2 {
   font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 900;
   margin-bottom: 16px;
 }
-.contact p {
-  font-size: 0.95rem;
+.contact-cta p {
+  font-size: 0.92rem;
   opacity: 0.8;
   margin-bottom: 36px;
 }
@@ -517,9 +495,7 @@ a { text-decoration: none; color: inherit; }
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 20px;
 }
-.footer-links {
-  margin-bottom: 20px;
-}
+.footer-links { margin-bottom: 20px; }
 .footer-links a {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.78rem;
@@ -536,16 +512,22 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 781px) {
   .header-nav { display: none; }
   .hamburger { display: flex; }
-  .hero { padding: 130px 20px 80px; }
+  .hero { height: 75vh; min-height: 480px; }
+  .hero-content { bottom: 64px; padding: 0 24px; }
+  .business-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .vision { padding: 88px 24px; }
 }
 
 @media (max-width: 551px) {
-  :root { --section-space: 72px; }
-  .hero { padding: 120px 20px 64px; }
+  .hero { height: 70vh; min-height: 420px; }
+  .hero-content { bottom: 48px; padding: 0 20px; }
   .hero-catch { letter-spacing: 0.02em; }
   .news-item { flex-direction: column; gap: 8px; }
   .news-date { min-width: auto; }
-  .business-card-body { padding: 24px 20px; }
+  .business { padding: 72px 24px; }
+  .news { padding: 72px 24px; }
+  .contact-cta { padding: 72px 24px; }
+  .vision { padding: 72px 20px; }
 }
 </style>
 </head>
@@ -556,119 +538,76 @@ a { text-decoration: none; color: inherit; }
   <div class="header-inner">
     <a href="index.html" class="logo">Henceforth</a>
     <nav class="header-nav">
-      <a href="business.html">事業紹介</a>
       <a href="company.html">会社情報</a>
-      <a href="#contact" class="header-cta">お問い合わせ</a>
+      <a href="business.html">事業内容</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html" class="header-cta">お問い合わせ</a>
     </nav>
-    <div class="hamburger" id="hamburger" onclick="this.classList.toggle('active')">
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="company.html">会社情報</a>
+  <a href="business.html">事業内容</a>
+  <a href="news.html">お知らせ</a>
+  <a href="contact.html">お問い合わせ</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
+  <div class="hero-bg">
+    <img src="images/hero-main.jpg" alt="数式が書かれた黒板" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <h1 class="hero-catch">教育を、もっと本質的に。</h1>
     <p class="hero-sub">
       「わかった」で終わらせない。<br>
       一人ひとりの中にある力を引き出し、<br>
       自分で考え、自分で解ける人を育てます。
     </p>
-    <p class="hero-company">Henceforce LLC</p>
+    <p class="hero-company">HENCEFORTH LLC</p>
   </div>
 </section>
 
-<!-- PHILOSOPHY -->
-<section class="philosophy" id="philosophy">
-  <div class="inner">
-    <div class="sec-heading fade-up">
-      <span class="en">Philosophy</span>
-      <h2>経営理念</h2>
-    </div>
-    <div class="philosophy-content fade-up">
-      <p class="philosophy-lead">「わかった」の先に、<br>可能性が広がる。</p>
-      <p class="philosophy-text">
-        高校時代は、人生で最も大きく成長できる時期のひとつです。<br>
-        しかし多くの学生が、正しい学び方を知らないまま、その可能性を閉じてしまっています。
-      </p>
-      <p class="philosophy-text">
-        私たちは<strong>「教え方」ではなく「学び方」を変える</strong>ことで、一人ひとりの中にある力を引き出します。
-      </p>
-      <p class="philosophy-text">
-        目の前の成績を上げるだけでなく、自分で考え、自分で解ける力を育てること。<br>
-        それが、この先の社会で生きる本当の学力だと信じています。
-      </p>
-      <div class="philosophy-cta">
-        <a href="company.html#philosophy" class="btn-outline">
-          経営理念を見る <span class="arrow">&rarr;</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPANY INFO -->
-<section class="company-info" id="company">
-  <div class="inner">
-    <div class="sec-heading fade-up">
-      <span class="en">Company</span>
-      <h2>会社概要</h2>
-    </div>
-    <table class="company-table fade-up">
-      <tr>
-        <th>会社名</th>
-        <td>合同会社Henceforth（ヘンスフォース）</td>
-      </tr>
-      <tr>
-        <th>代表社員</th>
-        <td>緒方 宏記</td>
-      </tr>
-      <tr>
-        <th>所在地</th>
-        <td>〒134-0088<br>東京都江戸川区西葛西六丁目3番17号 Solaremiwa201号室</td>
-      </tr>
-      <tr>
-        <th>設立</th>
-        <td>2024年8月26日</td>
-      </tr>
-      <tr>
-        <th>資本金</th>
-        <td>170万円</td>
-      </tr>
-      <tr>
-        <th>事業内容</th>
-        <td>教育事業（数学特化塾バディスタの運営）</td>
-      </tr>
-      <tr>
-        <th>電話番号</th>
-        <td>070-3790-4535</td>
-      </tr>
-      <tr>
-        <th>メール</th>
-        <td>info@henceforce.com</td>
-      </tr>
-    </table>
-  </div>
+<!-- VISION -->
+<section class="vision fade-up">
+  <p class="vision-phrase">「わかった」の先に、<br>可能性が広がる。</p>
+  <a href="company.html#philosophy" class="btn-outline">
+    経営理念を見る <span class="arrow">&rarr;</span>
+  </a>
 </section>
 
 <!-- BUSINESS -->
-<section class="business" id="business">
+<section class="business">
   <div class="inner">
     <div class="sec-heading fade-up">
-      <span class="en">Business</span>
-      <h2>事業紹介</h2>
+      <span class="sec-label">Business</span>
+      <h2 class="sec-title">事業内容</h2>
     </div>
-    <p class="business-lead fade-up">教育を入口に、<br>これから先の社会を変える挑戦を。</p>
-    <div class="business-card fade-up">
-      <div class="business-card-accent"></div>
-      <div class="business-card-body">
-        <span class="business-card-tag">数学特化塾</span>
-        <h3 class="business-card-title">バディスタ</h3>
-        <p class="business-card-desc">
-          京大数学科出身プロ講師が、構造から理解する数学を教える少人数集団指導塾。解法の暗記ではなく、問題の本質を見抜く力を育てます。
-        </p>
-      </div>
+    <div class="business-grid">
+      <a href="business-individual.html" class="business-card fade-up">
+        <div class="business-card-image">
+          <img src="images/biz-individual.jpg" alt="学生が数学を学んでいる" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="business-card-body">
+          <span class="business-card-tag">個人の方向け</span>
+          <h3 class="business-card-title">数学特化塾 バディスタ</h3>
+          <p class="business-card-desc">構造から理解する数学で、自分で解ける力を育てます。</p>
+        </div>
+      </a>
+      <a href="business-institution.html" class="business-card fade-up">
+        <div class="business-card-image">
+          <img src="images/biz-institution.jpg" alt="教育現場での協働" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="business-card-body">
+          <span class="business-card-tag">教育機関・学習塾の方向け</span>
+          <h3 class="business-card-title">教育支援プログラム</h3>
+          <p class="business-card-desc">学校・塾と連携し、数学教育の質を高める取り組みを行っています。</p>
+        </div>
+      </a>
     </div>
     <div class="business-cta fade-up">
       <a href="business.html" class="btn-outline">
@@ -679,38 +618,38 @@ a { text-decoration: none; color: inherit; }
 </section>
 
 <!-- NEWS -->
-<section class="news" id="news">
+<section class="news">
   <div class="inner">
     <div class="sec-heading fade-up">
-      <span class="en">News</span>
-      <h2>お知らせ</h2>
+      <span class="sec-label">News</span>
+      <h2 class="sec-title">お知らせ</h2>
     </div>
     <div class="news-list fade-up">
-      <a href="#news" class="news-item">
+      <a href="news.html" class="news-item">
         <span class="news-date">2025.04.01</span>
         <span class="news-tag">リリース</span>
         <span class="news-title">数学特化塾「バディスタ」を開始しました</span>
       </a>
-      <a href="#news" class="news-item">
+      <a href="news.html" class="news-item">
         <span class="news-date">2024.08.26</span>
         <span class="news-tag">お知らせ</span>
         <span class="news-title">合同会社Henceforthを設立しました</span>
       </a>
     </div>
     <div class="news-cta fade-up">
-      <a href="#news" class="btn-outline">
+      <a href="news.html" class="btn-outline">
         もっと見る <span class="arrow">&rarr;</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner fade-up">
+<!-- CONTACT CTA -->
+<section class="contact-cta">
+  <div class="contact-cta-inner fade-up">
     <h2>お問い合わせ</h2>
-    <p>小さなご相談でも、お気軽にお問い合わせください。</p>
-    <a href="mailto:info@henceforce.com" class="btn-white">
+    <p>お気軽にお問い合わせください。</p>
+    <a href="contact.html" class="btn-white">
       お問い合わせはこちら <span class="arrow">&rarr;</span>
     </a>
   </div>
@@ -721,17 +660,25 @@ a { text-decoration: none; color: inherit; }
   <div class="footer-inner">
     <div class="footer-logo">Henceforth</div>
     <div class="footer-links">
-      <a href="company.html#overview">会社概要</a>
-      <a href="business.html">事業紹介</a>
+      <a href="company.html">会社情報</a>
+      <a href="business.html">事業内容</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
     </div>
-    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth</p>
+    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth LLC</p>
   </div>
 </footer>
 
 <script>
-// Header scroll effect
+// Header scroll
 window.addEventListener('scroll', () => {
   document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('open');
 });
 
 // Scroll animations

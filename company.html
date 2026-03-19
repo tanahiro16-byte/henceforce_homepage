@@ -21,12 +21,8 @@
   --text-body: #4a5568;
   --text-muted: #8a96a8;
   --border: #e2e8f0;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
   --shadow: 0 4px 24px rgba(0,0,0,0.07);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
   --radius: 16px;
-  --radius-sm: 12px;
-  --section-space: 100px;
   --content-width: 1080px;
 }
 html { scroll-behavior: smooth; }
@@ -35,75 +31,83 @@ img { max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; }
 .inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.ph-image {
+  background: linear-gradient(135deg, #c7dcf9 0%, #a8c4e8 50%, #8aaedb 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+}
 
 /* HEADER */
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
 .header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
 .logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: -0.02em; }
-.header-nav { display: flex; align-items: center; gap: 8px; }
-.header-nav a { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); padding: 8px 16px; border-radius: 8px; transition: all 0.2s; }
+.header-nav { display: flex; align-items: center; gap: 4px; }
+.header-nav a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
 .header-nav a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 24px; border-radius: 50px; margin-left: 8px; }
+.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 22px; border-radius: 50px; margin-left: 8px; }
 .header-nav .header-cta:hover { background: var(--primary-dark); }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 99; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); }
+.mobile-nav a:last-child { border-bottom: none; }
 
 /* PAGE HERO */
 .page-hero {
-  padding: 140px 24px 60px;
-  background: linear-gradient(135deg, #f7faff 0%, #e0edff 40%, #c7dcf9 70%, #f7faff 100%);
-  text-align: center;
+  position: relative;
+  height: 360px;
+  overflow: hidden;
 }
-.page-hero .en {
-  font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px;
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 100%);
 }
-.page-hero h1 {
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 900; color: var(--text-dark);
+.page-hero-bg .ph-image { width: 100%; height: 100%; }
+.page-hero-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+.page-hero-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 2; padding-top: 68px;
+}
+.page-hero-content .sec-label { color: rgba(255,255,255,0.6); }
+.page-hero-content h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #fff;
 }
 
 /* PAGE NAV */
 .page-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  padding: 32px 24px;
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; gap: 12px;
+  padding: 32px 24px; background: var(--bg-white); border-bottom: 1px solid var(--border);
 }
 .page-nav a {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  padding: 10px 28px;
-  border-radius: 50px;
-  border: 1px solid var(--border);
-  transition: all 0.2s;
+  font-size: 0.88rem; font-weight: 700; color: var(--text-muted);
+  padding: 10px 28px; border-radius: 50px; border: 1px solid var(--border); transition: all 0.2s;
 }
-.page-nav a:hover,
-.page-nav a.active {
-  color: var(--primary);
-  border-color: var(--primary);
-  background: var(--primary-pale);
+.page-nav a:hover, .page-nav a.active {
+  color: var(--primary); border-color: var(--primary); background: var(--primary-pale);
 }
 
-/* SECTION HEADING */
+/* SEC HEADING */
+.sec-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
+.sec-title { font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; }
+.sec-title::after { content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin: 16px auto 0; border-radius: 2px; }
 .sec-heading { text-align: center; margin-bottom: 56px; }
-.sec-heading .en { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
-.sec-heading h2 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; }
-.sec-heading h2::after { content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin: 16px auto 0; border-radius: 2px; }
 
 /* PHILOSOPHY */
 .philosophy {
-  padding: var(--section-space) 24px;
+  padding: 100px 24px;
   background: var(--bg-white);
 }
 .philosophy-content { max-width: 720px; margin: 0 auto; }
@@ -118,20 +122,17 @@ a { text-decoration: none; color: inherit; }
 
 /* COMPANY TABLE */
 .company-info {
-  padding: var(--section-space) 24px;
+  padding: 100px 24px;
   background: var(--bg-gray);
 }
 .company-table {
   max-width: 720px; margin: 0 auto; border-collapse: collapse; width: 100%;
 }
-.company-table th,
-.company-table td {
+.company-table th, .company-table td {
   padding: 20px 24px; font-size: 0.92rem; line-height: 1.8;
   border-bottom: 1px solid var(--border); text-align: left; vertical-align: top;
 }
-.company-table th {
-  font-weight: 700; color: var(--text-dark); white-space: nowrap; width: 140px;
-}
+.company-table th { font-weight: 700; color: var(--text-dark); white-space: nowrap; width: 140px; }
 .company-table td { color: var(--text-body); }
 
 /* FOOTER */
@@ -146,10 +147,11 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 781px) {
   .header-nav { display: none; }
   .hamburger { display: flex; }
+  .page-hero { height: 280px; }
 }
 @media (max-width: 551px) {
-  :root { --section-space: 72px; }
-  .page-hero { padding: 120px 20px 48px; }
+  .philosophy, .company-info { padding: 72px 24px; }
+  .page-hero { height: 240px; }
   .company-table th, .company-table td { padding: 14px 16px; font-size: 0.85rem; }
   .company-table th { width: 110px; }
   .page-nav { gap: 8px; }
@@ -163,19 +165,32 @@ a { text-decoration: none; color: inherit; }
   <div class="header-inner">
     <a href="index.html" class="logo">Henceforth</a>
     <nav class="header-nav">
-      <a href="business.html">事業紹介</a>
       <a href="company.html" class="active">会社情報</a>
-      <a href="index.html#contact" class="header-cta">お問い合わせ</a>
+      <a href="business.html">事業内容</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html" class="header-cta">お問い合わせ</a>
     </nav>
-    <div class="hamburger" id="hamburger" onclick="this.classList.toggle('active')">
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="company.html">会社情報</a>
+  <a href="business.html">事業内容</a>
+  <a href="news.html">お知らせ</a>
+  <a href="contact.html">お問い合わせ</a>
+</nav>
 
 <section class="page-hero">
-  <p class="en">Company</p>
-  <h1>会社情報</h1>
+  <div class="page-hero-bg">
+    <img src="images/page-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <span class="sec-label">Company</span>
+    <h1>会社情報</h1>
+  </div>
 </section>
 
 <nav class="page-nav">
@@ -187,8 +202,8 @@ a { text-decoration: none; color: inherit; }
 <section class="philosophy" id="philosophy">
   <div class="inner">
     <div class="sec-heading fade-up">
-      <span class="en">Philosophy</span>
-      <h2>経営理念</h2>
+      <span class="sec-label">Philosophy</span>
+      <h2 class="sec-title">経営理念</h2>
     </div>
     <div class="philosophy-content fade-up">
       <p class="philosophy-lead">「わかった」の先に、<br>可能性が広がる。</p>
@@ -211,8 +226,8 @@ a { text-decoration: none; color: inherit; }
 <section class="company-info" id="overview">
   <div class="inner">
     <div class="sec-heading fade-up">
-      <span class="en">Overview</span>
-      <h2>会社概要</h2>
+      <span class="sec-label">Overview</span>
+      <h2 class="sec-title">会社概要</h2>
     </div>
     <table class="company-table fade-up">
       <tr>
@@ -225,7 +240,7 @@ a { text-decoration: none; color: inherit; }
       </tr>
       <tr>
         <th>所在地</th>
-        <td>〒134-0088<br>東京都江戸川区西葛西六丁目3番17号 Solaremiwa201号室</td>
+        <td>〒134-0088<br>東京都江戸川区西葛西6-3-17-201</td>
       </tr>
       <tr>
         <th>設立</th>
@@ -240,10 +255,6 @@ a { text-decoration: none; color: inherit; }
         <td>教育事業（数学特化塾バディスタの運営）</td>
       </tr>
       <tr>
-        <th>電話番号</th>
-        <td>070-3790-4535</td>
-      </tr>
-      <tr>
         <th>メール</th>
         <td>info@henceforce.com</td>
       </tr>
@@ -256,16 +267,21 @@ a { text-decoration: none; color: inherit; }
     <div class="footer-logo">Henceforth</div>
     <div class="footer-links">
       <a href="index.html">トップ</a>
-      <a href="business.html">事業紹介</a>
-      <a href="index.html#contact">お問い合わせ</a>
+      <a href="business.html">事業内容</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
     </div>
-    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth</p>
+    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth LLC</p>
   </div>
 </footer>
 
 <script>
 window.addEventListener('scroll', () => {
   document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+});
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('open');
 });
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
