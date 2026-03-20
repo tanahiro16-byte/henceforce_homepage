@@ -10,17 +10,18 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --primary: #0065d4;
-  --primary-dark: #22327a;
-  --primary-light: #3b8be8;
-  --primary-pale: #e8f1fc;
-  --bg-main: #f7faff;
+  --primary: #7C3AED;
+  --primary-dark: #6D28D9;
+  --primary-light: #8B5CF6;
+  --primary-pale: #EDE9FE;
+  --accent: #EC4899;
+  --bg-main: #FFFFFF;
   --bg-white: #ffffff;
-  --bg-gray: #f0f4f9;
-  --text-dark: #242424;
-  --text-body: #4a5568;
-  --text-muted: #8a96a8;
-  --border: #e2e8f0;
+  --bg-gray: #FAF5FF;
+  --text-dark: #1E1B4B;
+  --text-body: #6B7280;
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
   --content-width: 1080px;
   --radius: 16px;
 }
@@ -32,23 +33,24 @@ a { text-decoration: none; color: inherit; }
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-.ph-image {
-  background: linear-gradient(135deg, #c7dcf9 0%, #a8c4e8 50%, #8aaedb 100%);
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
-}
-
 /* HEADER */
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(229,231,235,0.5); transition: all 0.3s; }
 .header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: -0.02em; }
+.logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
-.header-nav a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
-.header-nav a:hover { background: var(--primary-pale); color: var(--primary); }
-.header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 22px; border-radius: 50px; margin-left: 8px; }
-.header-nav .header-cta:hover { background: var(--primary-dark); }
+.header-nav > a,
+.nav-dropdown > a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+.header-nav > a:hover,
+.nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
+.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 50px; margin-left: 4px; font-size: 0.76rem; }
+.header-nav .header-cta:hover { background: var(--primary); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+.dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); white-space: nowrap; transition: all 0.2s; }
+.dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -58,24 +60,50 @@ a { text-decoration: none; color: inherit; }
 .mobile-nav.open { display: block; }
 .mobile-nav a { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); }
 .mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
+.mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
 
-/* PAGE HERO */
-.page-hero { position: relative; height: 360px; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 100%); }
-.page-hero-bg .ph-image { width: 100%; height: 100%; }
-.page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-.page-hero-content {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  z-index: 2; padding-top: 68px;
+/* PAGE BANNER */
+.page-banner {
+  margin-top: 68px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  padding: 40px 24px;
+  text-align: center;
 }
-.page-hero-content .sec-label { color: rgba(255,255,255,0.6); }
-.page-hero-content h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #fff; }
-.sec-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
+.page-banner h1 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+.page-banner-desc {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.page-banner .btn-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--primary-dark);
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.page-banner .btn-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
 
 /* CONTACT FORM */
 .contact-section {
-  padding: 80px 24px 100px;
+  padding: 64px 24px 100px;
   background: var(--bg-white);
 }
 .contact-wrapper {
@@ -123,7 +151,7 @@ a { text-decoration: none; color: inherit; }
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0, 101, 212, 0.1);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
 .form-textarea {
   min-height: 180px;
@@ -132,7 +160,7 @@ a { text-decoration: none; color: inherit; }
 }
 .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a96a8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
   padding-right: 40px;
@@ -156,12 +184,12 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   font-family: inherit;
   transition: all 0.3s;
-  box-shadow: 0 4px 16px rgba(0, 101, 212, 0.25);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25);
 }
 .btn-submit:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 101, 212, 0.3);
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.3);
 }
 
 /* CONTACT INFO */
@@ -195,7 +223,7 @@ a { text-decoration: none; color: inherit; }
 /* FOOTER */
 .footer { background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 48px 24px 32px; }
 .footer-inner { max-width: var(--content-width); margin: 0 auto; text-align: center; }
-.footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
+.footer-logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; letter-spacing: 0.02em; }
 .footer-links { margin-bottom: 20px; }
 .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.78rem; margin: 0 14px; transition: color 0.2s; }
 .footer-links a:hover { color: rgba(255,255,255,0.8); }
@@ -204,11 +232,10 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 781px) {
   .header-nav { display: none; }
   .hamburger { display: flex; }
-  .page-hero { height: 280px; }
 }
 @media (max-width: 551px) {
-  .page-hero { height: 240px; }
-  .contact-section { padding: 56px 20px 72px; }
+  .page-banner { padding: 32px 20px; }
+  .contact-section { padding: 48px 20px 72px; }
   .contact-info { padding: 48px 20px 64px; }
 }
 </style>
@@ -219,10 +246,24 @@ a { text-decoration: none; color: inherit; }
   <div class="header-inner">
     <a href="index.html" class="logo">Henceforth</a>
     <nav class="header-nav">
-      <a href="company.html">会社情報</a>
-      <a href="business.html">事業内容</a>
+      <div class="nav-dropdown">
+        <a href="company.html">会社情報</a>
+        <div class="dropdown-menu">
+          <a href="company.html#philosophy">経営理念</a>
+          <a href="company.html#overview">会社概要</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="business.html">事業内容</a>
+        <div class="dropdown-menu">
+          <a href="business-individual.html">個人の方向け 数学特化塾バディスタ</a>
+          <a href="business-institution.html">教育機関・学習塾の方向け</a>
+        </div>
+      </div>
       <a href="news.html">お知らせ</a>
-      <a href="contact.html" class="header-cta active">お問い合わせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html?type=document" class="header-cta">資料請求</a>
+      <a href="contact.html?type=trial" class="header-cta">無料体験授業</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -231,23 +272,19 @@ a { text-decoration: none; color: inherit; }
 </header>
 <nav class="mobile-nav" id="mobileNav">
   <a href="company.html">会社情報</a>
+  <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
+  <a href="company.html#overview" class="mobile-sub">会社概要</a>
   <a href="business.html">事業内容</a>
+  <a href="business-individual.html" class="mobile-sub">個人の方向け 数学特化塾バディスタ</a>
+  <a href="business-institution.html" class="mobile-sub">教育機関・学習塾の方向け</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
+  <a href="contact.html?type=document" class="mobile-cta">資料請求</a>
+  <a href="contact.html?type=trial" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-bg">
-    <img src="images/page-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
-  </div>
-  <div class="page-hero-overlay"></div>
-  <div class="page-hero-content">
-    <span class="sec-label">Contact</span>
-    <h1>お問い合わせ</h1>
-  </div>
-</section>
-
-<section class="contact-section">
+<!-- FORM -->
+<section class="contact-section" id="contact-form" style="margin-top: 68px;">
   <div class="contact-wrapper fade-up">
     <p class="contact-lead">
       事業に関するご質問・ご相談など、<br>
@@ -268,7 +305,7 @@ a { text-decoration: none; color: inherit; }
           <option value="" disabled selected>選択してください</option>
           <option value="individual">個人のお客様</option>
           <option value="institution">教育機関・学習塾の方</option>
-          <option value="corporate">法人の方</option>
+          <option value="corporate">法人の方（企業の方）</option>
           <option value="other">その他</option>
         </select>
       </div>

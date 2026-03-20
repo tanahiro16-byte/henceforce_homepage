@@ -10,17 +10,18 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --primary: #0065d4;
-  --primary-dark: #22327a;
-  --primary-light: #3b8be8;
-  --primary-pale: #e8f1fc;
-  --bg-main: #f7faff;
+  --primary: #7C3AED;
+  --primary-dark: #6D28D9;
+  --primary-light: #8B5CF6;
+  --primary-pale: #EDE9FE;
+  --accent: #EC4899;
+  --bg-main: #FFFFFF;
   --bg-white: #ffffff;
-  --bg-gray: #f0f4f9;
-  --text-dark: #242424;
-  --text-body: #4a5568;
-  --text-muted: #8a96a8;
-  --border: #e2e8f0;
+  --bg-gray: #FAF5FF;
+  --text-dark: #1E1B4B;
+  --text-body: #6B7280;
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
   --shadow: 0 4px 24px rgba(0,0,0,0.07);
   --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
   --radius: 16px;
@@ -39,13 +40,21 @@ a { text-decoration: none; color: inherit; }
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
 .header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Roboto', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: -0.02em; }
+.logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
-.header-nav a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
-.header-nav a:hover { background: var(--primary-pale); color: var(--primary); }
+.header-nav > a, .nav-dropdown > a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+.header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 22px; border-radius: 50px; margin-left: 8px; }
-.header-nav .header-cta:hover { background: var(--primary-dark); }
+.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 50px; margin-left: 4px; font-size: 0.76rem; }
+.header-nav .header-cta:hover { background: var(--primary); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+.dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); white-space: nowrap; transition: all 0.2s; }
+.dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
+.mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
+.mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -58,8 +67,8 @@ a { text-decoration: none; color: inherit; }
 
 /* PAGE HERO */
 .page-hero { position: relative; height: 360px; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 100%); }
-.page-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 100%); }
+.page-hero-overlay { position: absolute; inset: 0; background: rgba(30,27,75,0.4); }
 .page-hero-content {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -171,7 +180,7 @@ a { text-decoration: none; color: inherit; }
 /* FOOTER */
 .footer { background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 48px 24px 32px; }
 .footer-inner { max-width: var(--content-width); margin: 0 auto; text-align: center; }
-.footer-logo { font-family: 'Roboto', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
+.footer-logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; letter-spacing: 0.02em; }
 .footer-links { margin-bottom: 20px; }
 .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.78rem; margin: 0 14px; transition: color 0.2s; }
 .footer-links a:hover { color: rgba(255,255,255,0.8); }
@@ -197,10 +206,24 @@ a { text-decoration: none; color: inherit; }
   <div class="header-inner">
     <a href="index.html" class="logo">Henceforth</a>
     <nav class="header-nav">
-      <a href="company.html">会社情報</a>
-      <a href="business.html" class="active">事業内容</a>
+      <div class="nav-dropdown">
+        <a href="company.html">会社情報</a>
+        <div class="dropdown-menu">
+          <a href="company.html#philosophy">経営理念</a>
+          <a href="company.html#overview">会社概要</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="business.html" class="active">事業内容</a>
+        <div class="dropdown-menu">
+          <a href="business-individual.html">個人の方向け 数学特化塾バディスタ</a>
+          <a href="business-institution.html">教育機関・学習塾の方向け</a>
+        </div>
+      </div>
       <a href="news.html">お知らせ</a>
-      <a href="contact.html" class="header-cta">お問い合わせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html?type=document" class="header-cta">資料請求</a>
+      <a href="contact.html?type=trial" class="header-cta">無料体験授業</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -209,9 +232,15 @@ a { text-decoration: none; color: inherit; }
 </header>
 <nav class="mobile-nav" id="mobileNav">
   <a href="company.html">会社情報</a>
+  <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
+  <a href="company.html#overview" class="mobile-sub">会社概要</a>
   <a href="business.html">事業内容</a>
+  <a href="business-individual.html" class="mobile-sub">個人の方向け 数学特化塾バディスタ</a>
+  <a href="business-institution.html" class="mobile-sub">教育機関・学習塾の方向け</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
+  <a href="contact.html?type=document" class="mobile-cta">資料請求</a>
+  <a href="contact.html?type=trial" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
 <section class="page-hero">
@@ -247,7 +276,52 @@ a { text-decoration: none; color: inherit; }
       </a>
       <a href="business-institution.html" class="biz-grid-card fade-up">
         <div class="biz-grid-card-image">
-          <img src="images/biz-institution.jpg" alt="教育現場での協働">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <defs>
+              <linearGradient id="bg1" x1="0" y1="0" x2="480" y2="240">
+                <stop offset="0%" stop-color="#EDE9FE"/>
+                <stop offset="100%" stop-color="#DDD6FE"/>
+              </linearGradient>
+            </defs>
+            <rect width="480" height="240" fill="url(#bg1)"/>
+            <!-- School building - single clean shape -->
+            <rect x="160" y="90" width="160" height="130" rx="4" fill="#C4B5FD"/>
+            <!-- Roof -->
+            <polygon points="240,50 150,92 330,92" fill="#A78BFA"/>
+            <line x1="150" y1="92" x2="330" y2="92" stroke="#8B5CF6" stroke-width="2"/>
+            <!-- Clock -->
+            <circle cx="240" cy="108" r="12" fill="#fff"/>
+            <line x1="240" y1="108" x2="240" y2="101" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="240" y1="108" x2="245" y2="108" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Windows row 1 -->
+            <rect x="180" y="128" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="210" y="128" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="250" y="128" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="280" y="128" width="20" height="20" rx="3" fill="#fff"/>
+            <!-- Windows row 2 -->
+            <rect x="180" y="158" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="210" y="158" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="250" y="158" width="20" height="20" rx="3" fill="#fff"/>
+            <rect x="280" y="158" width="20" height="20" rx="3" fill="#fff"/>
+            <!-- Door -->
+            <rect x="226" y="190" width="28" height="30" rx="3" fill="#8B5CF6"/>
+            <rect x="230" y="194" width="9" height="22" rx="2" fill="#DDD6FE"/>
+            <rect x="241" y="194" width="9" height="22" rx="2" fill="#DDD6FE"/>
+            <!-- Trees -->
+            <circle cx="120" cy="180" r="22" fill="#A78BFA" opacity="0.5"/>
+            <circle cx="115" cy="172" r="18" fill="#C4B5FD" opacity="0.6"/>
+            <rect x="118" y="196" width="4" height="24" rx="2" fill="#A78BFA" opacity="0.4"/>
+            <circle cx="365" cy="182" r="20" fill="#A78BFA" opacity="0.5"/>
+            <circle cx="360" cy="175" r="16" fill="#C4B5FD" opacity="0.6"/>
+            <rect x="363" y="197" width="4" height="23" rx="2" fill="#A78BFA" opacity="0.4"/>
+            <!-- Math symbols -->
+            <text x="88" y="100" font-family="serif" font-size="20" fill="#8B5CF6" opacity="0.3" transform="rotate(-12 88 100)">∑</text>
+            <text x="385" y="105" font-family="serif" font-size="16" fill="#8B5CF6" opacity="0.25" transform="rotate(10 385 105)">π</text>
+            <text x="70" y="150" font-family="serif" font-size="14" fill="#A78BFA" opacity="0.25">∫</text>
+            <text x="405" y="155" font-family="serif" font-size="17" fill="#A78BFA" opacity="0.25">Δ</text>
+            <!-- Label -->
+            <text x="240" y="233" font-family="'Noto Sans JP', sans-serif" font-size="11" fill="#7C3AED" opacity="0.45" text-anchor="middle" font-weight="700">for School</text>
+          </svg>
         </div>
         <div class="biz-grid-card-body">
           <span class="biz-grid-card-tag">教育機関・学習塾の方向け</span>
