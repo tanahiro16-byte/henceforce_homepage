@@ -40,10 +40,10 @@ a { text-decoration: none; color: inherit; }
 .logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
 .header-nav > a,
-.nav-dropdown > a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+.nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
 .header-nav > a:hover,
 .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
-.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 50px; margin-left: 4px; font-size: 0.76rem; }
+.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
 .header-nav .header-cta:hover { background: var(--primary); }
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
@@ -254,16 +254,16 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="business.html">事業内容</a>
+        <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);padding:8px 14px;border-radius:8px;cursor:default;">事業内容</span>
         <div class="dropdown-menu">
-          <a href="business-individual.html">個人の方向け 数学特化塾バディスタ</a>
-          <a href="business-institution.html">教育機関・学習塾の方向け</a>
+          <a href="business-individual.html">【個人の方向け】 数学特化塾バディスタ</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
         </div>
       </div>
       <a href="news.html">お知らせ</a>
       <a href="contact.html">お問い合わせ</a>
-      <a href="contact.html?type=document" class="header-cta">資料請求</a>
-      <a href="contact.html?type=trial" class="header-cta">無料体験授業</a>
+      <a href="document.html" class="header-cta">資料請求</a>
+      <a href="trial.html" class="header-cta">無料体験授業</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -274,13 +274,13 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html">会社情報</a>
   <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <a href="business.html">事業内容</a>
-  <a href="business-individual.html" class="mobile-sub">個人の方向け 数学特化塾バディスタ</a>
-  <a href="business-institution.html" class="mobile-sub">教育機関・学習塾の方向け</a>
+  <span style="display:block;padding:14px 0;font-size:0.95rem;font-weight:600;color:var(--text-dark);border-bottom:1px solid var(--border);">事業内容</span>
+  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾バディスタ</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
-  <a href="contact.html?type=document" class="mobile-cta">資料請求</a>
-  <a href="contact.html?type=trial" class="mobile-cta">無料体験授業はこちら</a>
+  <a href="document.html" class="mobile-cta">資料請求</a>
+  <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
 <!-- FORM -->
@@ -300,12 +300,12 @@ a { text-decoration: none; color: inherit; }
         <input type="email" id="email" name="email" class="form-input" required placeholder="example@email.com">
       </div>
       <div class="form-group">
-        <label class="form-label" for="type">お問い合わせ種別<span class="required">必須</span></label>
+        <label class="form-label" for="type">お客様の属性<span class="required">必須</span></label>
         <select id="type" name="type" class="form-select" required>
           <option value="" disabled selected>選択してください</option>
           <option value="individual">個人のお客様</option>
           <option value="institution">教育機関・学習塾の方</option>
-          <option value="corporate">法人の方（企業の方）</option>
+          <option value="corporate">企業の方</option>
           <option value="other">その他</option>
         </select>
       </div>

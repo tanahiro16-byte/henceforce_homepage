@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お知らせ｜合同会社Henceforth</title>
-<meta name="description" content="合同会社Henceforthからのお知らせ一覧。">
+<title>資料請求｜合同会社Henceforth</title>
+<meta name="description" content="合同会社Henceforthの資料請求はこちらから。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -22,10 +22,8 @@
   --text-body: #6B7280;
   --text-muted: #9CA3AF;
   --border: #E5E7EB;
-  --shadow: 0 4px 24px rgba(0,0,0,0.07);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
-  --radius: 16px;
   --content-width: 1080px;
+  --radius: 16px;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-body); line-height: 1.9; background: var(--bg-main); font-size: 15px; overflow-x: hidden; }
@@ -35,21 +33,16 @@ a { text-decoration: none; color: inherit; }
 .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-.ph-image {
-  background: linear-gradient(135deg, #c7dcf9 0%, #a8c4e8 50%, #8aaedb 100%);
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
-}
-
 /* HEADER */
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226,232,240,0.5); transition: all 0.3s; }
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(229,231,235,0.5); transition: all 0.3s; }
 .header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
 .logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
-.header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
-.header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
-.header-nav .active { color: var(--primary); background: var(--primary-pale); }
+.header-nav > a,
+.nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+.header-nav > a:hover,
+.nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
 .header-nav .header-cta:hover { background: var(--primary); }
 .nav-dropdown { position: relative; }
@@ -58,8 +51,6 @@ a { text-decoration: none; color: inherit; }
 .dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
 .dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); white-space: nowrap; transition: all 0.2s; }
 .dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
-.mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
-.mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -69,94 +60,110 @@ a { text-decoration: none; color: inherit; }
 .mobile-nav.open { display: block; }
 .mobile-nav a { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); }
 .mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
+.mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
 
-/* PAGE HERO */
-.page-hero { position: relative; height: 360px; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 100%); }
-.page-hero-bg .ph-image { width: 100%; height: 100%; }
-.page-hero-overlay { position: absolute; inset: 0; background: rgba(30,27,75,0.4); }
-.page-hero-content {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  z-index: 2; padding-top: 68px;
-}
-.page-hero-content .sec-label { color: rgba(255,255,255,0.6); }
-.page-hero-content h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #fff; }
-.sec-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
-
-/* FILTER TABS */
-.filter-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 32px 24px;
-  background: var(--bg-white);
-  border-bottom: 1px solid var(--border);
-}
-.filter-tab {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  padding: 8px 24px;
-  border-radius: 50px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: all 0.2s;
-  background: none;
-  font-family: inherit;
-}
-.filter-tab:hover, .filter-tab.active {
-  color: var(--primary);
-  border-color: var(--primary);
-  background: var(--primary-pale);
-}
-
-/* NEWS LIST */
-.news-section {
-  padding: 80px 24px 100px;
+/* CONTACT FORM */
+.contact-section {
+  padding: 64px 24px 100px;
   background: var(--bg-white);
 }
-.news-list {
-  max-width: 760px;
+.contact-wrapper {
+  max-width: 640px;
   margin: 0 auto;
 }
-.news-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-  transition: opacity 0.2s;
-}
-.news-item:hover { opacity: 0.7; }
-.news-item:first-child { padding-top: 0; }
-.news-date {
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  flex-shrink: 0;
-  min-width: 100px;
-  padding-top: 2px;
-}
-.news-tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--primary);
-  background: var(--primary-pale);
-  padding: 3px 12px;
-  border-radius: 4px;
-  flex-shrink: 0;
-}
-.news-content {
-  flex: 1;
-}
-.news-title {
+.contact-lead {
+  text-align: center;
   font-size: 0.95rem;
-  font-weight: 600;
+  color: var(--text-body);
+  margin-bottom: 48px;
+  line-height: 2;
+}
+.contact-lead h2 {
+  font-size: 1.3rem;
+  font-weight: 900;
   color: var(--text-dark);
-  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.form-group {
+  margin-bottom: 28px;
+}
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.form-label .required {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #e53e3e;
+  margin-left: 8px;
+}
+.form-label .optional {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: var(--bg-gray);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.8;
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 40px;
+}
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  padding: 16px 56px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25);
+}
+.btn-submit:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(124, 58, 237, 0.3);
 }
 
 /* FOOTER */
@@ -171,15 +178,9 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 781px) {
   .header-nav { display: none; }
   .hamburger { display: flex; }
-  .page-hero { height: 280px; }
 }
 @media (max-width: 551px) {
-  .page-hero { height: 240px; }
-  .news-section { padding: 56px 24px 72px; }
-  .news-item { flex-direction: column; gap: 8px; }
-  .news-date { min-width: auto; }
-  .filter-tabs { gap: 6px; flex-wrap: wrap; }
-  .filter-tab { padding: 6px 18px; font-size: 0.8rem; }
+  .contact-section { padding: 48px 20px 72px; }
 }
 </style>
 </head>
@@ -203,7 +204,7 @@ a { text-decoration: none; color: inherit; }
           <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
         </div>
       </div>
-      <a href="news.html" class="active">お知らせ</a>
+      <a href="news.html">お知らせ</a>
       <a href="contact.html">お問い合わせ</a>
       <a href="document.html" class="header-cta">資料請求</a>
       <a href="trial.html" class="header-cta">無料体験授業</a>
@@ -226,40 +227,42 @@ a { text-decoration: none; color: inherit; }
   <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-bg">
-    <img src="images/page-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
-  </div>
-  <div class="page-hero-overlay"></div>
-  <div class="page-hero-content">
-    <span class="sec-label">News</span>
-    <h1>お知らせ</h1>
-  </div>
-</section>
-
-<div class="filter-tabs">
-  <button class="filter-tab active" data-filter="all">すべて</button>
-  <button class="filter-tab" data-filter="お知らせ">お知らせ</button>
-  <button class="filter-tab" data-filter="リリース">リリース</button>
-  <button class="filter-tab" data-filter="メディア">メディア</button>
-</div>
-
-<section class="news-section">
-  <div class="news-list fade-up">
-    <a href="#" class="news-item" data-category="リリース">
-      <span class="news-date">2025.04.01</span>
-      <span class="news-tag">リリース</span>
-      <div class="news-content">
-        <span class="news-title">数学特化塾「バディスタ」を開始しました</span>
+<!-- FORM -->
+<section class="contact-section" id="document-form" style="margin-top: 68px;">
+  <div class="contact-wrapper fade-up">
+    <div class="contact-lead">
+      <h2>資料請求</h2>
+      <p>サービスに関する資料をお送りいたします。<br>以下のフォームにご記入ください。</p>
+    </div>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label class="form-label" for="name">お名前<span class="required">必須</span></label>
+        <input type="text" id="name" name="name" class="form-input" required placeholder="山田 太郎">
       </div>
-    </a>
-    <a href="#" class="news-item" data-category="お知らせ">
-      <span class="news-date">2024.08.26</span>
-      <span class="news-tag">お知らせ</span>
-      <div class="news-content">
-        <span class="news-title">合同会社Henceforthを設立しました</span>
+      <div class="form-group">
+        <label class="form-label" for="email">メールアドレス<span class="required">必須</span></label>
+        <input type="email" id="email" name="email" class="form-input" required placeholder="example@email.com">
       </div>
-    </a>
+      <div class="form-group">
+        <label class="form-label" for="type">お客様の属性<span class="required">必須</span></label>
+        <select id="type" name="type" class="form-select" required>
+          <option value="" disabled selected>選択してください</option>
+          <option value="individual">個人のお客様</option>
+          <option value="institution">教育機関・学習塾の方</option>
+          <option value="corporate">企業の方</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">相談事項等<span class="optional">任意</span></label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="ご質問やご要望がありましたらご記入ください"></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">
+          送信する <span class="arrow">&rarr;</span>
+        </button>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -269,7 +272,7 @@ a { text-decoration: none; color: inherit; }
     <div class="footer-links">
       <a href="index.html">トップ</a>
       <a href="company.html">会社情報</a>
-      <a href="business.html">事業内容</a>
+      <a href="news.html">お知らせ</a>
       <a href="contact.html">お問い合わせ</a>
     </div>
     <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth LLC</p>
@@ -288,22 +291,6 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-// Category filter
-document.querySelectorAll('.filter-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const filter = tab.dataset.filter;
-    document.querySelectorAll('.news-item').forEach(item => {
-      if (filter === 'all' || item.dataset.category === filter) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-});
 </script>
 </body>
 </html>

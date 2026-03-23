@@ -42,10 +42,10 @@ a { text-decoration: none; color: inherit; }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
 .logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
-.header-nav > a, .nav-dropdown > a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+.header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
 .header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 50px; margin-left: 4px; font-size: 0.76rem; }
+.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
 .header-nav .header-cta:hover { background: var(--primary); }
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
@@ -261,16 +261,16 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="business.html" class="active">事業内容</a>
+        <span class="active" style="font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;cursor:default;">事業内容</span>
         <div class="dropdown-menu">
-          <a href="business-individual.html">個人の方向け 数学特化塾バディスタ</a>
-          <a href="business-institution.html">教育機関・学習塾の方向け</a>
+          <a href="business-individual.html">【個人の方向け】 数学特化塾バディスタ</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
         </div>
       </div>
       <a href="news.html">お知らせ</a>
       <a href="contact.html">お問い合わせ</a>
-      <a href="contact.html?type=document" class="header-cta">資料請求</a>
-      <a href="contact.html?type=trial" class="header-cta">無料体験授業</a>
+      <a href="document.html" class="header-cta">資料請求</a>
+      <a href="trial.html" class="header-cta">無料体験授業</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -281,13 +281,13 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html">会社情報</a>
   <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <a href="business.html">事業内容</a>
-  <a href="business-individual.html" class="mobile-sub">個人の方向け 数学特化塾バディスタ</a>
-  <a href="business-institution.html" class="mobile-sub">教育機関・学習塾の方向け</a>
+  <span style="display:block;padding:14px 0;font-size:0.95rem;font-weight:600;color:var(--text-dark);border-bottom:1px solid var(--border);">事業内容</span>
+  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾バディスタ</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
-  <a href="contact.html?type=document" class="mobile-cta">資料請求</a>
-  <a href="contact.html?type=trial" class="mobile-cta">無料体験授業はこちら</a>
+  <a href="document.html" class="mobile-cta">資料請求</a>
+  <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
 <div class="breadcrumb">
@@ -308,7 +308,7 @@ a { text-decoration: none; color: inherit; }
 <section class="detail-content">
   <div class="detail-body fade-up">
     <p>
-      学校・塾と連携し、数学教育の質を高める取り組みを行っています。
+      数学の学習サポートはもちろん、探究学習の支援など広範囲にわたって数学教育の質を高める取り組みを行っています。
     </p>
     <p>
       カリキュラム設計や講師研修など、<strong>教育現場のニーズに合わせた支援</strong>を提供します。<br>
@@ -330,32 +330,26 @@ a { text-decoration: none; color: inherit; }
     <div class="cases-grid">
       <div class="case-card fade-up">
         <span class="case-tag">イベント</span>
-        <h3 class="case-title">高校生向け 数学イベントの開催</h3>
+        <h3 class="case-title">数学イベントの開催</h3>
         <p class="case-desc">
-          高校にて、数学の面白さや奥深さを体感できる特別イベントを実施しました。教科書の枠を超えた数学の世界に触れることで、生徒たちの学ぶ意欲を引き出しています。
+          都内高校にて、難しい数式などを一切使わずに数学の面白さや奥深さを体感できる特別イベントを実施しました。普段の授業とは異なり、実際に手を動かして数学的な考察を行い、新しい数学の世界に触れることで生徒たちの学習意欲を引き出しています。
         </p>
       </div>
       <div class="case-card fade-up">
         <span class="case-tag">プログラム</span>
-        <h3 class="case-title">放課後数学実習教室の運営</h3>
+        <h3 class="case-title">放課後数学教室の開催</h3>
         <p class="case-desc">
-          高校と連携し、放課後の時間を活用した数学実習教室を定期開催。通常授業では扱いきれない演習や、つまずきやすい単元の補強を少人数で丁寧にサポートしています。
+          都内高校と連携し、放課後の時間を活用して数学教室を開催しました。授業で扱いきれない演習、数学の学習相談、定期テスト対策など幅広い内容を数学のプロ講師が丁寧にサポートします。
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="back-link-section fade-up">
-  <a href="business.html" class="btn-outline">
-    &larr; 事業内容一覧に戻る
-  </a>
-</div>
-
 <section class="contact-cta">
   <div class="contact-cta-inner fade-up">
     <h2>お問い合わせ</h2>
-    <p>導入のご相談・プログラムの詳細はお気軽にお問い合わせください。</p>
+    <p>ご興味をお持ちの方は、まずはお気軽にご相談ください。</p>
     <a href="contact.html" class="btn-white">
       お問い合わせはこちら <span class="arrow">&rarr;</span>
     </a>

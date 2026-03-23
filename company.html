@@ -48,10 +48,10 @@ a { text-decoration: none; color: inherit; }
 .header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
 .logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
-.header-nav > a, .nav-dropdown > a { font-size: 0.82rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
+.header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
 .header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 50px; margin-left: 4px; font-size: 0.76rem; }
+.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
 .header-nav .header-cta:hover { background: var(--primary); }
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
@@ -183,16 +183,16 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="nav-dropdown">
-        <a href="business.html">事業内容</a>
+        <span style="font-size:0.9rem;font-weight:600;color:var(--text-dark);padding:8px 14px;border-radius:8px;cursor:default;">事業内容</span>
         <div class="dropdown-menu">
-          <a href="business-individual.html">個人の方向け 数学特化塾バディスタ</a>
-          <a href="business-institution.html">教育機関・学習塾の方向け</a>
+          <a href="business-individual.html">【個人の方向け】 数学特化塾バディスタ</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
         </div>
       </div>
       <a href="news.html">お知らせ</a>
       <a href="contact.html">お問い合わせ</a>
-      <a href="contact.html?type=document" class="header-cta">資料請求</a>
-      <a href="contact.html?type=trial" class="header-cta">無料体験授業</a>
+      <a href="document.html" class="header-cta">資料請求</a>
+      <a href="trial.html" class="header-cta">無料体験授業</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -203,13 +203,13 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html">会社情報</a>
   <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <a href="business.html">事業内容</a>
-  <a href="business-individual.html" class="mobile-sub">個人の方向け 数学特化塾バディスタ</a>
-  <a href="business-institution.html" class="mobile-sub">教育機関・学習塾の方向け</a>
+  <span style="display:block;padding:14px 0;font-size:0.95rem;font-weight:600;color:var(--text-dark);border-bottom:1px solid var(--border);">事業内容</span>
+  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾バディスタ</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
-  <a href="contact.html?type=document" class="mobile-cta">資料請求</a>
-  <a href="contact.html?type=trial" class="mobile-cta">無料体験授業はこちら</a>
+  <a href="document.html" class="mobile-cta">資料請求</a>
+  <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
 </nav>
 
 <section class="page-hero">
@@ -282,7 +282,7 @@ a { text-decoration: none; color: inherit; }
       </tr>
       <tr>
         <th>事業内容</th>
-        <td>教育事業（数学特化塾バディスタの運営）</td>
+        <td>教育事業</td>
       </tr>
       <tr>
         <th>メール</th>
