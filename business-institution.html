@@ -10,10 +10,10 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --primary: #7C3AED;
-  --primary-dark: #6D28D9;
-  --primary-light: #8B5CF6;
-  --primary-pale: #EDE9FE;
+  --primary: #b01eff;
+  --primary-dark: #b01eff;
+  --primary-light: #b01eff;
+  --primary-pale: #F6F3FB;
   --accent: #EC4899;
   --bg-main: #FFFFFF;
   --bg-white: #ffffff;
@@ -45,8 +45,18 @@ a { text-decoration: none; color: inherit; }
 .header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
 .header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
-.header-nav .header-cta:hover { background: var(--primary); }
+.header-nav .header-cta {
+  background: var(--primary); color: #fff;
+  padding: 10px 20px; border-radius: 6px; margin-left: 6px;
+  font-size: 0.84rem; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(176, 30, 255, 0.3);
+  transition: all 0.3s;
+}
+.header-nav .header-cta:hover {
+  background: #9a00e6; color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(176, 30, 255, 0.4);
+}
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
@@ -55,6 +65,17 @@ a { text-decoration: none; color: inherit; }
 .dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
 .mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
 .mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
+.nav-label {
+  font-size: 0.9rem; font-weight: 600; color: var(--text-dark);
+  padding: 8px 14px; border-radius: 8px; cursor: default;
+  transition: all 0.2s; display: inline-block;
+}
+.nav-label:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label.active { color: var(--primary); background: var(--primary-pale); }
+.mobile-label {
+  display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default;
+}
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -118,7 +139,7 @@ a { text-decoration: none; color: inherit; }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(124, 58, 237, 0.15);
+  background: rgba(176, 30, 255, 0.15);
   pointer-events: none;
   z-index: 1;
 }
@@ -200,27 +221,20 @@ a { text-decoration: none; color: inherit; }
 
 /* CONTACT CTA */
 .contact-cta {
-  padding: 100px 24px;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-  text-align: center; color: #fff; position: relative; overflow: hidden;
-}
-.contact-cta::before {
-  content: ''; position: absolute; top: -50%; right: -20%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-  border-radius: 50%;
+  padding: 80px 24px;
+  background: #F0EAF8;
+  text-align: center; color: var(--text-dark); position: relative; overflow: hidden;
 }
 .contact-cta-inner { position: relative; z-index: 1; }
-.contact-cta h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 900; margin-bottom: 16px; }
-.contact-cta p { font-size: 0.92rem; opacity: 0.8; margin-bottom: 36px; }
-.btn-white {
+.contact-cta p { font-size: 0.95rem; color: var(--text-dark); margin-bottom: 36px; }
+.btn-cta-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--primary-dark);
+  background: var(--primary); color: #fff;
   padding: 16px 40px; border-radius: 50px;
   font-size: 0.95rem; font-weight: 700; transition: all 0.3s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(176, 30, 255, 0.25);
 }
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.15); }
+.btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(176, 30, 255, 0.35); }
 
 /* FOOTER */
 .footer { background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 48px 24px 32px; }
@@ -233,7 +247,18 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 781px) {
   .header-nav { display: none; }
-  .hamburger { display: flex; }
+  .nav-label {
+  font-size: 0.9rem; font-weight: 600; color: var(--text-dark);
+  padding: 8px 14px; border-radius: 8px; cursor: default;
+  transition: all 0.2s; display: inline-block;
+}
+.nav-label:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label.active { color: var(--primary); background: var(--primary-pale); }
+.mobile-label {
+  display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default;
+}
+.hamburger { display: flex; }
   .detail-hero { height: 320px; }
   .detail-hero-content { padding: 0 24px; bottom: 32px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -261,7 +286,7 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="nav-dropdown">
-        <span class="active" style="font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;cursor:default;">事業内容</span>
+        <span class="nav-label active">事業内容</span>
         <div class="dropdown-menu">
           <a href="business-individual.html">【個人の方向け】 数学特化塾バディスタ</a>
           <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
@@ -281,7 +306,7 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html">会社情報</a>
   <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <span style="display:block;padding:14px 0;font-size:0.95rem;font-weight:600;color:var(--text-dark);border-bottom:1px solid var(--border);">事業内容</span>
+  <span class="mobile-label">事業内容</span>
   <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾バディスタ</a>
   <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
   <a href="news.html">お知らせ</a>
@@ -348,9 +373,8 @@ a { text-decoration: none; color: inherit; }
 
 <section class="contact-cta">
   <div class="contact-cta-inner fade-up">
-    <h2>お問い合わせ</h2>
-    <p>ご興味をお持ちの方は、まずはお気軽にご相談ください。</p>
-    <a href="contact.html" class="btn-white">
+    <p>導入のご相談・プログラムの詳細は、お気軽にご相談ください。</p>
+    <a href="contact.html" class="btn-cta-primary">
       お問い合わせはこちら <span class="arrow">&rarr;</span>
     </a>
   </div>

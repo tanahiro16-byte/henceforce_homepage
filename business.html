@@ -10,10 +10,10 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --primary: #7C3AED;
-  --primary-dark: #6D28D9;
-  --primary-light: #8B5CF6;
-  --primary-pale: #EDE9FE;
+  --primary: #b01eff;
+  --primary-dark: #b01eff;
+  --primary-light: #b01eff;
+  --primary-pale: #F6F3FB;
   --accent: #EC4899;
   --bg-main: #FFFFFF;
   --bg-white: #ffffff;
@@ -45,8 +45,18 @@ a { text-decoration: none; color: inherit; }
 .header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; }
 .header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
 .header-nav .active { color: var(--primary); background: var(--primary-pale); }
-.header-nav .header-cta { background: var(--primary-light); color: #fff; padding: 8px 16px; border-radius: 6px; margin-left: 4px; font-size: 0.84rem; }
-.header-nav .header-cta:hover { background: var(--primary); }
+.header-nav .header-cta {
+  background: var(--primary); color: #fff;
+  padding: 10px 20px; border-radius: 6px; margin-left: 6px;
+  font-size: 0.84rem; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(176, 30, 255, 0.3);
+  transition: all 0.3s;
+}
+.header-nav .header-cta:hover {
+  background: #9a00e6; color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(176, 30, 255, 0.4);
+}
 .nav-dropdown { position: relative; }
 .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
 .nav-dropdown:hover .dropdown-menu { display: block; }
@@ -55,6 +65,17 @@ a { text-decoration: none; color: inherit; }
 .dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
 .mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
 .mobile-nav .mobile-cta { color: var(--primary-light); font-weight: 700; }
+.nav-label {
+  font-size: 0.9rem; font-weight: 600; color: var(--text-dark);
+  padding: 8px 14px; border-radius: 8px; cursor: default;
+  transition: all 0.2s; display: inline-block;
+}
+.nav-label:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label.active { color: var(--primary); background: var(--primary-pale); }
+.mobile-label {
+  display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default;
+}
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -67,7 +88,7 @@ a { text-decoration: none; color: inherit; }
 
 /* PAGE HERO */
 .page-hero { position: relative; height: 360px; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 100%); }
+.page-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a0a2e 0%, #b01eff 100%); }
 .page-hero-overlay { position: absolute; inset: 0; background: rgba(30,27,75,0.4); }
 .page-hero-content {
   position: absolute; inset: 0;
@@ -188,7 +209,18 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 781px) {
   .header-nav { display: none; }
-  .hamburger { display: flex; }
+  .nav-label {
+  font-size: 0.9rem; font-weight: 600; color: var(--text-dark);
+  padding: 8px 14px; border-radius: 8px; cursor: default;
+  transition: all 0.2s; display: inline-block;
+}
+.nav-label:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label.active { color: var(--primary); background: var(--primary-pale); }
+.mobile-label {
+  display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default;
+}
+.hamburger { display: flex; }
   .page-hero { height: 280px; }
   .biz-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
@@ -214,7 +246,7 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="nav-dropdown">
-        <span class="active" style="font-size:0.9rem;font-weight:600;padding:8px 14px;border-radius:8px;cursor:default;">事業内容</span>
+        <span class="nav-label active">事業内容</span>
         <div class="dropdown-menu">
           <a href="business-individual.html">【個人の方向け】 数学特化塾バディスタ</a>
           <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
@@ -234,7 +266,7 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html">会社情報</a>
   <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <span style="display:block;padding:14px 0;font-size:0.95rem;font-weight:600;color:var(--text-dark);border-bottom:1px solid var(--border);">事業内容</span>
+  <span class="mobile-label">事業内容</span>
   <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾バディスタ</a>
   <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
   <a href="news.html">お知らせ</a>
@@ -279,20 +311,20 @@ a { text-decoration: none; color: inherit; }
           <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
             <defs>
               <linearGradient id="bg1" x1="0" y1="0" x2="480" y2="240">
-                <stop offset="0%" stop-color="#EDE9FE"/>
-                <stop offset="100%" stop-color="#DDD6FE"/>
+                <stop offset="0%" stop-color="#F6F3FB"/>
+                <stop offset="100%" stop-color="#E8DCF8"/>
               </linearGradient>
             </defs>
             <rect width="480" height="240" fill="url(#bg1)"/>
             <!-- School building - single clean shape -->
-            <rect x="160" y="90" width="160" height="130" rx="4" fill="#C4B5FD"/>
+            <rect x="160" y="90" width="160" height="130" rx="4" fill="#E0D4F5"/>
             <!-- Roof -->
-            <polygon points="240,50 150,92 330,92" fill="#A78BFA"/>
-            <line x1="150" y1="92" x2="330" y2="92" stroke="#8B5CF6" stroke-width="2"/>
+            <polygon points="240,50 150,92 330,92" fill="#c77dff"/>
+            <line x1="150" y1="92" x2="330" y2="92" stroke="#b01eff" stroke-width="2"/>
             <!-- Clock -->
             <circle cx="240" cy="108" r="12" fill="#fff"/>
-            <line x1="240" y1="108" x2="240" y2="101" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="240" y1="108" x2="245" y2="108" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="240" y1="108" x2="240" y2="101" stroke="#b01eff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="240" y1="108" x2="245" y2="108" stroke="#b01eff" stroke-width="1.5" stroke-linecap="round"/>
             <!-- Windows row 1 -->
             <rect x="180" y="128" width="20" height="20" rx="3" fill="#fff"/>
             <rect x="210" y="128" width="20" height="20" rx="3" fill="#fff"/>
@@ -304,23 +336,23 @@ a { text-decoration: none; color: inherit; }
             <rect x="250" y="158" width="20" height="20" rx="3" fill="#fff"/>
             <rect x="280" y="158" width="20" height="20" rx="3" fill="#fff"/>
             <!-- Door -->
-            <rect x="226" y="190" width="28" height="30" rx="3" fill="#8B5CF6"/>
-            <rect x="230" y="194" width="9" height="22" rx="2" fill="#DDD6FE"/>
-            <rect x="241" y="194" width="9" height="22" rx="2" fill="#DDD6FE"/>
+            <rect x="226" y="190" width="28" height="30" rx="3" fill="#b01eff"/>
+            <rect x="230" y="194" width="9" height="22" rx="2" fill="#E8DCF8"/>
+            <rect x="241" y="194" width="9" height="22" rx="2" fill="#E8DCF8"/>
             <!-- Trees -->
-            <circle cx="120" cy="180" r="22" fill="#A78BFA" opacity="0.5"/>
-            <circle cx="115" cy="172" r="18" fill="#C4B5FD" opacity="0.6"/>
-            <rect x="118" y="196" width="4" height="24" rx="2" fill="#A78BFA" opacity="0.4"/>
-            <circle cx="365" cy="182" r="20" fill="#A78BFA" opacity="0.5"/>
-            <circle cx="360" cy="175" r="16" fill="#C4B5FD" opacity="0.6"/>
-            <rect x="363" y="197" width="4" height="23" rx="2" fill="#A78BFA" opacity="0.4"/>
+            <circle cx="120" cy="180" r="22" fill="#c77dff" opacity="0.5"/>
+            <circle cx="115" cy="172" r="18" fill="#E0D4F5" opacity="0.6"/>
+            <rect x="118" y="196" width="4" height="24" rx="2" fill="#c77dff" opacity="0.4"/>
+            <circle cx="365" cy="182" r="20" fill="#c77dff" opacity="0.5"/>
+            <circle cx="360" cy="175" r="16" fill="#E0D4F5" opacity="0.6"/>
+            <rect x="363" y="197" width="4" height="23" rx="2" fill="#c77dff" opacity="0.4"/>
             <!-- Math symbols -->
-            <text x="88" y="100" font-family="serif" font-size="20" fill="#8B5CF6" opacity="0.3" transform="rotate(-12 88 100)">∑</text>
-            <text x="385" y="105" font-family="serif" font-size="16" fill="#8B5CF6" opacity="0.25" transform="rotate(10 385 105)">π</text>
-            <text x="70" y="150" font-family="serif" font-size="14" fill="#A78BFA" opacity="0.25">∫</text>
-            <text x="405" y="155" font-family="serif" font-size="17" fill="#A78BFA" opacity="0.25">Δ</text>
+            <text x="88" y="100" font-family="serif" font-size="20" fill="#b01eff" opacity="0.3" transform="rotate(-12 88 100)">∑</text>
+            <text x="385" y="105" font-family="serif" font-size="16" fill="#b01eff" opacity="0.25" transform="rotate(10 385 105)">π</text>
+            <text x="70" y="150" font-family="serif" font-size="14" fill="#c77dff" opacity="0.25">∫</text>
+            <text x="405" y="155" font-family="serif" font-size="17" fill="#c77dff" opacity="0.25">Δ</text>
             <!-- Label -->
-            <text x="240" y="233" font-family="'Noto Sans JP', sans-serif" font-size="11" fill="#7C3AED" opacity="0.45" text-anchor="middle" font-weight="700">for School</text>
+            <text x="240" y="233" font-family="'Noto Sans JP', sans-serif" font-size="11" fill="#b01eff" opacity="0.45" text-anchor="middle" font-weight="700">for School</text>
           </svg>
         </div>
         <div class="biz-grid-card-body">
@@ -331,17 +363,6 @@ a { text-decoration: none; color: inherit; }
         </div>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT CTA -->
-<section class="contact-cta">
-  <div class="contact-cta-inner fade-up">
-    <h2>お問い合わせ</h2>
-    <p>事業に関するご質問・ご相談はお気軽にどうぞ。</p>
-    <a href="contact.html" class="btn-white">
-      お問い合わせはこちら <span class="arrow">&rarr;</span>
-    </a>
   </div>
 </section>
 
