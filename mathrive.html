@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学特化塾 Mathrive｜構造から学ぶ数学で、受験を突破する。</title>
+<meta name="description" content="数学特化塾Mathriveは、京大数学科出身講師による少人数集団指導塾。解法暗記ではなく「構造理解」で、高校数学を本質から学ぶ。無料体験授業受付中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #b01eff;
+  --primary-dark: #b01eff;
+  --primary-light: #b01eff;
+  --primary-pale: #F6F3FB;
+  --accent: #EC4899;
+  --bg-main: #FFFFFF;
+  --bg-white: #ffffff;
+  --bg-gray: #FAF5FF;
+  --text-dark: #1E1B4B;
+  --text-body: #6B7280;
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
+  --shadow: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+  --radius: 16px;
+  --content-width: 1080px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-body); line-height: 1.9; background: var(--bg-main); font-size: 15px; overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+/* ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== HEADER ===== */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(229,231,235,0.5); transition: all 0.3s; }
+.header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.05); }
+.header-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; height: 68px; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); letter-spacing: 0.02em; }
+.header-nav { display: flex; align-items: center; gap: 4px; }
+.header-nav > a, .nav-dropdown > a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+.header-nav > a:hover, .nav-dropdown > a:hover { background: var(--primary-pale); color: var(--primary); }
+.header-nav .header-cta { background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 6px; margin-left: 6px; font-size: 0.84rem; font-weight: 700; box-shadow: 0 2px 8px rgba(176,30,255,0.3); transition: all 0.3s; }
+.header-nav .header-cta:hover { background: #9a00e6; color: #fff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(176,30,255,0.4); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 8px 0; min-width: 240px; z-index: 10; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+.dropdown-menu a { display: block; padding: 10px 20px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); white-space: nowrap; transition: all 0.2s; }
+.dropdown-menu a:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); padding: 8px 14px; border-radius: 8px; cursor: default; transition: all 0.2s; display: inline-block; }
+.nav-label:hover { background: var(--primary-pale); color: var(--primary); }
+.nav-label.active { color: var(--primary); background: var(--primary-pale); }
+.mobile-label { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 99; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav .mobile-sub { padding-left: 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-body); }
+.mobile-nav .mobile-cta { color: var(--primary); font-weight: 700; }
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb { padding: 16px 24px; background: var(--bg-white); border-bottom: 1px solid var(--border); margin-top: 68px; }
+.breadcrumb-inner { max-width: var(--content-width); margin: 0 auto; font-size: 0.78rem; color: var(--text-muted); }
+.breadcrumb-inner a { color: var(--text-muted); transition: color 0.2s; }
+.breadcrumb-inner a:hover { color: var(--primary); }
+.breadcrumb-inner span { margin: 0 8px; }
+
+/* ===== SECTION HEADING ===== */
+.sec-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: inline-block; margin-bottom: 10px; }
+.sec-title { font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; }
+.sec-title::after { content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin: 16px auto 0; border-radius: 2px; }
+.sec-heading { text-align: center; margin-bottom: 56px; }
+.sec-sub { font-size: 0.9rem; color: var(--text-body); margin-top: 16px; line-height: 1.8; }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary); color: #fff;
+  padding: 16px 40px; border-radius: 50px;
+  font-size: 0.95rem; font-weight: 700; transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(176,30,255,0.3);
+}
+.btn-primary:hover { background: #9a00e6; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(176,30,255,0.4); }
+.btn-accent {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #fff;
+  padding: 16px 40px; border-radius: 50px;
+  font-size: 0.95rem; font-weight: 700; transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(236,72,153,0.3);
+}
+.btn-accent:hover { background: #DB2777; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(236,72,153,0.4); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid var(--primary); color: var(--primary);
+  padding: 14px 36px; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 700; transition: all 0.3s;
+}
+.btn-outline:hover { background: var(--primary); color: #fff; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 92vh;
+  min-height: 580px;
+  max-height: 960px;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(30,27,75,0.72) 0%, rgba(30,27,75,0.3) 60%, rgba(30,27,75,0.1) 100%);
+}
+.hero-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 64px;
+  max-width: calc(var(--content-width) + 128px);
+  margin: 0 auto;
+  padding-top: 68px;
+}
+.hero-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  color: #fff; background: rgba(176,30,255,0.7);
+  backdrop-filter: blur(8px);
+  padding: 5px 18px; border-radius: 50px; margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+.hero-catch {
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 900; color: #fff; line-height: 1.45;
+  letter-spacing: 0.04em; margin-bottom: 20px;
+}
+.hero-catch em { color: #e0b4ff; font-style: normal; }
+.hero-sub {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: rgba(255,255,255,0.85); line-height: 1.9;
+  margin-bottom: 36px; max-width: 480px;
+}
+.hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-note {
+  margin-top: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.55);
+}
+
+/* ===== NEWS ===== */
+.news-section { padding: 80px 24px; background: var(--bg-white); }
+.news-list { max-width: 720px; margin: 0 auto; }
+.news-item { display: flex; align-items: flex-start; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--border); transition: opacity 0.2s; }
+.news-item:hover { opacity: 0.75; }
+.news-item:first-child { padding-top: 0; }
+.news-date { font-family: 'Roboto', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); flex-shrink: 0; min-width: 90px; padding-top: 2px; }
+.news-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; color: var(--primary); background: var(--primary-pale); padding: 2px 10px; border-radius: 4px; flex-shrink: 0; }
+.news-title { font-size: 0.92rem; font-weight: 600; color: var(--text-dark); line-height: 1.7; }
+.news-cta { text-align: center; margin-top: 40px; }
+
+/* ===== RESULTS ===== */
+.results { padding: 100px 24px; background: var(--bg-gray); }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 960px; margin: 0 auto 48px; }
+.result-card {
+  background: var(--bg-white); border-radius: var(--radius);
+  padding: 36px 28px; text-align: center;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  transition: all 0.4s;
+}
+.result-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.result-num {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 900; color: var(--primary); line-height: 1;
+  margin-bottom: 6px;
+}
+.result-num span { font-size: 0.5em; }
+.result-label { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+.result-note { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+.result-examples { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.result-example {
+  background: var(--bg-white); border-radius: 12px;
+  padding: 24px; box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.result-example-tag { font-size: 0.7rem; font-weight: 700; color: var(--primary); background: var(--primary-pale); display: inline-block; padding: 3px 12px; border-radius: 50px; margin-bottom: 10px; }
+.result-example-title { font-size: 0.95rem; font-weight: 900; color: var(--text-dark); margin-bottom: 6px; line-height: 1.5; }
+.result-example-body { font-size: 0.8rem; color: var(--text-body); line-height: 1.8; }
+.results-note { text-align: center; font-size: 0.72rem; color: var(--text-muted); margin-top: 28px; }
+
+/* ===== WHY ===== */
+.why { padding: 100px 24px; background: var(--bg-white); }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 960px; margin: 0 auto; }
+.why-card {
+  display: flex; gap: 20px;
+  background: var(--bg-gray); border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+}
+.why-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); background: var(--bg-white); }
+.why-icon {
+  flex-shrink: 0;
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--primary-pale); display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.why-body {}
+.why-num { font-family: 'Roboto', sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--primary); letter-spacing: 0.15em; margin-bottom: 4px; }
+.why-title { font-size: 1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 8px; line-height: 1.5; }
+.why-desc { font-size: 0.85rem; line-height: 1.9; color: var(--text-body); }
+
+/* ===== WHAT IS ===== */
+.whatis { padding: 100px 24px; background: var(--bg-gray); }
+.whatis-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.whatis-image {
+  border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+}
+.whatis-image img { width: 100%; height: 360px; object-fit: cover; display: block; }
+.whatis-body {}
+.whatis-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 10px; }
+.whatis-title { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 900; color: var(--text-dark); line-height: 1.5; margin-bottom: 20px; }
+.whatis-text { font-size: 0.9rem; line-height: 2.1; color: var(--text-body); margin-bottom: 16px; }
+.whatis-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.whatis-tag { font-size: 0.78rem; font-weight: 700; color: var(--primary); background: var(--primary-pale); padding: 6px 16px; border-radius: 50px; }
+.info-list { margin: 24px 0; }
+.info-row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+.info-row:first-child { border-top: 1px solid var(--border); }
+.info-label { font-weight: 700; color: var(--text-dark); min-width: 100px; flex-shrink: 0; }
+.info-value { color: var(--text-body); }
+
+/* ===== PRICE COMPARISON ===== */
+.pricing { padding: 100px 24px; background: var(--bg-white); }
+.price-table-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
+.price-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
+.price-table th, .price-table td { padding: 18px 24px; text-align: center; font-size: 0.88rem; }
+.price-table thead tr { background: var(--primary); }
+.price-table thead th { color: #fff; font-weight: 700; font-size: 0.85rem; }
+.price-table thead th:first-child { text-align: left; }
+.price-table thead th.highlight { background: #fff; color: var(--primary); font-weight: 900; }
+.price-table tbody tr { background: var(--bg-white); border-bottom: 1px solid var(--border); }
+.price-table tbody tr:last-child td { border-bottom: none; }
+.price-table tbody tr:nth-child(even) { background: var(--primary-pale); }
+.price-table tbody td:first-child { text-align: left; font-weight: 700; color: var(--text-dark); padding-left: 28px; }
+.price-table .col-mathrive { background: #F3E8FF; font-weight: 700; color: var(--text-dark); }
+.price-table .col-mathrive.good { color: var(--primary); font-weight: 900; }
+.check { color: #10b981; font-size: 1.1rem; }
+.cross { color: #9CA3AF; }
+.price-note { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 20px; }
+
+/* ===== INSTRUCTOR ===== */
+.instructor { padding: 100px 24px; background: var(--bg-gray); }
+.instructor-card {
+  max-width: 800px; margin: 0 auto;
+  background: var(--bg-white); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-lg);
+  display: grid; grid-template-columns: 260px 1fr;
+}
+.instructor-photo {
+  background: linear-gradient(135deg, var(--primary-pale) 0%, #E8D5FF 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  padding: 32px 24px;
+  position: relative;
+}
+.instructor-avatar {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: linear-gradient(135deg, #c77dff, var(--primary));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(176,30,255,0.3);
+}
+.instructor-name { font-size: 1.1rem; font-weight: 900; color: var(--text-dark); text-align: center; margin-bottom: 4px; }
+.instructor-title { font-size: 0.75rem; color: var(--primary); font-weight: 700; text-align: center; }
+.instructor-body { padding: 40px; }
+.instructor-career { margin-bottom: 24px; }
+.instructor-career-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: var(--primary); text-transform: uppercase; margin-bottom: 12px; }
+.career-list { list-style: none; }
+.career-list li { font-size: 0.88rem; color: var(--text-body); padding: 6px 0; border-bottom: 1px dashed var(--border); display: flex; gap: 10px; align-items: baseline; }
+.career-list li::before { content: '─'; color: var(--primary); font-size: 0.7rem; flex-shrink: 0; }
+.instructor-message { font-size: 0.88rem; line-height: 2; color: var(--text-body); padding: 20px; background: var(--primary-pale); border-radius: 12px; position: relative; }
+.instructor-message::before { content: '"'; font-size: 3rem; color: var(--primary); opacity: 0.2; position: absolute; top: 4px; left: 12px; line-height: 1; font-family: serif; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials { padding: 100px 24px; background: var(--bg-white); }
+.testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 960px; margin: 0 auto; }
+.testi-card {
+  background: var(--bg-white); border-radius: var(--radius);
+  padding: 36px 32px; box-shadow: var(--shadow);
+  border: 1px solid var(--border); transition: all 0.4s;
+  position: relative;
+}
+.testi-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.testi-card::before { content: '"'; font-size: 5rem; color: var(--primary); opacity: 0.08; position: absolute; top: 8px; left: 16px; line-height: 1; font-family: serif; }
+.testi-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--accent); background: #FDF2F8; padding: 4px 14px; border-radius: 50px; margin-bottom: 16px; }
+.testi-headline { font-size: 1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 14px; line-height: 1.5; }
+.testi-body { font-size: 0.85rem; line-height: 2; color: var(--text-body); margin-bottom: 20px; }
+.testi-profile { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+.testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-pale), #E8D5FF); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.testi-name { font-size: 0.82rem; font-weight: 700; color: var(--text-dark); }
+.testi-meta { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ===== MESSAGE ===== */
+.message-section {
+  padding: 100px 24px;
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+  position: relative; overflow: hidden;
+}
+.message-section::before {
+  content: ''; position: absolute; top: -30%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.message-inner { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.message-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); display: block; margin-bottom: 20px; }
+.message-title { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 900; color: #fff; line-height: 1.6; margin-bottom: 32px; }
+.message-body { font-size: 0.9rem; line-height: 2.3; color: rgba(255,255,255,0.85); margin-bottom: 32px; }
+.message-sign { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+
+/* ===== HOW TO APPLY ===== */
+.apply { padding: 100px 24px; background: var(--bg-gray); }
+.apply-steps { max-width: 720px; margin: 0 auto; }
+.step-item { display: flex; gap: 24px; margin-bottom: 40px; position: relative; }
+.step-item:last-child { margin-bottom: 0; }
+.step-item::after {
+  content: '';
+  position: absolute;
+  left: 23px; top: 56px;
+  width: 2px; height: calc(100% - 8px);
+  background: linear-gradient(to bottom, var(--primary) 0%, var(--primary-pale) 100%);
+}
+.step-item:last-child::after { display: none; }
+.step-num {
+  flex-shrink: 0; width: 48px; height: 48px;
+  border-radius: 50%; background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 900;
+  box-shadow: 0 4px 12px rgba(176,30,255,0.3);
+  position: relative; z-index: 1;
+}
+.step-body { padding-top: 8px; }
+.step-title { font-size: 1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 6px; }
+.step-desc { font-size: 0.85rem; line-height: 1.9; color: var(--text-body); }
+.step-cta-area { text-align: center; margin-top: 48px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ===== FAQ ===== */
+.faq { padding: 100px 24px; background: var(--bg-white); }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.3s; }
+.faq-item.open { box-shadow: var(--shadow); }
+.faq-q {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 24px; cursor: pointer; background: var(--bg-white);
+  transition: background 0.2s;
+}
+.faq-q:hover { background: var(--primary-pale); }
+.faq-icon { font-family: 'Roboto', sans-serif; font-size: 1rem; font-weight: 900; color: var(--primary); flex-shrink: 0; width: 28px; }
+.faq-q-text { font-size: 0.92rem; font-weight: 700; color: var(--text-dark); flex: 1; line-height: 1.6; }
+.faq-chevron { flex-shrink: 0; color: var(--text-muted); transition: transform 0.3s; font-size: 0.8rem; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--primary); }
+.faq-a { display: none; padding: 0 24px 22px 68px; }
+.faq-item.open .faq-a { display: block; }
+.faq-a-text { font-size: 0.88rem; line-height: 2; color: var(--text-body); }
+
+/* ===== ACCESS ===== */
+.access { padding: 100px 24px; background: var(--bg-gray); }
+.access-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.access-info {}
+.access-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+.access-table th, .access-table td { padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; vertical-align: top; }
+.access-table th { font-weight: 700; color: var(--text-dark); min-width: 100px; padding-right: 20px; }
+.access-table td { color: var(--text-body); }
+.access-map {
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-lg); height: 300px;
+  background: var(--primary-pale); display: flex; align-items: center; justify-content: center;
+}
+.access-map-placeholder { text-align: center; }
+.access-map-placeholder p { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+.access-transport { margin-top: 8px; }
+.access-transport li { font-size: 0.85rem; color: var(--text-body); padding: 4px 0; list-style: none; display: flex; gap: 8px; }
+.access-transport li::before { content: '🚉'; font-size: 0.8rem; }
+
+/* ===== SNS ===== */
+.sns { padding: 72px 24px; background: var(--bg-white); }
+.sns-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+.sns-title { font-size: 1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 28px; }
+.sns-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.sns-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 28px; border-radius: 50px; font-size: 0.85rem; font-weight: 700;
+  transition: all 0.3s; border: 2px solid;
+}
+.sns-btn.instagram { border-color: #E1306C; color: #E1306C; }
+.sns-btn.instagram:hover { background: #E1306C; color: #fff; }
+.sns-btn.twitter { border-color: #1DA1F2; color: #1DA1F2; }
+.sns-btn.twitter:hover { background: #1DA1F2; color: #fff; }
+.sns-btn.line { border-color: #06C755; color: #06C755; }
+.sns-btn.line:hover { background: #06C755; color: #fff; }
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  padding: 100px 24px;
+  background: var(--bg-gray);
+  text-align: center;
+}
+.final-cta-inner { max-width: 720px; margin: 0 auto; }
+.final-cta-label { font-family: 'Roboto', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 16px; }
+.final-cta-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 900; color: var(--text-dark); line-height: 1.6; margin-bottom: 16px; }
+.final-cta-sub { font-size: 0.9rem; color: var(--text-body); margin-bottom: 40px; line-height: 1.9; }
+.cta-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cta-card {
+  background: var(--bg-white); border-radius: var(--radius);
+  padding: 36px 28px; box-shadow: var(--shadow);
+  border: 1px solid var(--border); text-align: center;
+}
+.cta-card-title { font-size: 1rem; font-weight: 900; color: var(--text-dark); margin-bottom: 8px; }
+.cta-card-desc { font-size: 0.82rem; color: var(--text-body); margin-bottom: 24px; line-height: 1.8; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 48px 24px 32px; }
+.footer-inner { max-width: var(--content-width); margin: 0 auto; text-align: center; }
+.footer-logo { font-family: 'Noto Sans JP', sans-serif; font-size: 1.2rem; font-weight: 900; color: rgba(255,255,255,0.8); margin-bottom: 20px; letter-spacing: 0.02em; }
+.footer-links { margin-bottom: 20px; }
+.footer-links a { color: rgba(255,255,255,0.5); font-size: 0.78rem; margin: 0 14px; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-copy { font-size: 0.7rem; font-family: 'Roboto', sans-serif; }
+
+/* ===== FLOATING CTA (mobile) ===== */
+.float-cta {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+  padding: 12px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  z-index: 90;
+  gap: 12px;
+}
+.float-cta a { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 700; }
+.float-cta-trial { background: var(--primary); color: #fff; }
+.float-cta-diag { background: var(--accent); color: #fff; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 781px) {
+  .header-nav { display: none; }
+  .hamburger { display: flex; }
+  .hero { height: 88vh; max-height: 700px; }
+  .hero-content { padding: 0 32px; padding-top: 68px; }
+  .results-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .result-examples { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .whatis-inner { grid-template-columns: 1fr; }
+  .whatis-image { order: -1; }
+  .whatis-image img { height: 260px; }
+  .instructor-card { grid-template-columns: 1fr; }
+  .instructor-photo { padding: 36px 24px 32px; }
+  .testi-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .access-inner { grid-template-columns: 1fr; }
+  .cta-cards { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+  .float-cta { display: flex; }
+  .footer { padding-bottom: 80px; }
+  .price-table th, .price-table td { padding: 12px 14px; font-size: 0.82rem; }
+}
+@media (max-width: 551px) {
+  .hero { min-height: 520px; }
+  .hero-content { padding: 0 20px; padding-top: 68px; }
+  .hero-cta-group { flex-direction: column; }
+  .hero-cta-group a { text-align: center; }
+  .results-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto 32px; }
+  .why-card { flex-direction: column; }
+  .news-item { flex-direction: column; gap: 8px; }
+  .news-date { min-width: auto; }
+  .results, .why, .whatis, .pricing, .instructor, .testimonials, .message-section, .apply, .faq, .access, .sns, .final-cta, .news-section { padding: 72px 24px; }
+  .step-cta-area { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Henceforth</a>
+    <nav class="header-nav">
+      <div class="nav-dropdown">
+        <a href="company.html">会社情報</a>
+        <div class="dropdown-menu">
+          <a href="company.html#philosophy">経営理念</a>
+          <a href="company.html#overview">会社概要</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-label active">事業内容</span>
+        <div class="dropdown-menu">
+          <a href="business-individual.html">【個人の方向け】 数学特化塾 Mathrive</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
+        </div>
+      </div>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="document.html" class="header-cta">資料請求</a>
+      <a href="trial.html" class="header-cta">無料体験授業</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="company.html">会社情報</a>
+  <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
+  <a href="company.html#overview" class="mobile-sub">会社概要</a>
+  <span class="mobile-label">事業内容</span>
+  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾 Mathrive</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
+  <a href="news.html">お知らせ</a>
+  <a href="contact.html">お問い合わせ</a>
+  <a href="document.html" class="mobile-cta">資料請求</a>
+  <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">トップ</a><span>/</span><a href="business.html">事業内容</a><span>/</span>数学特化塾 Mathrive
+  </div>
+</div>
+
+<!-- ======================================
+  01. HERO - FV（人物写真）
+======================================= -->
+<section class="hero" id="top">
+  <img src="images/hero-main.jpg" alt="Mathriveで学ぶ高校生">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">個人の方向け ／ 数学特化塾</span>
+    <h1 class="hero-catch">
+      「なぜ？」から始まる数学が、<br>
+      <em>受験を、人生を変える。</em>
+    </h1>
+    <p class="hero-sub">
+      解法の暗記でなく、<strong style="color:#fff;">構造から理解する数学</strong>を。<br>
+      初見問題も動じない思考力を、少人数集団指導で育てます。
+    </p>
+    <div class="hero-cta-group">
+      <a href="trial.html" class="btn-primary">無料体験授業に申し込む &rarr;</a>
+      <a href="#whatis" class="btn-outline" style="border-color:rgba(255,255,255,0.7);color:#fff;">Mathriveとは？</a>
+    </div>
+    <p class="hero-note">※ 入塾義務なし・完全無料</p>
+  </div>
+</section>
+
+<!-- ======================================
+  02. NEWS / BLOG - お知らせ・ブログ
+======================================= -->
+<section class="news-section" id="news">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">News &amp; Blog</span>
+      <h2 class="sec-title">お知らせ・ブログ</h2>
+    </div>
+    <div class="news-list fade-up">
+      <a href="news.html" class="news-item">
+        <span class="news-date">2026.03.01</span>
+        <span class="news-tag">合格速報</span>
+        <span class="news-title">2026年度大学入試 合格実績を更新しました</span>
+      </a>
+      <a href="news.html" class="news-item">
+        <span class="news-date">2026.02.15</span>
+        <span class="news-tag">ブログ</span>
+        <span class="news-title">数学の「構造理解」とは何か？暗記との違いをわかりやすく解説</span>
+      </a>
+      <a href="news.html" class="news-item">
+        <span class="news-date">2026.01.10</span>
+        <span class="news-tag">お知らせ</span>
+        <span class="news-title">2026年度 新規入塾生の受け付けを開始しました</span>
+      </a>
+      <a href="news.html" class="news-item">
+        <span class="news-date">2025.12.01</span>
+        <span class="news-tag">ブログ</span>
+        <span class="news-title">共通テスト数学で9割をとった生徒が実践した「逆算思考」の勉強法</span>
+      </a>
+    </div>
+    <div class="news-cta fade-up">
+      <a href="news.html" class="btn-outline">もっと見る <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  03. RESULTS - 実績
+======================================= -->
+<section class="results" id="results">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Results</span>
+      <h2 class="sec-title">実績</h2>
+      <p class="sec-sub">Mathriveで学んだ生徒たちの声と結果です。</p>
+    </div>
+    <div class="results-grid fade-up">
+      <div class="result-card">
+        <div class="result-num">92<span>%</span></div>
+        <div class="result-label">模試点数UP率</div>
+        <div class="result-note">入塾後3ヶ月以内に模試の数学点数が向上した生徒の割合</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">+<span></span>28<span>点</span></div>
+        <div class="result-label">平均点数UP</div>
+        <div class="result-note">入塾前後の模試数学点数の平均変化（100点満点換算）</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">15<span>名+</span></div>
+        <div class="result-label">難関大学合格者</div>
+        <div class="result-note">MARCH以上・国公立大学への合格実績（2025年度）</div>
+      </div>
+    </div>
+    <div class="result-examples fade-up">
+      <div class="result-example">
+        <span class="result-example-tag">大学合格実績</span>
+        <div class="result-example-title">「数学が武器になった」<br>国立大工学部に現役合格</div>
+        <div class="result-example-body">入塾時は数学が30点台。Mathriveで構造から学び直し、共通テスト本番で82点を獲得。志望校に現役合格。（高3男子・2026年度）</div>
+      </div>
+      <div class="result-example">
+        <span class="result-example-tag">偏差値UP実績</span>
+        <div class="result-example-title">偏差値43 → 64へ<br>わずか5ヶ月での大幅UP</div>
+        <div class="result-example-body">「解き方を覚えても応用ができない」という悩みが解消。模試で21ポイントアップ、最終的にGMARCHに合格。（高2女子・2025年度）</div>
+      </div>
+    </div>
+    <p class="results-note fade-up">※ 実績は個人の結果であり、全員に同様の効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- ======================================
+  04. WHY - 選ばれる理由
+======================================= -->
+<section class="why" id="why">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Why Mathrive</span>
+      <h2 class="sec-title">選ばれる理由</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon">🔬</div>
+        <div class="why-body">
+          <div class="why-num">REASON 01</div>
+          <div class="why-title">「なぜ？」を徹底的に掘り下げる<br>構造理解メソッド</div>
+          <div class="why-desc">公式の丸暗記ではなく、「なぜその公式が成り立つか」を理解することで、初見問題・応用問題にも自力で対処できる思考力が育ちます。</div>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">👥</div>
+        <div class="why-body">
+          <div class="why-num">REASON 02</div>
+          <div class="why-title">2〜5名の少人数集団で<br>「対話型」指導</div>
+          <div class="why-desc">一方的な講義ではなく、生徒が自分の言葉で考えを話し、講師と対話しながら理解を深めます。大人数では得られない密度の濃い指導が特長です。</div>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">🎓</div>
+        <div class="why-body">
+          <div class="why-num">REASON 03</div>
+          <div class="why-title">京大数学科出身講師による<br>高品質な授業</div>
+          <div class="why-desc">受験数学を知り尽くした専門家が、数学の本質を伝えます。「わかりやすい解説」ではなく「本質的な理解」を目指す指導は、他塾にはない Mathriveの核心です。</div>
+        </div>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon">📈</div>
+        <div class="why-body">
+          <div class="why-num">REASON 04</div>
+          <div class="why-title">「わかった気」で終わらせない<br>定着サポート</div>
+          <div class="why-desc">授業後の振り返りシートと講師フィードバックで、理解の穴を可視化。次回授業前の確認テストと組み合わせ、学習内容を確実に定着させます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  05. WHAT IS - Mathriveとは？
+======================================= -->
+<section class="whatis" id="whatis">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">About Mathrive</span>
+      <h2 class="sec-title">Mathriveとは？</h2>
+    </div>
+    <div class="whatis-inner fade-up">
+      <div class="whatis-image">
+        <img src="images/biz-individual.jpg" alt="少人数で学ぶMathriveの授業風景">
+      </div>
+      <div class="whatis-body">
+        <span class="whatis-label">数学特化塾 Mathrive</span>
+        <h3 class="whatis-title">解法を覚えるのではなく、<br>数学の「構造」を理解する塾</h3>
+        <p class="whatis-text">
+          「解法パターンを覚えたのに、少し変わった問題が解けない」<br>
+          そう感じたことはありませんか？
+        </p>
+        <p class="whatis-text">
+          Mathriveでは、数学の問題を「どの公式を使うか」ではなく「なぜこのアプローチが有効か」という視点で考えます。構造から理解することで、初見問題にも動じない、本物の数学力が身につきます。
+        </p>
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-label">対象</span>
+            <span class="info-value">高校1年生〜3年生（文理不問）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">形式</span>
+            <span class="info-value">少人数集団指導（2〜5名）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">授業時間</span>
+            <span class="info-value">週1回・90分</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">カリキュラム</span>
+            <span class="info-value">数学I・II・A・B・C（受験数学全範囲対応）</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">場所</span>
+            <span class="info-value">東京都世田谷区（詳細はお問い合わせ）</span>
+          </div>
+        </div>
+        <div class="whatis-tags">
+          <span class="whatis-tag">少人数集団</span>
+          <span class="whatis-tag">構造理解</span>
+          <span class="whatis-tag">対話型授業</span>
+          <span class="whatis-tag">京大数学科講師</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  06. PRICE COMPARISON - 競合比較
+======================================= -->
+<section class="pricing" id="pricing">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Pricing</span>
+      <h2 class="sec-title">他塾との比較</h2>
+      <p class="sec-sub">Mathriveが選ばれる理由を、価格・内容面から比較しました。</p>
+    </div>
+    <div class="price-table-wrap fade-up">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding-left:28px;">比較項目</th>
+            <th class="highlight">Mathrive</th>
+            <th>大手集団塾</th>
+            <th>個別指導塾</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>月額費用（目安）</td>
+            <td class="col-mathrive good">25,000円〜</td>
+            <td>30,000〜60,000円</td>
+            <td>40,000〜80,000円</td>
+          </tr>
+          <tr>
+            <td>授業形式</td>
+            <td class="col-mathrive good">少人数集団（2〜5名）</td>
+            <td>大人数（20〜40名）</td>
+            <td>1対1または1対2</td>
+          </tr>
+          <tr>
+            <td>数学専門指導</td>
+            <td class="col-mathrive good"><span class="check">✓ 数学特化</span></td>
+            <td>全教科対応</td>
+            <td>全教科対応</td>
+          </tr>
+          <tr>
+            <td>構造理解の授業</td>
+            <td class="col-mathrive good"><span class="check">✓ 独自メソッド</span></td>
+            <td><span class="cross">△ パターン演習中心</span></td>
+            <td><span class="cross">△ 解法指導中心</span></td>
+          </tr>
+          <tr>
+            <td>講師の専門性</td>
+            <td class="col-mathrive good"><span class="check">✓ 京大数学科出身</span></td>
+            <td>プロ〜学生講師</td>
+            <td>学生講師が中心</td>
+          </tr>
+          <tr>
+            <td>振り返り・フィードバック</td>
+            <td class="col-mathrive good"><span class="check">✓ 毎授業</span></td>
+            <td><span class="cross">△ 限定的</span></td>
+            <td>講師により異なる</td>
+          </tr>
+          <tr>
+            <td>無料体験</td>
+            <td class="col-mathrive good"><span class="check">✓ 無料体験授業あり</span></td>
+            <td>塾による</td>
+            <td>塾による</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">※ 価格・内容は2026年3月時点の調査に基づく目安です。各塾の詳細はそれぞれの公式情報をご確認ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  07. INSTRUCTOR - 講師紹介
+======================================= -->
+<section class="instructor" id="instructor">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Instructor</span>
+      <h2 class="sec-title">講師紹介</h2>
+    </div>
+    <div class="instructor-card fade-up">
+      <div class="instructor-photo">
+        <div class="instructor-avatar">👨‍🏫</div>
+        <div class="instructor-name">代表講師</div>
+        <div class="instructor-title">京都大学 理学部数学科 卒業</div>
+      </div>
+      <div class="instructor-body">
+        <div class="instructor-career">
+          <div class="instructor-career-title">Career</div>
+          <ul class="career-list">
+            <li>京都大学 理学部数学科 卒業</li>
+            <li>大学在学中より高校数学の個別・集団指導に従事</li>
+            <li>数学の構造理解に特化した独自指導法を開発</li>
+            <li>合同会社Henceforth 代表社員 / 塾長</li>
+            <li>指導実績：MARCH・国公立大学など多数の合格実績</li>
+          </ul>
+        </div>
+        <div class="instructor-message">
+          数学は暗記科目ではありません。正しい問いの立て方を身につければ、初めて見る問題でも自分の力で考えることができます。Mathriveでは「解けた」の一歩先にある「わかった」を大切にしています。生徒一人ひとりが数学を自分の武器にできるよう、全力でサポートします。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  08. TESTIMONIALS - 利用者の声
+======================================= -->
+<section class="testimonials" id="voice">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Testimonials</span>
+      <h2 class="sec-title">利用者の声</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <span class="testi-tag">高校3年生（現役合格）</span>
+        <div class="testi-headline">「解き方」ではなく「考え方」が変わった</div>
+        <div class="testi-body">
+          他の塾では「この問題はこう解く」という指導が中心でしたが、Mathriveでは「なぜこのアプローチをとるのか」を毎回問われます。最初は戸惑いましたが、気づいたら初見問題でも自分なりの解法を見つけられるようになっていました。共通テストでは数学ⅠAで88点が取れました。
+        </div>
+        <div class="testi-profile">
+          <div class="testi-avatar">🎓</div>
+          <div>
+            <div class="testi-name">R.Tさん（高3）</div>
+            <div class="testi-meta">国立大学 理工学部 現役合格 / 2026年度</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <span class="testi-tag">保護者（高2のお母様）</span>
+        <div class="testi-headline">「勉強しなさい」と言わなくなりました</div>
+        <div class="testi-body">
+          入塾前は毎日声をかけないと勉強しない子でしたが、Mathriveに通い始めてから自分から問題集を開くようになりました。「数学が面白い」と話すようになったのを見て、本当に良かったと感じています。少人数なので先生にも質問しやすいようで、毎週楽しんで通っています。
+        </div>
+        <div class="testi-profile">
+          <div class="testi-avatar">👩</div>
+          <div>
+            <div class="testi-name">Y.Kさんのお母様</div>
+            <div class="testi-meta">高校2年生のお子様がご在籍</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <span class="testi-tag">高校2年生（入塾6ヶ月）</span>
+        <div class="testi-headline">偏差値が43から61に。模試の数学が得意科目になった</div>
+        <div class="testi-body">
+          もともと数学が大嫌いで、定期テストでも点数が取れていませんでした。でもMathriveに来てから「なんで？」と考えることが習慣になって、気づいたら模試の偏差値が18上がっていました。先生が少人数で丁寧に見てくれるから、恥ずかしがらずに質問できるのも良かったです。
+        </div>
+        <div class="testi-profile">
+          <div class="testi-avatar">📚</div>
+          <div>
+            <div class="testi-name">A.Mさん（高2）</div>
+            <div class="testi-meta">入塾6ヶ月 / 偏差値43→61</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <span class="testi-tag">保護者（高3のお父様）</span>
+        <div class="testi-headline">少人数で一人ひとりを見てもらえる安心感</div>
+        <div class="testi-body">
+          大手塾は人数が多く、息子が授業についていけているか心配でした。Mathriveは5名以下という少人数制なので、授業内容も先生からのフィードバックも具体的で、親としても安心できます。受験直前に担当の先生に個別相談もでき、精神的な支えにもなりました。
+        </div>
+        <div class="testi-profile">
+          <div class="testi-avatar">👨</div>
+          <div>
+            <div class="testi-name">H.Sさんのお父様</div>
+            <div class="testi-meta">MARCH合格 / 2025年度</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  09. MESSAGE - メッセージ
+======================================= -->
+<section class="message-section" id="message">
+  <div class="inner">
+    <div class="message-inner fade-up">
+      <span class="message-label">Message</span>
+      <h2 class="message-title">
+        「わかった」の先に、<br>
+        あなたの可能性が広がる。
+      </h2>
+      <p class="message-body">
+        数学を本当に理解した瞬間の感覚を、あなたにも体験してほしい。<br>
+        難しい問題を前にしても、「考えればわかる」と思えるその瞬間は、<br>
+        数学の枠を超えて、あなたの人生を変えていく力になります。<br><br>
+        Mathriveはただの受験対策塾ではありません。<br>
+        「考える力」そのものを育てる場所です。<br>
+        ぜひ一度、私たちの授業を体験してみてください。
+      </p>
+      <p class="message-sign">合同会社Henceforth 代表 ／ Mathrive 塾長</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  10. HOW TO APPLY - 申込み方法
+======================================= -->
+<section class="apply" id="apply">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">How to Apply</span>
+      <h2 class="sec-title">申込み方法</h2>
+      <p class="sec-sub">無料体験授業まで、たった3ステップ。</p>
+    </div>
+    <div class="apply-steps fade-up">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">お問い合わせ・無料診断のお申込み</div>
+          <div class="step-desc">フォームまたはLINEよりお気軽にご連絡ください。現在の状況や学習のお悩みを簡単にお聞きします。診断は無料・入塾義務一切なしです。</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">無料診断 / 学習カウンセリング（30分）</div>
+          <div class="step-desc">現在の学力・目標・学習状況をヒアリングし、Mathriveが合っているかどうかも含めて正直にお伝えします。オンライン対応可。</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">無料体験授業（90分）</div>
+          <div class="step-desc">実際の授業と同じ形式で、構造理解メソッドの数学指導を体験いただけます。授業後に感想や質問にもお答えします。</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-cta-area fade-up">
+      <a href="trial.html" class="btn-primary">無料体験授業に申し込む &rarr;</a>
+      <a href="contact.html" class="btn-accent">無料診断を申し込む &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  11. FAQ - よくある質問
+======================================= -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">FAQ</span>
+      <h2 class="sec-title">よくある質問</h2>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">数学が苦手でも大丈夫ですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">はい、大丈夫です。Mathriveには数学が苦手な状態から入塾した生徒も多くいます。まずは無料診断で現在の状況をお聞きし、一人ひとりのスタートラインに合わせたカリキュラムを提案します。基礎から丁寧に「なぜ？」を積み上げていくので、苦手意識がある方にこそ合った指導法です。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">高1からでも入塾できますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">もちろんです。高1〜高3のすべての学年に対応しています。特に高1・高2のうちから「構造理解」の思考法を身につけておくと、高3での伸びが大きくなります。早めのスタートをおすすめします。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">授業の曜日・時間はどうなっていますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">週1回・90分の授業を基本としています。曜日・時間帯は複数の選択肢からお選びいただけます。学校の行事や部活に合わせた調整も可能です。詳細はお問い合わせ時にご確認ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">月謝はいくらですか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">週1回（月4回）の場合、月額25,000円〜（別途入会金あり）です。学年・授業回数によって異なりますので、詳細は無料診断・お問い合わせの際にご案内します。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">授業はオンラインでも受けられますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">現在は基本的に対面授業となっています。学習カウンセリング・無料診断はオンライン対応可能です。遠方の方はお気軽にご相談ください。</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-icon">Q</span>
+          <span class="faq-q-text">体験授業は本当に無料ですか？入塾の義務はありますか？</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a">
+          <p class="faq-a-text">無料体験授業・無料診断ともに完全無料です。入塾の義務は一切ありません。「まず雰囲気を見てみたい」「本当に合うか試したい」という方もお気軽にどうぞ。体験後の勧誘などもありませんのでご安心ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  12. ACCESS - 教室（場所）
+======================================= -->
+<section class="access" id="access">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Access</span>
+      <h2 class="sec-title">教室アクセス</h2>
+    </div>
+    <div class="access-inner fade-up">
+      <div class="access-info">
+        <table class="access-table">
+          <tr>
+            <th>塾名</th>
+            <td>数学特化塾 Mathrive</td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td>東京都世田谷区<br>（詳細はお問い合わせ時にご案内します）</td>
+          </tr>
+          <tr>
+            <th>最寄り駅</th>
+            <td>
+              <ul class="access-transport">
+                <li>東急世田谷線 より徒歩圏内</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td>非公開（フォームまたはLINEよりお問い合わせください）</td>
+          </tr>
+          <tr>
+            <th>メール</th>
+            <td>info@henceforce.com</td>
+          </tr>
+          <tr>
+            <th>受付時間</th>
+            <td>平日・土曜 13:00〜22:00</td>
+          </tr>
+        </table>
+        <a href="contact.html" class="btn-outline" style="margin-top: 8px;">お問い合わせはこちら &rarr;</a>
+      </div>
+      <div class="access-map">
+        <div class="access-map-placeholder">
+          <div style="font-size: 2.5rem;">📍</div>
+          <p style="font-size: 0.9rem; color: var(--primary); font-weight: 700; margin-top: 12px;">東京都世田谷区</p>
+          <p>詳細な地図はお問い合わせ後にご案内します</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  13. SNS - SNSリンク
+======================================= -->
+<section class="sns" id="sns">
+  <div class="inner">
+    <div class="sns-inner fade-up">
+      <div class="sns-title">SNSでも最新情報を発信中</div>
+      <div class="sns-links">
+        <a href="#" class="sns-btn instagram">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="#" class="sns-btn twitter">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X（Twitter）
+        </a>
+        <a href="#" class="sns-btn line">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINE公式
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+  14. FINAL CTA - 無料体験申込・無料診断申込
+======================================= -->
+<section class="final-cta" id="cta">
+  <div class="inner">
+    <div class="final-cta-inner fade-up">
+      <span class="final-cta-label">Free Trial / Free Consultation</span>
+      <h2 class="final-cta-title">まずは無料で、<br>Mathriveの授業を体験してみてください。</h2>
+      <p class="final-cta-sub">
+        入塾の義務は一切ありません。<br>
+        「本当に自分に合うか確かめたい」という方こそ、ぜひお越しください。
+      </p>
+      <div class="cta-cards">
+        <div class="cta-card">
+          <div class="cta-card-title">🎓 無料体験授業</div>
+          <div class="cta-card-desc">
+            実際の授業（90分）を無料で体験。構造理解メソッドを肌で感じてください。入塾義務なし・完全無料。
+          </div>
+          <a href="trial.html" class="btn-primary" style="width: 100%; justify-content: center;">体験授業に申し込む &rarr;</a>
+        </div>
+        <div class="cta-card">
+          <div class="cta-card-title">📋 無料学習診断</div>
+          <div class="cta-card-desc">
+            現在の状況をヒアリングし、課題・改善策・Mathriveが合うかどうかを無料でお伝えします（30分）。
+          </div>
+          <a href="contact.html" class="btn-accent" style="width: 100%; justify-content: center;">無料診断に申し込む &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Henceforth</div>
+    <div class="footer-links">
+      <a href="index.html">トップ</a>
+      <a href="company.html">会社情報</a>
+      <a href="business-individual.html">Mathrive</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="footer-copy">&copy; 2024&ndash;2026 Henceforth LLC</p>
+  </div>
+</footer>
+
+<!-- FLOATING CTA (mobile) -->
+<div class="float-cta" id="floatCta">
+  <a href="trial.html" class="float-cta-trial">無料体験授業</a>
+  <a href="contact.html" class="float-cta-diag">無料診断</a>
+</div>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// Scroll animations
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
