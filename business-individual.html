@@ -73,7 +73,7 @@ a{text-decoration:none;color:inherit;}
 .bc-sep{margin:0 8px;color:var(--border);}
 
 /* PAGE ANCHOR NAV */
-.page-nav{position:sticky;top:68px;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.page-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
 .page-nav::-webkit-scrollbar{display:none;}
 .page-nav-inner{max-width:var(--content-width);margin:0 auto;padding:0 24px;display:flex;white-space:nowrap;}
 .page-nav-inner a{display:inline-block;padding:13px 15px;font-size:.78rem;font-weight:700;color:var(--text-muted);border-bottom:2px solid transparent;transition:all .2s;}
@@ -95,24 +95,25 @@ a{text-decoration:none;color:inherit;}
 .btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--primary);color:var(--primary);padding:13px 32px;border-radius:50px;font-size:.9rem;font-weight:700;transition:all .3s;background:transparent;}
 .btn-outline:hover{background:var(--primary);color:#fff;}
 /* Ghost button for dark backgrounds */
-.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid rgba(255,255,255,.65);color:#fff;padding:13px 32px;border-radius:50px;font-size:.9rem;font-weight:700;transition:all .3s;background:rgba(255,255,255,.08);backdrop-filter:blur(4px);}
-.btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff;}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--primary);color:var(--primary);padding:13px 32px;border-radius:50px;font-size:.9rem;font-weight:700;transition:all .3s;background:rgba(255,255,255,.6);backdrop-filter:blur(4px);}
+.btn-ghost:hover{background:var(--primary);color:#fff;}
 
 /* HERO */
-.hero{position:relative;height:90vh;min-height:580px;max-height:900px;overflow:hidden;background:linear-gradient(135deg,#2d1060 0%,#1a0a3d 60%,#3b006e 100%);}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,10,50,.82) 0%,rgba(20,10,50,.55) 55%,rgba(20,10,50,.2) 100%);z-index:1;}
-.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding-top:68px;}
+.hero{position:relative;height:90vh;min-height:580px;max-height:900px;overflow:hidden;background:#EDE8FF;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right 20%;z-index:0;}
+.hero-overlay{display:none;}
+.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding-top:0;}
 .hero-content{max-width:var(--content-width);margin:0 auto;padding:0 64px;width:100%;}
-.hero-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:rgba(176,30,255,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:5px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:.1em;}
-.hero-catch{font-size:clamp(1.9rem,4.2vw,2.9rem);font-weight:900;color:#fff;line-height:1.48;letter-spacing:.03em;margin-bottom:20px;text-shadow:0 2px 16px rgba(0,0,0,.35);}
-.hero-catch em{color:#e8c0ff;font-style:normal;}
-.hero-sub{font-size:clamp(.88rem,1.4vw,1rem);color:rgba(255,255,255,.88);line-height:1.95;margin-bottom:36px;max-width:460px;}
-.hero-sub strong{color:#fff;}
+.hero-content .hero-catch,.hero-content .hero-sub,.hero-content .hero-cta-group,.hero-content .hero-note,.hero-content .hero-tag{max-width:480px;}
+.hero-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--primary);padding:5px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:.1em;}
+.hero-catch{font-size:clamp(1.9rem,4.2vw,2.9rem);font-weight:900;color:var(--text-dark);line-height:1.48;letter-spacing:.03em;margin-bottom:20px;}
+.hero-catch em{color:var(--primary);font-style:normal;}
+.hero-sub{font-size:clamp(.88rem,1.4vw,1rem);color:var(--text-body);line-height:1.95;margin-bottom:36px;max-width:460px;}
+.hero-sub strong{color:var(--text-dark);}
 .hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-.hero-note{margin-top:14px;font-size:.73rem;color:rgba(255,255,255,.5);}
-.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2.4s ease-in-out infinite;}
-.hero-scroll svg{opacity:.5;}
+.hero-note{margin-top:14px;font-size:.73rem;color:var(--text-muted);}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2.4s ease-in-out infinite;}
+.hero-scroll svg{opacity:.6;}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
 
 /* NEWS */
@@ -371,50 +372,6 @@ a{text-decoration:none;color:inherit;}
 </head>
 <body>
 
-<header class="header" id="header">
-  <div class="header-inner">
-    <a href="index.html" class="logo">Henceforth</a>
-    <nav class="header-nav">
-      <div class="nav-dropdown">
-        <a href="company.html">会社情報</a>
-        <div class="dropdown-menu">
-          <a href="company.html#philosophy">経営理念</a>
-          <a href="company.html#overview">会社概要</a>
-        </div>
-      </div>
-      <div class="nav-dropdown">
-        <span class="nav-label active">事業内容</span>
-        <div class="dropdown-menu">
-          <a href="business-individual.html">【個人の方向け】 数学特化塾 Mathrive</a>
-          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
-        </div>
-      </div>
-      <a href="news.html">お知らせ</a>
-      <a href="contact.html">お問い合わせ</a>
-      <a href="document.html" class="header-cta">資料請求</a>
-      <a href="trial.html" class="header-cta">無料体験授業</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
-  </div>
-</header>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="company.html">会社情報</a>
-  <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
-  <a href="company.html#overview" class="mobile-sub">会社概要</a>
-  <span class="mobile-label">事業内容</span>
-  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾 Mathrive</a>
-  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
-  <a href="news.html">お知らせ</a>
-  <a href="contact.html">お問い合わせ</a>
-  <a href="document.html" class="mobile-cta">資料請求</a>
-  <a href="trial.html" class="mobile-cta">無料体験授業はこちら</a>
-</nav>
-
-<div class="breadcrumb">
-  <div class="breadcrumb-inner">
-    <a href="index.html">トップ</a><span class="bc-sep">/</span><a href="business.html">事業内容</a><span class="bc-sep">/</span>数学特化塾 Mathrive
-  </div>
-</div>
 
 <nav class="page-nav" id="pageNav">
   <div class="page-nav-inner">
@@ -431,38 +388,12 @@ a{text-decoration:none;color:inherit;}
 </nav>
 
 <section class="hero" id="top">
-  <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-  <defs>
-    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#0d0424"/>
-      <stop offset="60%" stop-color="#160636"/>
-      <stop offset="100%" stop-color="#220a55"/>
-    </linearGradient>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
-      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(176,30,255,0.06)" stroke-width="0.5"/>
-    </pattern>
-  </defs>
-  <rect width="1440" height="900" fill="url(#heroBg)"/>
-  <rect width="1440" height="900" fill="url(#grid)"/>
-  <!-- 数式テキスト群（右寄り・分散配置） -->
-  <text x="660" y="108" font-family="Georgia,serif" font-size="21" fill="rgba(255,255,255,0.22)" transform="rotate(-2,660,108)">x = (-b &#177; &#8730;(b&#178;-4ac)) / 2a</text>
-  <text x="820" y="198" font-family="Georgia,serif" font-size="26" fill="rgba(255,255,255,0.32)" transform="rotate(1.5,820,198)">e&#x2071;&#x2071; + 1 = 0</text>
-  <text x="700" y="290" font-family="Georgia,serif" font-size="18" fill="rgba(255,255,255,0.18)" transform="rotate(-1.5,700,290)">&#x222B;&#x2080;&#x207E; e&#x207B;&#x2078;&#xB2; dx = &#x221A;&#x3C0; / 2</text>
-  <text x="900" y="370" font-family="Georgia,serif" font-size="22" fill="rgba(255,255,255,0.28)" transform="rotate(2,900,370)">sin&#xB2;&#x3B8; + cos&#xB2;&#x3B8; = 1</text>
-  <text x="640" y="460" font-family="Georgia,serif" font-size="16" fill="rgba(255,255,255,0.16)" transform="rotate(-2.5,640,460)">d/dx [f(x)] = lim(h&#x2192;0) [f(x+h)&#x2212;f(x)] / h</text>
-  <text x="850" y="545" font-family="Georgia,serif" font-size="20" fill="rgba(255,255,255,0.24)" transform="rotate(1,850,545)">&#x3A3;&#x2099;&#x208C;&#x2081;&#x207E; 1/n&#xB2; = &#x3C0;&#xB2;/6</text>
-  <text x="720" y="630" font-family="Georgia,serif" font-size="24" fill="rgba(255,255,255,0.30)" transform="rotate(-1,720,630)">y = ax&#xB2; + bx + c</text>
-  <text x="940" y="720" font-family="Georgia,serif" font-size="20" fill="rgba(255,255,255,0.22)" transform="rotate(2.5,940,720)">|A| = ad &#x2212; bc</text>
-  <text x="1080" y="160" font-family="Georgia,serif" font-size="17" fill="rgba(255,255,255,0.15)" transform="rotate(-3,1080,160)">&#x222B; f(x) dx = F(x) + C</text>
-  <text x="1150" y="420" font-family="Georgia,serif" font-size="19" fill="rgba(255,255,255,0.18)" transform="rotate(1.5,1150,420)">(a+b)&#xB2; = a&#xB2; + 2ab + b&#xB2;</text>
-  <text x="1050" y="580" font-family="Georgia,serif" font-size="16" fill="rgba(255,255,255,0.13)" transform="rotate(-1,1050,580)">lim(x&#x2192;0) sin x / x = 1</text>
-  <text x="1200" y="280" font-family="Georgia,serif" font-size="15" fill="rgba(255,255,255,0.12)" transform="rotate(2,1200,280)">&#x2207;&#xB2;f = &#x2202;&#xB2;f/&#x2202;x&#xB2; + &#x2202;&#xB2;f/&#x2202;y&#xB2;</text>
-</svg>
+  <img src="images/34219286_m.jpg" alt="学習中の生徒">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <span class="hero-tag">個人の方向け ／ 数学特化塾</span>
-      <h1 class="hero-catch">「なぜ？」から始まる数学が、<br><em>受験を、人生を変える。</em></h1>
+      <h1 class="hero-catch">「なぜ？」から始まる数学が、<em>受験を、人生を変える。</em></h1>
       <p class="hero-sub">解法の暗記でなく、<strong>構造から理解する数学</strong>を。<br>初見問題も動じない思考力を、少人数集団指導で育てます。</p>
       <div class="hero-cta-group">
         <a href="trial.html" class="btn-primary">無料体験授業に申し込む →</a>
@@ -1023,8 +954,6 @@ a{text-decoration:none;color:inherit;}
 </div>
 
 <script>
-window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>10);});
-document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('open');});
 const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');});});

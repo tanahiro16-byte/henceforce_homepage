@@ -233,26 +233,27 @@ a { text-decoration: none; color: inherit; }
   min-height: 560px;
   max-height: 900px;
   overflow: hidden;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   align-items: center;
 }
 .hero-inner {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 68px 24px 0;
   width: 100%;
+  padding: 68px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 .hero-content {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   z-index: 2;
+  padding-left: clamp(24px, 4vw, 64px);
+  text-align: right;
+  padding-right: clamp(24px, 4vw, 56px);
 }
 .hero-catch {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
   font-weight: 900;
   color: var(--text-dark);
   line-height: 1.5;
@@ -267,16 +268,18 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.15em;
 }
 .hero-image {
-  flex: 1 1 70%;
-  max-width: 100%;
-  margin-right: -64px;
+  flex: 1 1 52%;
+  max-width: 52%;
+  margin-right: 0;
+  align-self: stretch;
+  overflow: hidden;
 }
 .hero-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  transform: scale(1.05);
-  transform-origin: right center;
 }
 
 /* ===== SECTION HEADING ===== */
@@ -338,24 +341,36 @@ a { text-decoration: none; color: inherit; }
   height: 240px;
   overflow: hidden;
   position: relative;
+  background: var(--primary-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.business-card-image.has-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(176, 30, 255, 0.18);
-  pointer-events: none;
-  z-index: 1;
-}
-.business-card-image .ph-image,
 .business-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s;
 }
 .business-card:hover .business-card-image img {
   transform: scale(1.05);
+}
+.card-logo-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.for-school-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 36px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 .business-card-body {
   padding: 28px 28px 32px;
@@ -614,6 +629,7 @@ a { text-decoration: none; color: inherit; }
 .hamburger { display: flex; }
   .hero { height: auto; min-height: auto; max-height: none; }
   .hero-inner { flex-direction: column; padding: 100px 24px 48px; text-align: center; }
+  .hero-content { padding-left: 0; }
   .hero-image { max-width: 100%; }
   .business-grid { grid-template-columns: 1fr; max-width: 480px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -651,7 +667,7 @@ a { text-decoration: none; color: inherit; }
         <span class="nav-label">事業内容</span>
         <div class="dropdown-menu">
           <a href="business-individual.html">【個人の方向け】 数学特化塾 Mathrive</a>
-          <a href="business-institution.html">【教育機関・学習塾の方向け】教育支援プログラム</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】Mathrive for School</a>
         </div>
       </div>
       <a href="news.html">お知らせ</a>
@@ -670,7 +686,7 @@ a { text-decoration: none; color: inherit; }
   <a href="company.html#overview" class="mobile-sub">会社概要</a>
   <span class="mobile-label">事業内容</span>
   <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾 Mathrive</a>
-  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】教育支援プログラム</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】Mathrive for School</a>
   <a href="news.html">お知らせ</a>
   <a href="contact.html">お問い合わせ</a>
   <a href="document.html" class="mobile-cta">資料請求</a>
@@ -685,7 +701,7 @@ a { text-decoration: none; color: inherit; }
       <p class="hero-company">Henceforth LLC</p>
     </div>
     <div class="hero-image">
-      <img src="images/FV-white.png" alt="数学的な幾何学模様">
+      <img src="images/Gemini_Generated_Image_m5h0txm5h0txm5h0.png" alt="光の軌跡">
     </div>
   </div>
 </section>
@@ -699,8 +715,8 @@ a { text-decoration: none; color: inherit; }
     </div>
     <div class="business-grid">
       <a href="business-individual.html" class="business-card fade-up">
-        <div class="business-card-image has-photo">
-          <img src="images/mathrive-logo-purple.png" alt="Mathrive ロゴ" style="object-fit:contain;background:#fff;padding:24px;">
+        <div class="business-card-image">
+          <img src="images/mathrive-logo-full.png" alt="Mathrive ロゴ" style="width:280px;height:auto;">
         </div>
         <div class="business-card-body">
           <span class="business-card-tag">個人の方向け</span>
@@ -710,57 +726,12 @@ a { text-decoration: none; color: inherit; }
       </a>
       <a href="business-institution.html" class="business-card fade-up">
         <div class="business-card-image">
-          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-            <defs>
-              <linearGradient id="bg1" x1="0" y1="0" x2="480" y2="240">
-                <stop offset="0%" stop-color="#F6F3FB"/>
-                <stop offset="100%" stop-color="#E8DCF8"/>
-              </linearGradient>
-            </defs>
-            <rect width="480" height="240" fill="url(#bg1)"/>
-            <!-- School building - single clean shape -->
-            <rect x="160" y="90" width="160" height="130" rx="4" fill="#E0D4F5"/>
-            <!-- Roof -->
-            <polygon points="240,50 150,92 330,92" fill="#c77dff"/>
-            <!-- Roof accent line -->
-            <line x1="150" y1="92" x2="330" y2="92" stroke="#b01eff" stroke-width="2"/>
-            <!-- Clock -->
-            <circle cx="240" cy="108" r="12" fill="#fff"/>
-            <line x1="240" y1="108" x2="240" y2="101" stroke="#b01eff" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="240" y1="108" x2="245" y2="108" stroke="#b01eff" stroke-width="1.5" stroke-linecap="round"/>
-            <!-- Windows row 1 -->
-            <rect x="180" y="128" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="210" y="128" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="250" y="128" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="280" y="128" width="20" height="20" rx="3" fill="#fff"/>
-            <!-- Windows row 2 -->
-            <rect x="180" y="158" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="210" y="158" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="250" y="158" width="20" height="20" rx="3" fill="#fff"/>
-            <rect x="280" y="158" width="20" height="20" rx="3" fill="#fff"/>
-            <!-- Door -->
-            <rect x="226" y="190" width="28" height="30" rx="3" fill="#b01eff"/>
-            <rect x="230" y="194" width="9" height="22" rx="2" fill="#E8DCF8"/>
-            <rect x="241" y="194" width="9" height="22" rx="2" fill="#E8DCF8"/>
-            <!-- Trees -->
-            <circle cx="120" cy="180" r="22" fill="#c77dff" opacity="0.5"/>
-            <circle cx="115" cy="172" r="18" fill="#E0D4F5" opacity="0.6"/>
-            <rect x="118" y="196" width="4" height="24" rx="2" fill="#c77dff" opacity="0.4"/>
-            <circle cx="365" cy="182" r="20" fill="#c77dff" opacity="0.5"/>
-            <circle cx="360" cy="175" r="16" fill="#E0D4F5" opacity="0.6"/>
-            <rect x="363" y="197" width="4" height="23" rx="2" fill="#c77dff" opacity="0.4"/>
-            <!-- Math symbols -->
-            <text x="88" y="100" font-family="serif" font-size="20" fill="#b01eff" opacity="0.3" transform="rotate(-12 88 100)">∑</text>
-            <text x="385" y="105" font-family="serif" font-size="16" fill="#b01eff" opacity="0.25" transform="rotate(10 385 105)">π</text>
-            <text x="70" y="150" font-family="serif" font-size="14" fill="#c77dff" opacity="0.25">∫</text>
-            <text x="405" y="155" font-family="serif" font-size="17" fill="#c77dff" opacity="0.25">Δ</text>
-            <!-- Label -->
-            <text x="240" y="233" font-family="'Noto Sans JP', sans-serif" font-size="11" fill="#b01eff" opacity="0.45" text-anchor="middle" font-weight="700">for School</text>
-          </svg>
+          <img src="images/mathrive-logo-full.png" alt="Mathrive for School ロゴ" style="width:280px;height:auto;">
+          <span class="for-school-label">for School</span>
         </div>
         <div class="business-card-body">
           <span class="business-card-tag">教育機関・学習塾の方向け</span>
-          <h3 class="business-card-title">教育支援プログラム</h3>
+          <h3 class="business-card-title">Mathrive for School</h3>
           <p class="business-card-desc">数学の学習サポートはもちろん、探究学習など広範囲にわたって数学教育の質を高める支援を行っています。</p>
         </div>
       </a>
