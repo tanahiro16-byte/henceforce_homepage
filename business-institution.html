@@ -106,7 +106,7 @@ a { text-decoration: none; color: inherit; }
 /* HERO IMAGE */
 .detail-hero {
   position: relative;
-  height: 440px;
+  height: 300px;
   overflow: hidden;
 }
 .detail-hero img {
@@ -114,7 +114,9 @@ a { text-decoration: none; color: inherit; }
 }
 .detail-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.65) 0%, transparent 60%),
+    linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
 }
 .detail-hero-content {
   position: absolute;
@@ -146,7 +148,7 @@ a { text-decoration: none; color: inherit; }
 
 /* CONTENT */
 .detail-content {
-  padding: 80px 24px 100px;
+  padding: 40px 24px 60px;
   background: var(--bg-white);
 }
 .detail-body {
@@ -274,14 +276,53 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
 
-<div class="breadcrumb">
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Henceforth</a>
+    <nav class="header-nav">
+      <div class="nav-dropdown">
+        <a href="company.html">会社情報</a>
+        <div class="dropdown-menu">
+          <a href="company.html#philosophy">経営理念</a>
+          <a href="company.html#overview">会社概要</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-label">事業内容</span>
+        <div class="dropdown-menu">
+          <a href="business-individual.html">【個人の方向け】 数学特化塾 Mathrive</a>
+          <a href="business-institution.html">【教育機関・学習塾の方向け】Mathrive for School</a>
+        </div>
+      </div>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="document.html" class="header-cta">資料請求</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="company.html">会社情報</a>
+  <a href="company.html#philosophy" class="mobile-sub">経営理念</a>
+  <a href="company.html#overview" class="mobile-sub">会社概要</a>
+  <span class="mobile-label">事業内容</span>
+  <a href="business-individual.html" class="mobile-sub">【個人の方向け】 数学特化塾 Mathrive</a>
+  <a href="business-institution.html" class="mobile-sub">【教育機関・学習塾の方向け】Mathrive for School</a>
+  <a href="news.html">お知らせ</a>
+  <a href="contact.html">お問い合わせ</a>
+  <a href="document.html" class="mobile-cta">資料請求</a>
+</nav>
+
+<div class="breadcrumb" style="margin-top: 68px;">
   <div class="breadcrumb-inner">
     <a href="index.html">← Henceforth トップへ戻る</a>
   </div>
 </div>
 
 <section class="detail-hero">
-  <img src="images/34219286_m.jpg" alt="学習中の生徒">
+  <img src="images/TKL-sc-K1_S0071-bg_TP_V.jpg" alt="教室の様子">
   <div class="detail-hero-overlay"></div>
   <div class="detail-hero-content">
     <span class="detail-hero-tag">教育機関・学習塾の方向け</span>

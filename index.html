@@ -233,7 +233,7 @@ a { text-decoration: none; color: inherit; }
   min-height: 560px;
   max-height: 900px;
   overflow: hidden;
-  background: #ffffff;
+  background: #FAF5FF;
   display: flex;
   align-items: center;
 }
@@ -243,22 +243,40 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 0;
 }
 .hero-content {
-  flex: 1 1 auto;
+  flex: 1 1 48%;
   z-index: 2;
-  padding-left: clamp(24px, 4vw, 64px);
-  text-align: right;
-  padding-right: clamp(24px, 4vw, 56px);
+  padding-left: clamp(64px, 9vw, 140px);
+  text-align: left;
+  padding-right: clamp(16px, 3vw, 40px);
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(176, 30, 255, 0.1);
+  padding: 5px 16px;
+  border-radius: 50px;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
 }
 .hero-catch {
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
   font-weight: 900;
   color: var(--text-dark);
-  line-height: 1.5;
-  letter-spacing: 0.06em;
-  margin-bottom: 16px;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: clamp(0.88rem, 1.3vw, 1rem);
+  color: var(--text-body);
+  line-height: 1.9;
+  margin-bottom: 40px;
+  max-width: 380px;
 }
 .hero-company {
   font-family: 'Noto Sans JP', sans-serif;
@@ -267,19 +285,57 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-muted);
   letter-spacing: 0.15em;
 }
+.hero-cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(176,30,255,0.3);
+}
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(176,30,255,0.4);
+}
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.hero-btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+}
 .hero-image {
-  flex: 1 1 52%;
-  max-width: 52%;
+  flex: 1 1 58%;
+  max-width: 58%;
   margin-right: 0;
-  align-self: stretch;
-  overflow: hidden;
+  background: #FAF5FF;
 }
 .hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: 110%;
+  height: auto;
   display: block;
+  mix-blend-mode: multiply;
+  margin-left: -5%;
 }
 
 /* ===== SECTION HEADING ===== */
@@ -629,7 +685,9 @@ a { text-decoration: none; color: inherit; }
 .hamburger { display: flex; }
   .hero { height: auto; min-height: auto; max-height: none; }
   .hero-inner { flex-direction: column; padding: 100px 24px 48px; text-align: center; }
-  .hero-content { padding-left: 0; }
+  .hero-content { padding-left: 0; padding-right: 0; text-align: center; }
+  .hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-cta-group { justify-content: center; }
   .hero-image { max-width: 100%; }
   .business-grid { grid-template-columns: 1fr; max-width: 480px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
@@ -697,11 +755,16 @@ a { text-decoration: none; color: inherit; }
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
+      <span class="hero-tag">数学特化の教育事業</span>
       <h1 class="hero-catch">数学で拓く、<br>新たな可能性。</h1>
-      <p class="hero-company">Henceforth LLC</p>
+      <p class="hero-sub">「なぜそうなるのか」を深く理解する構造学習で、<br>初見問題にも対応できる本質的な数学力を育てます。</p>
+      <div class="hero-cta-group">
+        <a href="business-individual.html" class="hero-btn-primary">無料体験授業を見る →</a>
+        <a href="business-institution.html" class="hero-btn-secondary">学校・塾の方へ</a>
+      </div>
     </div>
     <div class="hero-image">
-      <img src="images/Gemini_Generated_Image_m5h0txm5h0txm5h0.png" alt="光の軌跡">
+      <img src="images/FV-white.png" alt="光の軌跡">
     </div>
   </div>
 </section>
