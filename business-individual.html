@@ -324,6 +324,45 @@ a{text-decoration:none;color:inherit;}
 .footer-links a:hover{color:rgba(255,255,255,.85);}
 .footer-copy{font-size:.7rem;font-family:'Roboto',sans-serif;}
 
+/* HERO CTA ITEM */
+.hero-cta-item{display:flex;flex-direction:column;gap:6px;flex:1 1 200px;}
+.hero-cta-item .btn-primary,.hero-cta-item .btn-accent{width:100%;font-size:.88rem;padding:13px 20px;}
+.hero-cta-desc{font-size:.72rem;color:var(--text-body);line-height:1.6;}
+
+/* WHY MATH SPEC */
+.math-spec{padding:100px 24px;background:var(--bg-gray);}
+.math-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
+.math-spec-card{background:var(--bg-white);border-radius:var(--radius);padding:36px 28px;box-shadow:var(--shadow);border:1px solid var(--border);border-top:4px solid var(--primary);}
+.math-spec-num{font-family:'Roboto',sans-serif;font-size:2.8rem;font-weight:900;color:var(--primary);line-height:1;margin-bottom:12px;}
+.math-spec-num .unit{font-size:1rem;margin-left:2px;}
+.math-spec-title{font-size:.97rem;font-weight:900;color:var(--text-dark);margin-bottom:10px;line-height:1.5;}
+.math-spec-desc{font-size:.84rem;line-height:1.95;color:var(--text-body);}
+
+/* HOW SECTION */
+.how{padding:100px 24px;background:var(--bg-white);}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:960px;margin:0 auto;}
+.how-card{background:var(--bg-gray);border-radius:var(--radius);padding:30px 26px;border:1px solid var(--border);}
+.how-card-label{font-family:'Roboto',sans-serif;font-size:.68rem;font-weight:700;color:var(--primary);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+.how-card-title{font-size:.97rem;font-weight:900;color:var(--text-dark);margin-bottom:10px;line-height:1.5;}
+.how-card-desc{font-size:.84rem;line-height:1.95;color:var(--text-body);}
+.how-flow{max-width:680px;margin:48px auto 0;background:var(--primary-pale);border-radius:var(--radius);padding:28px 32px;}
+.how-flow-title{font-size:.82rem;font-weight:900;color:var(--primary);margin-bottom:16px;letter-spacing:.05em;}
+.how-flow-steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.how-flow-step{font-size:.82rem;font-weight:700;color:var(--text-dark);background:var(--bg-white);padding:8px 16px;border-radius:50px;border:1px solid var(--border);}
+.how-flow-arrow{color:var(--primary);font-size:.9rem;font-weight:700;}
+
+/* BLOG */
+.blog{padding:100px 24px;background:var(--bg-white);}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
+.blog-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);background:var(--bg-white);transition:all .35s;}
+.blog-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);}
+.blog-card-img{height:160px;background:linear-gradient(135deg,var(--primary-pale) 0%,#ede0ff 100%);display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.blog-card-body{padding:20px;}
+.blog-card-tag{font-size:.68rem;font-weight:700;color:var(--primary);background:var(--primary-pale);padding:3px 12px;border-radius:4px;display:inline-block;margin-bottom:8px;}
+.blog-card-title{font-size:.92rem;font-weight:700;color:var(--text-dark);line-height:1.6;margin-bottom:8px;}
+.blog-card-date{font-size:.72rem;color:var(--text-muted);}
+.blog-cta{text-align:center;margin-top:40px;}
+
 /* FLOAT CTA */
 .float-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);padding:10px 16px 14px;box-shadow:0 -3px 20px rgba(0,0,0,.09);z-index:180;gap:10px;}
 .float-cta a{flex:1;text-align:center;padding:13px 8px;border-radius:10px;font-size:.82rem;font-weight:700;transition:opacity .2s;}
@@ -366,7 +405,11 @@ a{text-decoration:none;color:inherit;}
   .results-grid{grid-template-columns:1fr;max-width:280px;margin:0 auto 32px;}
   .why-card{flex-direction:column;gap:14px;}
   .news-section,.results,.why,.whatis,.pricing,.instructor,
-  .testimonials,.message-section,.apply,.faq,.access,.sns,.final-cta{padding:72px 24px;}
+  .testimonials,.message-section,.apply,.faq,.access,.sns,.final-cta,
+  .math-spec,.how,.blog{padding:72px 24px;}
+  .math-spec-grid{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr;}
+  .blog-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}
   .step-cta-area{flex-direction:column;align-items:stretch;max-width:320px;margin:48px auto 0;}
   .price-table thead th,.price-table tbody td{padding:12px 12px;font-size:.8rem;}
 }
@@ -379,10 +422,12 @@ a{text-decoration:none;color:inherit;}
   <div class="page-nav-inner">
     <a href="index.html" class="page-nav-back">← Henceforth</a>
     <a href="#whatis">Mathriveとは？</a>
+    <a href="#why-math">なぜ数学特化？</a>
+    <a href="#how">授業の進め方</a>
     <a href="#results">実績</a>
     <a href="#why">選ばれる理由</a>
-    <a href="#pricing">料金比較</a>
     <a href="#instructor">講師紹介</a>
+    <a href="#blog">ブログ</a>
     <a href="#voice">利用者の声</a>
     <a href="#apply">申込み方法</a>
     <a href="#faq">よくある質問</a>
@@ -396,11 +441,17 @@ a{text-decoration:none;color:inherit;}
   <div class="hero-inner">
     <div class="hero-content">
       <span class="hero-tag">個人の方向け ／ 数学特化塾</span>
-      <h1 class="hero-catch">「なぜ？」から始まる数学が、<em>受験を、人生を変える。</em></h1>
-      <p class="hero-sub">解法の暗記でなく、<strong>構造から理解する数学</strong>を。<br>初見問題も動じない思考力を、少人数集団指導で育てます。</p>
-      <div class="hero-cta-group">
-        <a href="trial.html" class="btn-primary">無料体験授業に申し込む →</a>
-        <a href="#whatis" class="btn-ghost">Mathriveとは？</a>
+      <h1 class="hero-catch">数学を制する者が、<em>受験を制する。</em></h1>
+      <p class="hero-sub">大学受験で最も点差が開く科目は数学です。<br><strong>数学に特化</strong>することで、ライバルを一気に引き離す武器をつくります。</p>
+      <div class="hero-cta-group" style="max-width:560px;align-items:flex-start;">
+        <div class="hero-cta-item">
+          <a href="trial.html" class="btn-primary">無料体験授業に申し込む →</a>
+          <p class="hero-cta-desc">学校とは全く違う、数学の本質から理解できる授業を人数限定で無料体験！</p>
+        </div>
+        <div class="hero-cta-item">
+          <a href="contact.html" class="btn-accent">無料模試診断に申し込む →</a>
+          <p class="hero-cta-desc">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
+        </div>
       </div>
       <p class="hero-note">※ 入塾義務なし・完全無料</p>
     </div>
@@ -422,22 +473,92 @@ a{text-decoration:none;color:inherit;}
       <div class="whatis-image"><img src="images/page-hero.jpg" alt="Mathriveの授業教室"></div>
       <div class="whatis-body">
         <span class="whatis-label">数学特化塾 Mathrive</span>
-        <h3 class="whatis-title">解法を覚えるのではなく、<br>数学の「構造」を理解する塾</h3>
-        <p class="whatis-text">「解法パターンを覚えたのに、少し変わった問題が解けない」。そう感じたことはありませんか？</p>
-        <p class="whatis-text">Mathriveでは、数学の問題を「どの公式を使うか」ではなく「なぜこのアプローチが有効か」という視点で考えます。構造から理解することで、初見問題にも動じない本物の数学力が身につきます。</p>
+        <h3 class="whatis-title">数学だけに特化した、<br>本質理解の受験塾</h3>
+        <p class="whatis-text">Mathriveは、数学に特化した少人数集団塾です。受験に必要な全科目を扱う総合塾とは異なり、<strong>数学だけを徹底的に深める</strong>環境をつくっています。</p>
         <div class="info-list">
-          <div class="info-row"><span class="info-label">対象</span><span class="info-value">高校1年生〜3年生（文理不問）</span></div>
-          <div class="info-row"><span class="info-label">形式</span><span class="info-value">少人数集団指導（2〜5名）</span></div>
-          <div class="info-row"><span class="info-label">授業時間</span><span class="info-value">週1回・90分</span></div>
-          <div class="info-row"><span class="info-label">カリキュラム</span><span class="info-value">数学I・II・A・B・C（受験数学全範囲対応）</span></div>
-          <div class="info-row"><span class="info-label">場所</span><span class="info-value">東京都世田谷区（詳細はお問い合わせ）</span></div>
+          <div class="info-row"><span class="info-label">① 数学特化</span><span class="info-value">数学だけに絞ることで、深い理解と圧倒的な演習量を実現。他の塾では得られない密度の指導が可能です。</span></div>
+          <div class="info-row"><span class="info-label">② 少人数集団</span><span class="info-value">2〜5名の少人数制。全員に目が届き、個別対応の質と集団授業のコスパを両立します。</span></div>
+          <div class="info-row"><span class="info-label">③ 本質理解</span><span class="info-value">解法暗記ではなく「なぜ？」を問い続ける構造理解メソッド。京大数学科だからこそ伝えられる数学の本質を指導します。</span></div>
         </div>
         <div class="whatis-tags">
-          <span class="whatis-tag">少人数集団</span>
-          <span class="whatis-tag">構造理解</span>
-          <span class="whatis-tag">対話型授業</span>
+          <span class="whatis-tag">数学特化</span>
+          <span class="whatis-tag">少人数集団（2〜5名）</span>
+          <span class="whatis-tag">構造理解メソッド</span>
           <span class="whatis-tag">京大数学科講師</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="math-spec" id="why-math">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Why Math</span>
+      <h2 class="sec-title">なぜ、数学に特化するのか</h2>
+      <p class="sec-sub">数学に特化して学ぶことは、受験において最も効果的な戦略のひとつです。</p>
+    </div>
+    <div class="math-spec-grid fade-up">
+      <div class="math-spec-card">
+        <div class="math-spec-num">1位<span class="unit"></span></div>
+        <div class="math-spec-title">数学は、最も点差が開く科目</div>
+        <div class="math-spec-desc">大学入試において、数学は得意・不得意による点数差が最も大きい科目です。数学を武器にした生徒は、一気にライバルを引き離すことができます。逆に言えば、数学を制することが合否を左右します。</div>
+      </div>
+      <div class="math-spec-card">
+        <div class="math-spec-num">∞</div>
+        <div class="math-spec-title">一度伸びると、加速度的に伸び続ける</div>
+        <div class="math-spec-desc">数学は「構造」がつながっている科目です。本質を理解した瞬間、それまで解けなかった問題が次々と解けるようになります。正しい学習法さえあれば、数学は成績を上げやすい科目です。</div>
+      </div>
+      <div class="math-spec-card">
+        <div class="math-spec-num">×2</div>
+        <div class="math-spec-title">理系・文系を問わず、数学の配点は重い</div>
+        <div class="math-spec-desc">共通テストでも二次試験でも、数学の配点は高く設定されています。文系でも数学が必要な大学・学部は多く、数学の得点率が全体の合否に直結します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">How We Teach</span>
+      <h2 class="sec-title">授業の進め方</h2>
+      <p class="sec-sub">少人数だからこそできる、対話型・実践型の指導スタイルです。</p>
+    </div>
+    <div class="how-grid fade-up">
+      <div class="how-card">
+        <div class="how-card-label">Class Style</div>
+        <div class="how-card-title">2〜5名の少人数集団形式</div>
+        <div class="how-card-desc">大人数では実現できない、全員が主役の授業。一人ひとりの理解度を確認しながら進めるため、「わかったつもり」を防ぎます。生徒同士の思考が刺激し合う集団授業の良さも両立しています。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-label">Teaching Method</div>
+        <div class="how-card-title">「なぜ？」を問い続ける構造理解授業</div>
+        <div class="how-card-desc">公式を教えるだけでなく、「なぜその公式が成り立つか」「なぜこのアプローチが有効か」を徹底的に問います。答えを出すことより、考え方の構造を身につけることを重視します。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-label">Materials</div>
+        <div class="how-card-title">オリジナル教材＋二次試験対応の演習</div>
+        <div class="how-card-desc">構造理解を促すオリジナル教材と、二次試験を想定した記述式演習を組み合わせます。解答プロセスへの添削指導で、本番で通用する答案作成力を育てます。</div>
+      </div>
+      <div class="how-card">
+        <div class="how-card-label">Weekly Flow</div>
+        <div class="how-card-title">授業〜次の授業までの流れ</div>
+        <div class="how-card-desc">授業で概念理解 → 自宅での演習課題 → 次回授業で確認テスト・解説 → フィードバックシートで定着確認。このサイクルで、確実に理解を積み上げます。</div>
+      </div>
+    </div>
+    <div class="how-flow fade-up">
+      <div class="how-flow-title">授業〜次回授業までのサイクル</div>
+      <div class="how-flow-steps">
+        <span class="how-flow-step">授業（90分）</span>
+        <span class="how-flow-arrow">→</span>
+        <span class="how-flow-step">演習課題</span>
+        <span class="how-flow-arrow">→</span>
+        <span class="how-flow-step">確認テスト</span>
+        <span class="how-flow-arrow">→</span>
+        <span class="how-flow-step">添削フィードバック</span>
+        <span class="how-flow-arrow">→</span>
+        <span class="how-flow-step">次回授業</span>
       </div>
     </div>
   </div>
@@ -538,22 +659,24 @@ a{text-decoration:none;color:inherit;}
       <div class="why-card fade-up">
         <div class="why-icon">
           <svg viewBox="0 0 32 32" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
-            <polyline points="3,24 10,17 16,20 24,10 30,6"/>
-            <line x1="3" y1="6" x2="3" y2="27"/>
-            <line x1="3" y1="27" x2="30" y2="27"/>
+            <rect x="4" y="4" width="24" height="28" rx="2"/>
+            <line x1="10" y1="11" x2="22" y2="11"/>
+            <line x1="10" y1="17" x2="22" y2="17"/>
+            <polyline points="10,23 13,26 22,20"/>
           </svg>
         </div>
         <div class="why-body">
           <div class="why-num">REASON 04</div>
-          <div class="why-title">「わかった気」で終わらせない<br>定着サポート</div>
-          <div class="why-desc">授業後の振り返りシートと講師フィードバックで、理解の穴を可視化。次回授業前の確認テストと組み合わせ、学習内容を確実に定着させます。</div>
+          <div class="why-title">二次試験を想定した<br>実践形式の添削指導</div>
+          <div class="why-desc">選択肢を選ぶだけでは終わりません。記述式の解答プロセスを講師が一人ひとり添削し、答案作成力を徹底的に鍛えます。二次試験・共通テスト両方に対応した実践的指導です。</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pricing" id="pricing">
+<!-- Mathriveの特徴セクション：選ばれる理由と重複のため一時非表示
+<section class="pricing" id="pricing-hidden">
   <div class="inner">
     <div class="sec-heading fade-up">
       <span class="sec-label">Features</span>
@@ -641,6 +764,7 @@ a{text-decoration:none;color:inherit;}
   </div>
 </section>
 
+-->
 <section class="instructor" id="instructor">
   <div class="inner">
     <div class="sec-heading fade-up">
@@ -659,23 +783,31 @@ a{text-decoration:none;color:inherit;}
           </svg>
         </div>
         <div>
-          <div class="instructor-name">代表講師</div>
+          <div class="instructor-name">田中 啓行</div>
           <div class="instructor-role">京都大学 理学部数学科 卒業</div>
         </div>
       </div>
       <div class="instructor-body">
         <div>
-          <div class="instructor-career-title">Career</div>
+          <div class="instructor-career-title">出身大学・指導歴</div>
           <ul class="career-list">
             <li>京都大学 理学部数学科 卒業</li>
-            <li>大学在学中より高校数学の個別・集団指導に従事</li>
-            <li>数学の構造理解に特化した独自指導法を開発</li>
-            <li>合同会社Henceforth 代表社員 / 塾長</li>
-            <li>指導実績：MARCH・国公立大学など多数の合格実績</li>
+            <li>大学在学中より高校数学の個別・集団指導に従事（指導歴5年以上）</li>
+            <li>数学の構造理解に特化した独自指導法を開発・実践</li>
+            <li>合同会社Henceforth 代表社員 / Mathrive 塾長</li>
+          </ul>
+        </div>
+        <div>
+          <div class="instructor-career-title">指導実績</div>
+          <ul class="career-list">
+            <li>京都大学 理学部（現役合格）</li>
+            <li>早稲田大学 先進理工学部・慶應義塾大学 薬学部</li>
+            <li>同志社大学・立命館大学（理工系学部）など多数</li>
+            <li>模試偏差値平均+18ポイントUP（入塾6ヶ月時点）</li>
           </ul>
         </div>
         <div class="instructor-message">
-          数学は暗記科目ではありません。正しい問いの立て方を身につければ、初めて見る問題でも自分の力で考えることができます。Mathriveでは「解けた」の一歩先にある「わかった」を大切にしています。生徒一人ひとりが数学を自分の武器にできるよう、全力でサポートします。
+          数学は暗記科目ではありません。正しい問いの立て方を身につければ、初めて見る問題でも自分の力で考えることができます。<br><br>Mathriveでは「解けた」の一歩先にある「わかった」を大切にしています。数学を通じて、受験だけでなく人生で使える「考える力」を育てることが、私たちの目指す教育です。生徒一人ひとりが数学を自分の武器にできるよう、全力でサポートします。
         </div>
       </div>
     </div>
@@ -755,16 +887,6 @@ a{text-decoration:none;color:inherit;}
   </div>
 </section>
 
-<section class="message-section" id="message">
-  <div class="inner">
-    <div class="message-inner fade-up">
-      <span class="message-label">Message</span>
-      <h2 class="message-title">「わかった」の先に、<br>あなたの可能性が広がる。</h2>
-      <p class="message-body">数学を本当に理解した瞬間の感覚を、あなたにも体験してほしい。<br>難しい問題を前にしても、「考えればわかる」と思えるその瞬間は、<br>数学の枠を超えて、あなたの人生を変えていく力になります。<br><br>Mathriveはただの受験対策塾ではありません。<br>「考える力」そのものを育てる場所です。<br>ぜひ一度、私たちの授業を体験してみてください。</p>
-      <span class="message-sign">合同会社Henceforth 代表 ／ Mathrive 塾長</span>
-    </div>
-  </div>
-</section>
 
 <section class="apply" id="apply">
   <div class="inner">
@@ -777,28 +899,35 @@ a{text-decoration:none;color:inherit;}
       <div class="step-item">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">お問い合わせ・無料診断のお申込み</div>
-          <div class="step-desc">フォームまたはLINEよりお気軽にご連絡ください。現在の状況や学習のお悩みを簡単にお聞きします。診断は無料・入塾義務一切なしです。</div>
+          <div class="step-title">無料模試診断 または 無料体験授業</div>
+          <div class="step-desc">まずはお気軽に！模試の結果をもとにしたプロの無料診断、または実際の授業を無料で体験できます。どちらも入塾義務は一切ありません。</div>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">無料診断 / 学習カウンセリング（30分）</div>
-          <div class="step-desc">現在の学力・目標・学習状況をヒアリングし、Mathriveが合っているかどうかも含めて正直にお伝えします。オンライン対応可。</div>
+          <div class="step-title">コースご案内</div>
+          <div class="step-desc">診断・体験後に、現状と目標に合わせた最適なコースをご提案します。疑問や不安は何でもお気軽にご相談ください。</div>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">無料体験授業（90分）</div>
-          <div class="step-desc">実際の授業と同じ形式で、構造理解メソッドの数学指導を体験いただけます。授業後に感想や質問にもお答えします。</div>
+          <div class="step-title">入塾検討</div>
+          <div class="step-desc">ご家族でじっくりご検討いただけます。急かすことは一切しません。納得した上でご判断ください。</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">入塾</div>
+          <div class="step-desc">入塾手続き完了後、次の授業からスタートです。専用の学習計画を立てて、二人三脚で受験に向けて歩み始めます。</div>
         </div>
       </div>
     </div>
     <div class="step-cta-area fade-up">
       <a href="trial.html" class="btn-primary">無料体験授業に申し込む →</a>
-      <a href="contact.html" class="btn-accent">無料診断を申し込む →</a>
+      <a href="contact.html" class="btn-accent">無料模試診断に申し込む →</a>
     </div>
   </div>
 </section>
@@ -868,6 +997,45 @@ a{text-decoration:none;color:inherit;}
           <p>詳細な地図はお問い合わせ後にご案内します</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="inner">
+    <div class="sec-heading fade-up">
+      <span class="sec-label">Blog</span>
+      <h2 class="sec-title">数学・受験のお役立ち記事</h2>
+      <p class="sec-sub">構造理解メソッドの考え方や、数学攻略のヒントを発信しています。</p>
+    </div>
+    <div class="blog-grid fade-up">
+      <a href="#" class="blog-card">
+        <div class="blog-card-img">📐</div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">数学思考法</span>
+          <p class="blog-card-title">「なぜ？」から始める数学：解法暗記が通用しない理由</p>
+          <p class="blog-card-date">2025.03.10</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-card-img">📊</div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">受験対策</span>
+          <p class="blog-card-title">大学入試で数学が最も点差の開く科目である理由</p>
+          <p class="blog-card-date">2025.02.22</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-card-img">🎯</div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">勉強法</span>
+          <p class="blog-card-title">初見問題を解けるようになるための3つのステップ</p>
+          <p class="blog-card-date">2025.02.05</p>
+        </div>
+      </a>
+    </div>
+    <div class="blog-cta fade-up">
+      <a href="blog.html" class="btn-outline">記事をもっと見る →</a>
     </div>
   </div>
 </section>
