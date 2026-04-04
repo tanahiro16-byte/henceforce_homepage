@@ -139,6 +139,8 @@ a{text-decoration:none;color:inherit;}
 .result-num .prefix{font-size:.65em;font-weight:700;margin-right:2px;}
 .result-label{font-size:.85rem;font-weight:700;color:var(--text-dark);margin-bottom:10px;}
 .result-note{font-size:.74rem;color:var(--text-muted);line-height:1.65;}
+.result-univ-list{list-style:none;text-align:left;display:flex;flex-direction:column;gap:6px;}
+.result-univ-list li{font-size:.82rem;font-weight:600;color:var(--text-dark);padding:6px 10px;background:var(--primary-pale);border-radius:6px;border-left:3px solid var(--primary);}
 .result-examples{max-width:780px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .result-example{background:var(--bg-white);border-radius:12px;padding:26px;box-shadow:var(--shadow);border:1px solid var(--border);border-left:3px solid var(--accent);}
 .result-example-tag{font-size:.7rem;font-weight:700;color:var(--accent);background:#FDF2F8;display:inline-block;padding:3px 12px;border-radius:50px;margin-bottom:10px;}
@@ -583,9 +585,14 @@ a{text-decoration:none;color:inherit;}
         <div class="result-note">入塾前後の模試数学点数の平均変化（100点満点換算）</div>
       </div>
       <div class="result-card">
-        <div class="result-num">15<span class="unit">名+</span></div>
-        <div class="result-label">難関大学合格者</div>
-        <div class="result-note">MARCH以上・国公立大学への合格実績（2025年度）</div>
+        <div class="result-label" style="margin-bottom:14px;">合格大学実績</div>
+        <ul class="result-univ-list">
+          <li>京都大学 理学部</li>
+          <li>早稲田大学 先進理工学部</li>
+          <li>慶應義塾大学 薬学部</li>
+          <li>同志社大学 理工学部</li>
+          <li>立命館大学 理工学部</li>
+        </ul>
       </div>
     </div>
     <div class="result-examples fade-up">
