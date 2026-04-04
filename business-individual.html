@@ -345,11 +345,12 @@ a{text-decoration:none;color:inherit;}
 .how-card-label{font-family:'Roboto',sans-serif;font-size:.68rem;font-weight:700;color:var(--primary);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
 .how-card-title{font-size:.97rem;font-weight:900;color:var(--text-dark);margin-bottom:10px;line-height:1.5;}
 .how-card-desc{font-size:.84rem;line-height:1.95;color:var(--text-body);}
-.how-flow{max-width:680px;margin:48px auto 0;background:var(--primary-pale);border-radius:var(--radius);padding:28px 32px;}
-.how-flow-title{font-size:.82rem;font-weight:900;color:var(--primary);margin-bottom:16px;letter-spacing:.05em;}
-.how-flow-steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.how-flow-step{font-size:.82rem;font-weight:700;color:var(--text-dark);background:var(--bg-white);padding:8px 16px;border-radius:50px;border:1px solid var(--border);}
-.how-flow-arrow{color:var(--primary);font-size:.9rem;font-weight:700;}
+.how-flow{max-width:520px;margin:48px auto 0;background:var(--primary-pale);border-radius:var(--radius);padding:32px 36px;}
+.how-flow-title{font-size:.82rem;font-weight:900;color:var(--primary);margin-bottom:24px;letter-spacing:.05em;}
+.how-flow-steps{display:flex;flex-direction:column;gap:0;}
+.how-flow-step{font-size:.88rem;font-weight:700;color:var(--text-dark);background:var(--bg-white);padding:14px 20px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.how-flow-step-num{width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-size:.75rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.how-flow-arrow{color:var(--primary);font-size:1.2rem;font-weight:700;text-align:center;padding:4px 0;display:block;line-height:1;}
 
 /* BLOG */
 .blog{padding:100px 24px;background:var(--bg-white);}
@@ -420,7 +421,6 @@ a{text-decoration:none;color:inherit;}
 
 <nav class="page-nav" id="pageNav">
   <div class="page-nav-inner">
-    <a href="index.html" class="page-nav-back">← Henceforth</a>
     <a href="#whatis">Mathriveとは？</a>
     <a href="#why-math">なぜ数学特化？</a>
     <a href="#how">授業の進め方</a>
@@ -442,14 +442,14 @@ a{text-decoration:none;color:inherit;}
     <div class="hero-content">
       <span class="hero-tag">個人の方向け ／ 数学特化塾</span>
       <h1 class="hero-catch">数学を制する者が、<em>受験を制する。</em></h1>
-      <p class="hero-sub">大学受験で最も点差が開く科目は数学です。<br><strong>数学に特化</strong>することで、ライバルを一気に引き離す武器をつくります。</p>
-      <div class="hero-cta-group" style="max-width:560px;align-items:flex-start;">
+      <p class="hero-sub">大学受験で最も点差が開く科目は数学です。<br>数学に特化することで、ライバルを一気に引き離す武器をつくります。</p>
+      <div class="hero-cta-group" style="max-width:400px;align-items:stretch;flex-direction:column;">
         <div class="hero-cta-item">
           <a href="trial.html" class="btn-primary">無料体験授業に申し込む →</a>
           <p class="hero-cta-desc">学校とは全く違う、数学の本質から理解できる授業を人数限定で無料体験！</p>
         </div>
         <div class="hero-cta-item">
-          <a href="contact.html" class="btn-accent">無料模試診断に申し込む →</a>
+          <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent">無料模試診断に申し込む →</a>
           <p class="hero-cta-desc">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
         </div>
       </div>
@@ -500,17 +500,17 @@ a{text-decoration:none;color:inherit;}
     </div>
     <div class="math-spec-grid fade-up">
       <div class="math-spec-card">
-        <div class="math-spec-num">1位<span class="unit"></span></div>
+        <div class="math-spec-num">その1</div>
         <div class="math-spec-title">数学は、最も点差が開く科目</div>
         <div class="math-spec-desc">大学入試において、数学は得意・不得意による点数差が最も大きい科目です。数学を武器にした生徒は、一気にライバルを引き離すことができます。逆に言えば、数学を制することが合否を左右します。</div>
       </div>
       <div class="math-spec-card">
-        <div class="math-spec-num">∞</div>
+        <div class="math-spec-num">その2</div>
         <div class="math-spec-title">一度伸びると、加速度的に伸び続ける</div>
         <div class="math-spec-desc">数学は「構造」がつながっている科目です。本質を理解した瞬間、それまで解けなかった問題が次々と解けるようになります。正しい学習法さえあれば、数学は成績を上げやすい科目です。</div>
       </div>
       <div class="math-spec-card">
-        <div class="math-spec-num">×2</div>
+        <div class="math-spec-num">その3</div>
         <div class="math-spec-title">理系・文系を問わず、数学の配点は重い</div>
         <div class="math-spec-desc">共通テストでも二次試験でも、数学の配点は高く設定されています。文系でも数学が必要な大学・学部は多く、数学の得点率が全体の合否に直結します。</div>
       </div>
@@ -537,9 +537,9 @@ a{text-decoration:none;color:inherit;}
         <div class="how-card-desc">公式を教えるだけでなく、「なぜその公式が成り立つか」「なぜこのアプローチが有効か」を徹底的に問います。答えを出すことより、考え方の構造を身につけることを重視します。</div>
       </div>
       <div class="how-card">
-        <div class="how-card-label">Materials</div>
-        <div class="how-card-title">オリジナル教材＋二次試験対応の演習</div>
-        <div class="how-card-desc">構造理解を促すオリジナル教材と、二次試験を想定した記述式演習を組み合わせます。解答プロセスへの添削指導で、本番で通用する答案作成力を育てます。</div>
+        <div class="how-card-label">Curriculum</div>
+        <div class="how-card-title">生徒に合わせた独自カリキュラム設計</div>
+        <div class="how-card-desc">一人ひとりの学力・目標・ペースに合わせて、Mathrive独自のカリキュラムを組みます。全員に同じ内容を押しつけるのではなく、今その生徒に最も必要な学習を提供します。</div>
       </div>
       <div class="how-card">
         <div class="how-card-label">Weekly Flow</div>
@@ -548,17 +548,17 @@ a{text-decoration:none;color:inherit;}
       </div>
     </div>
     <div class="how-flow fade-up">
-      <div class="how-flow-title">授業〜次回授業までのサイクル</div>
+      <div class="how-flow-title">授業〜次回授業までのサイクル（例）</div>
       <div class="how-flow-steps">
-        <span class="how-flow-step">授業（90分）</span>
-        <span class="how-flow-arrow">→</span>
-        <span class="how-flow-step">演習課題</span>
-        <span class="how-flow-arrow">→</span>
-        <span class="how-flow-step">確認テスト</span>
-        <span class="how-flow-arrow">→</span>
-        <span class="how-flow-step">添削フィードバック</span>
-        <span class="how-flow-arrow">→</span>
-        <span class="how-flow-step">次回授業</span>
+        <div class="how-flow-step"><span class="how-flow-step-num">1</span>授業（90分）｜構造理解の解説＆質疑応答</div>
+        <span class="how-flow-arrow">↓</span>
+        <div class="how-flow-step"><span class="how-flow-step-num">2</span>自宅演習｜課題プリントで定着を図る</div>
+        <span class="how-flow-arrow">↓</span>
+        <div class="how-flow-step"><span class="how-flow-step-num">3</span>次回授業の冒頭｜確認テストで理解度チェック</div>
+        <span class="how-flow-arrow">↓</span>
+        <div class="how-flow-step"><span class="how-flow-step-num">4</span>添削・フィードバック｜解答プロセスを丁寧に指導</div>
+        <span class="how-flow-arrow">↓</span>
+        <div class="how-flow-step"><span class="how-flow-step-num">5</span>新単元へ｜前回の積み上げの上で次へ進む</div>
       </div>
     </div>
   </div>
@@ -783,31 +783,27 @@ a{text-decoration:none;color:inherit;}
           </svg>
         </div>
         <div>
-          <div class="instructor-name">田中 啓行</div>
-          <div class="instructor-role">京都大学 理学部数学科 卒業</div>
+          <div class="instructor-name">緒方 宏記</div>
+          <div class="instructor-role">Mathrive 講師</div>
         </div>
       </div>
       <div class="instructor-body">
         <div>
-          <div class="instructor-career-title">出身大学・指導歴</div>
+          <div class="instructor-career-title">出身・指導歴</div>
           <ul class="career-list">
-            <li>京都大学 理学部数学科 卒業</li>
-            <li>大学在学中より高校数学の個別・集団指導に従事（指導歴5年以上）</li>
-            <li>数学の構造理解に特化した独自指導法を開発・実践</li>
-            <li>合同会社Henceforth 代表社員 / Mathrive 塾長</li>
+            <li>（出身大学・経歴を記載）</li>
+            <li>高校数学の集団・個別指導に従事</li>
+            <li>Mathriveの構造理解メソッドを実践する指導者</li>
           </ul>
         </div>
         <div>
           <div class="instructor-career-title">指導実績</div>
           <ul class="career-list">
-            <li>京都大学 理学部（現役合格）</li>
-            <li>早稲田大学 先進理工学部・慶應義塾大学 薬学部</li>
-            <li>同志社大学・立命館大学（理工系学部）など多数</li>
-            <li>模試偏差値平均+18ポイントUP（入塾6ヶ月時点）</li>
+            <li>（合格実績・実績データを記載）</li>
           </ul>
         </div>
         <div class="instructor-message">
-          数学は暗記科目ではありません。正しい問いの立て方を身につければ、初めて見る問題でも自分の力で考えることができます。<br><br>Mathriveでは「解けた」の一歩先にある「わかった」を大切にしています。数学を通じて、受験だけでなく人生で使える「考える力」を育てることが、私たちの目指す教育です。生徒一人ひとりが数学を自分の武器にできるよう、全力でサポートします。
+          （講師のメッセージを記載）
         </div>
       </div>
     </div>
