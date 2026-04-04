@@ -78,9 +78,8 @@ a { text-decoration: none; color: inherit; }
 }
 .header.scrolled { box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05); }
 .header-inner {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 100%;
+  padding: 0 clamp(24px, 4vw, 56px);
   height: 68px;
   display: flex;
   justify-content: space-between;
@@ -239,18 +238,19 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-inner {
   width: 100%;
-  padding: 68px 0 0;
+  padding: 68px clamp(24px, 4vw, 56px) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0;
 }
 .hero-content {
-  flex: 1 1 48%;
+  flex: 1 1 50%;
+  max-width: 50%;
   z-index: 2;
-  padding-left: clamp(64px, 9vw, 140px);
+  padding-left: 0;
+  padding-right: clamp(16px, 2vw, 32px);
   text-align: left;
-  padding-right: clamp(16px, 3vw, 40px);
 }
 .hero-tag {
   display: inline-block;
@@ -272,11 +272,11 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 24px;
 }
 .hero-sub {
-  font-size: clamp(0.88rem, 1.3vw, 1rem);
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   color: var(--text-body);
   line-height: 1.9;
   margin-bottom: 40px;
-  max-width: 380px;
+  max-width: 480px;
 }
 .hero-company {
   font-family: 'Noto Sans JP', sans-serif;
@@ -287,22 +287,28 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-cta-group {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
 }
 .hero-btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: var(--primary);
   color: #fff;
-  padding: 14px 32px;
+  padding: 14px 24px;
   border-radius: 50px;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
   transition: all 0.3s;
   box-shadow: 0 4px 20px rgba(176,30,255,0.3);
+  flex: 1 0 48%;
 }
 .hero-btn-primary:hover {
   transform: translateY(-2px);
@@ -311,27 +317,31 @@ a { text-decoration: none; color: inherit; }
 .hero-btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border: 2px solid var(--primary);
   color: var(--primary);
-  padding: 12px 28px;
+  padding: 12px 24px;
   border-radius: 50px;
   font-size: 0.88rem;
   font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
   transition: all 0.3s;
+  flex: 1 0 48%;
 }
 .hero-btn-secondary:hover {
   background: var(--primary);
   color: #fff;
 }
 .hero-image {
-  flex: 1 1 58%;
-  max-width: 58%;
+  flex: 1 1 50%;
+  max-width: 50%;
   margin-right: 0;
   background: #FAF5FF;
 }
 .hero-image img {
-  width: 110%;
+  width: 300%;
   height: auto;
   display: block;
   mix-blend-mode: multiply;
@@ -415,18 +425,26 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 10px;
 }
+.for-school-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.for-school-wrap img {
+  margin-bottom: -18px;
+}
+.for-school-wrap img {
+  width: 240px;
+  height: auto;
+}
 .for-school-label {
   font-family: 'Roboto', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--primary);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  position: absolute;
-  bottom: 36px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  letter-spacing: 0.18em;
+  padding-left: 60px; /* アイコン分を補正してMathriveテキスト中心に揃える */
 }
 .business-card-body {
   padding: 28px 28px 32px;
@@ -759,8 +777,8 @@ a { text-decoration: none; color: inherit; }
       <h1 class="hero-catch">数学で拓く、<br>新たな可能性。</h1>
       <p class="hero-sub">「なぜそうなるのか」を深く理解する構造学習で、<br>初見問題にも対応できる本質的な数学力を育てます。</p>
       <div class="hero-cta-group">
-        <a href="business-individual.html" class="hero-btn-primary">無料体験授業を見る →</a>
-        <a href="business-institution.html" class="hero-btn-secondary">学校・塾の方へ</a>
+        <a href="business-individual.html" class="hero-btn-primary">数学特化塾Mathriveを見る →</a>
+        <a href="business-institution.html" class="hero-btn-secondary">教育機関・学習塾の方へ</a>
       </div>
     </div>
     <div class="hero-image">
@@ -789,8 +807,10 @@ a { text-decoration: none; color: inherit; }
       </a>
       <a href="business-institution.html" class="business-card fade-up">
         <div class="business-card-image">
-          <img src="images/紫名あり背景透過.png" alt="Mathrive for School ロゴ" style="width:280px;height:auto;">
-          <span class="for-school-label">for School</span>
+          <div class="for-school-wrap">
+            <img src="images/紫名あり背景透過.png" alt="Mathrive for School ロゴ">
+            <span class="for-school-label">for School</span>
+          </div>
         </div>
         <div class="business-card-body">
           <span class="business-card-tag">教育機関・学習塾の方向け</span>
