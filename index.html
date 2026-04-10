@@ -264,7 +264,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 24px;
 }
 .hero-catch {
-  font-size: 3.2rem;
+  font-size: clamp(1.6rem, 4.5vw, 3.2rem);
   font-weight: 900;
   color: var(--text-dark);
   line-height: 1.45;
@@ -705,10 +705,11 @@ a { text-decoration: none; color: inherit; }
 .hamburger { display: flex; }
   .hero { height: auto; min-height: auto; max-height: none; }
   .hero-inner { flex-direction: column; padding: 100px 24px 48px; text-align: center; }
-  .hero-content { padding-left: 0; padding-right: 0; text-align: center; }
+  .hero-content { padding-left: 0; padding-right: 0; text-align: center; max-width: 100%; flex: none; }
   .hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
   .hero-cta-group { justify-content: center; }
-  .hero-image { max-width: 100%; }
+  .hero-image { max-width: 80%; margin: 0 auto; flex: none; }
+  .hero-catch { font-size: 2.2rem; }
   .business-grid { grid-template-columns: 1fr; max-width: 480px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
@@ -716,7 +717,7 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 551px) {
   .hero-inner { padding: 88px 20px 40px; gap: 16px; }
   .hero-image { max-width: 100%; }
-  .hero-catch { letter-spacing: 0.02em; }
+  .hero-catch { font-size: 1.7rem; letter-spacing: 0.02em; }
   .news-item { flex-direction: column; gap: 8px; }
   .news-date { min-width: auto; }
   .business { padding: 72px 24px; }
