@@ -101,19 +101,20 @@ a{text-decoration:none;color:inherit;}
 .btn-ghost:hover{background:var(--primary);color:#fff;}
 
 /* HERO */
-.hero{position:relative;height:90vh;min-height:580px;max-height:900px;overflow:hidden;background:#EDE8FF;}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right 20%;z-index:0;}
-.hero-overlay{display:none;}
-.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:100px;}
-.hero-content{max-width:var(--content-width);margin:0 auto;padding:0 64px;width:100%;}
+.hero{position:relative;height:72vh;min-height:480px;max-height:720px;overflow:hidden;background:#EDE8FF;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
+.hero-overlay{display:block;position:absolute;inset:0;background:rgba(245,243,255,.72);z-index:1;}
+.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:60px;padding-left:100px;}
+.hero-content{max-width:var(--content-width);margin:0;padding:0 64px 0 0;width:100%;}
 .hero-content .hero-catch,.hero-content .hero-sub,.hero-content .hero-cta-group,.hero-content .hero-note,.hero-content .hero-tag{max-width:480px;}
 .hero-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--primary);padding:5px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:.1em;}
-.hero-catch{font-size:clamp(1.9rem,4.2vw,2.8rem);font-weight:900;color:var(--text-dark);line-height:1.48;letter-spacing:.03em;margin-bottom:14px;overflow-wrap:break-word;word-break:keep-all;}
-.hero-catch em{color:var(--text-dark);font-style:normal;}
-.hero-sub{font-size:clamp(1rem,1.6vw,1.15rem);color:var(--text-body);line-height:1.75;margin-bottom:28px;max-width:460px;}
-.hero-sub strong{color:var(--text-dark);}
+.hero-catch{font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:900;color:#1E1B4B;line-height:1.6;letter-spacing:.03em;margin-bottom:14px;overflow-wrap:break-word;word-break:keep-all;}
+.hero-catch em{color:var(--primary);font-style:normal;}
+.hero-sub{font-size:clamp(.88rem,1.3vw,.98rem);color:#3B3A55;line-height:1.9;margin-bottom:28px;max-width:460px;}
+.hero-sub strong{color:#1E1B4B;}
 .hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-.hero-note{margin-top:14px;font-size:.73rem;color:var(--text-muted);}
+.hero-note{margin-top:14px;font-size:.73rem;color:#666;}
+.hero-content-inner{background:transparent;padding:0;display:inline-block;max-width:480px;}
 .hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2.4s ease-in-out infinite;}
 .hero-scroll svg{opacity:.6;}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
@@ -331,6 +332,15 @@ a{text-decoration:none;color:inherit;}
 .hero-cta-item .btn-primary,.hero-cta-item .btn-accent{width:100%;font-size:.88rem;padding:13px 20px;}
 .hero-cta-desc{font-size:.72rem;color:var(--text-body);line-height:1.6;}
 
+/* PROBLEM SECTION */
+.problem{padding:100px 24px;background:var(--bg-white);}
+.problem-inner{max-width:720px;margin:0 auto;}
+.problem-lead{font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:900;color:var(--text-dark);line-height:1.75;margin-bottom:36px;text-align:center;}
+.problem-lead em{color:var(--primary);font-style:normal;}
+.problem-divider{width:48px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;margin:0 auto 36px;}
+.problem-body{font-size:.95rem;line-height:2.2;color:var(--text-body);}
+.problem-body strong{color:var(--text-dark);font-weight:700;}
+
 /* WHY MATH SPEC */
 .math-spec{padding:60px 24px 100px;background:var(--bg-gray);}
 .math-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;}
@@ -423,7 +433,6 @@ a{text-decoration:none;color:inherit;}
 
 <nav class="page-nav" id="pageNav">
   <div class="page-nav-inner">
-    <a href="#whatis">Mathriveとは？</a>
     <a href="#why-math">なぜ数学特化？</a>
     <a href="#how">授業の進め方</a>
     <a href="#results">実績</a>
@@ -438,23 +447,21 @@ a{text-decoration:none;color:inherit;}
 </nav>
 
 <section class="hero" id="top">
-  <img src="images/34219286_m.jpg" alt="学習中の生徒">
+  <img src="images/27307706_m.jpg" alt="学習中の生徒" style="object-position:center center;">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-catch">解法を覚えるのをやめたとき、<br><em>数学が武器になる。</em></h1>
-      <p class="hero-sub">大学受験で最も点差が開く科目は数学です。<br><strong>数学に特化</strong>することで、ライバルを一気に引き離す武器をつくります。</p>
-      <div class="hero-cta-group" style="max-width:400px;align-items:stretch;flex-direction:column;gap:10px;">
-        <div>
-          <a href="trial.html" class="btn-primary" style="width:100%;">無料体験授業に申し込む →</a>
-          <p class="hero-cta-desc" style="margin-top:4px;margin-bottom:0;">学校とは全く違う、数学の本質から理解できる授業を人数限定で無料体験！</p>
+      <div class="hero-content-inner">
+        <h1 class="hero-catch">数学が、最も合格を左右する。<em style="display:block;">本質を理解できるかどうかで、<br>結果は決まる。</em></h1>
+        <p class="hero-sub">本質から理解し、数学の構造が見えてくる。<br>だから、<strong>どんな問題でも対応できる。</strong></p>
+        <div class="hero-cta-group" style="max-width:400px;align-items:stretch;flex-direction:column;gap:10px;">
+          <div>
+            <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent" style="width:auto;display:inline-flex;">無料模試診断に申し込む →</a>
+            <p class="hero-cta-desc" style="margin-top:6px;margin-bottom:0;font-size:.72rem;color:#000;line-height:1.6;">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
+          </div>
         </div>
-        <div>
-          <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent" style="width:100%;">無料模試診断に申し込む →</a>
-          <p class="hero-cta-desc" style="margin-top:4px;margin-bottom:0;">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
-        </div>
+        <p class="hero-note" style="color:#000;">※ 入塾義務なし・完全無料</p>
       </div>
-      <p class="hero-note">※ 入塾義務なし・完全無料</p>
     </div>
   </div>
   <div class="hero-scroll">
@@ -464,23 +471,20 @@ a{text-decoration:none;color:inherit;}
 </section>
 
 
-<section class="whatis" id="whatis">
+<section class="problem" id="problem">
   <div class="inner">
-    <div class="sec-heading fade-up">
-      <span class="sec-label">About Mathrive</span>
-      <h2 class="sec-title">Mathriveとは？</h2>
-    </div>
-    <div class="whatis-inner fade-up">
-      <div class="whatis-image"><img src="images/page-hero.jpg" alt="Mathriveの授業教室"></div>
-      <div class="whatis-body">
-        <span class="whatis-label">数学特化塾 Mathrive</span>
-        <h3 class="whatis-title">数学だけに特化した、<br>本質理解の受験塾</h3>
-        <p class="whatis-text">Mathriveは、数学に特化した少人数集団塾です。受験に必要な全科目を扱う総合塾とは異なり、<strong>数学だけを徹底的に深める</strong>環境をつくっています。</p>
-        <div class="info-list">
-          <div class="info-row"><span class="info-label">① 数学特化</span><span class="info-value">数学だけに絞ることで、深い理解と圧倒的な演習量を実現。他の塾では得られない密度の指導が可能です。</span></div>
-          <div class="info-row"><span class="info-label">② 少人数集団</span><span class="info-value">2〜5名の少人数制。全員に目が届き、個別対応の質と集団授業のコスパを両立します。</span></div>
-          <div class="info-row"><span class="info-label">③ 本質理解</span><span class="info-value">解法暗記ではなく「なぜ？」を問い続ける構造理解メソッド。京大数学科だからこそ伝えられる数学の本質を指導します。</span></div>
-        </div>
+    <div class="problem-inner fade-up">
+      <p class="problem-lead">数学を頑張っているのに、<br>模試になると<em>手が止まってしまう。</em></p>
+      <div class="problem-divider"></div>
+      <div class="problem-body">
+        <p>数学の勉強を頑張っている。定期テストは、なんとか乗り越えられている。<br>
+        しかし、模試や入試の初見問題では手が止まってしまう。<br>
+        そういったケースが、高校では非常に多いです。</p>
+        <br>
+        <p><strong>その差は、演習量ではなく、理解の質にあります。</strong><br>
+        演習して身につけた知識を他の知識と関連付けて整理すること、<br>
+        そして初見問題に対してどうすれば知識を適切に引き出せるかを把握すること。<br>
+        この2つが、模試で得点できる生徒とそうでない生徒を分けています。</p>
       </div>
     </div>
   </div>
@@ -493,21 +497,16 @@ a{text-decoration:none;color:inherit;}
       <h2 class="sec-title">なぜ、数学に特化するのか</h2>
       <p class="sec-sub">数学に特化して学ぶことは、受験において最も効果的な戦略のひとつです。</p>
     </div>
-    <div class="math-spec-grid fade-up">
+    <div class="math-spec-grid fade-up" style="grid-template-columns:repeat(2,1fr);max-width:720px;">
       <div class="math-spec-card">
         <div class="math-spec-num">ポイント1</div>
-        <div class="math-spec-title">数学は、最も点差が開く科目</div>
-        <div class="math-spec-desc">大学入試において、数学は得意・不得意による点数差が最も大きい科目です。数学を武器にした生徒は、一気にライバルを引き離すことができます。逆に言えば、数学を制することが合否を左右します。</div>
+        <div class="math-spec-title">数学の得点率が、<br>合否を最も左右する</div>
+        <div class="math-spec-desc">数学は点差が最も開きやすい科目です。そのため、数学の得点率が高いほど全体の得点率・合格率も高くなる傾向があります。数学を武器にすることで、一気にライバルを引き離すことができます。</div>
       </div>
       <div class="math-spec-card">
         <div class="math-spec-num">ポイント2</div>
-        <div class="math-spec-title">一度伸びると、<br>加速度的に伸び続ける</div>
-        <div class="math-spec-desc">数学は「構造」がつながっている科目です。本質を理解した瞬間、それまで解けなかった問題が次々と解けるようになります。正しい学習法さえあれば、数学は成績を上げやすい科目です。</div>
-      </div>
-      <div class="math-spec-card">
-        <div class="math-spec-num">ポイント3</div>
-        <div class="math-spec-title">理系・文系を問わず、<br>数学の配点は重い</div>
-        <div class="math-spec-desc">共通テストでも二次試験でも、数学の配点は高く設定されています。文系でも数学が必要な大学・学部は多く、数学の得点率が全体の合否に直結します。</div>
+        <div class="math-spec-title">正しく学ぶことで、<br>連鎖的・爆発的に伸びる</div>
+        <div class="math-spec-desc">解法を覚えるだけでは、入試の初見問題には通用しません。知識の整理の仕方・運用の仕方を身につけることで、それまで解けなかった問題が次々と解けるようになり、点数が爆発的に伸びます。</div>
       </div>
     </div>
   </div>
@@ -588,18 +587,6 @@ a{text-decoration:none;color:inherit;}
         </ul>
       </div>
     </div>
-    <div class="result-examples fade-up">
-      <div class="result-example">
-        <span class="result-example-tag">大学合格実績</span>
-        <div class="result-example-title">「数学が武器になった」<br>国立大工学部に現役合格</div>
-        <div class="result-example-body">入塾時は数学が30点台。Mathriveで構造から学び直し、共通テスト本番で82点を獲得。志望校に現役合格。（高3男子・2026年度）</div>
-      </div>
-      <div class="result-example">
-        <span class="result-example-tag">偏差値UP実績</span>
-        <div class="result-example-title">偏差値43 → 64へ<br>わずか5ヶ月での大幅UP</div>
-        <div class="result-example-body">「解き方を覚えても応用ができない」という悩みが解消。模試で21ポイントアップし、最終的にGMARCHに合格。（高2女子・2025年度）</div>
-      </div>
-    </div>
     <p class="results-note fade-up">※ 実績は個人の結果であり、全員に同様の効果を保証するものではありません。</p>
   </div>
 </section>
@@ -622,8 +609,8 @@ a{text-decoration:none;color:inherit;}
         </div>
         <div class="why-body">
           <div class="why-num">REASON 01</div>
-          <div class="why-title">「なぜ？」を徹底的に掘り下げる<br>構造理解メソッド</div>
-          <div class="why-desc">公式の丸暗記ではなく、「なぜその公式が成り立つか」を理解することで、初見問題・応用問題にも自力で対処できる思考力が育ちます。</div>
+          <div class="why-title">「なぜその発想に至るのか？」を<br>徹底解説</div>
+          <div class="why-desc">多くの学習は「解き方を覚えること」に終始します。しかしそれでは、初見問題に対応することはできません。Mathriveでは解法だけでなく「なぜその発想に至るのか」も徹底解説。だからこそ、どんな未知の問題にも自然と正しい発想ができるようになります。</div>
         </div>
       </div>
       <div class="why-card fade-up">
@@ -638,8 +625,8 @@ a{text-decoration:none;color:inherit;}
         </div>
         <div class="why-body">
           <div class="why-num">REASON 02</div>
-          <div class="why-title">2〜5名の少人数集団で<br>「対話型」指導</div>
-          <div class="why-desc">一方的な講義ではなく、生徒が自分の言葉で考えを話し、講師と対話しながら理解を深めます。大人数では得られない密度の濃い指導が特長です。</div>
+          <div class="why-title">少人数だからできる<br>思考のズレの即修正</div>
+          <div class="why-desc">授業では生徒が自分の考えを言葉で説明する場面を多く設けます。他人に説明するには十分な理解が必要なため、理解力・論理力が向上します。また対話形式だからこそ、理解の誤りをその場で気づき、即修正できます。</div>
         </div>
       </div>
       <div class="why-card fade-up">
@@ -652,8 +639,8 @@ a{text-decoration:none;color:inherit;}
         </div>
         <div class="why-body">
           <div class="why-num">REASON 03</div>
-          <div class="why-title">京大数学科出身講師による<br>高品質な授業</div>
-          <div class="why-desc">受験数学を知り尽くした専門家が、数学の本質を伝えます。「わかりやすい解説」ではなく「本質的な理解」を目指す指導は、他塾にはないMathriveの核心です。</div>
+          <div class="why-title">数学科出身講師だからこそ伝えられる<br>数学の本質</div>
+          <div class="why-desc">単に解法を教えることは難しくありません。生徒が自力で解けるようになるには、正しい定義・背景・他の定理との関連まで説明できる必要があります。Mathriveでは京大数学科で専門的に学んだ講師が、その本質を丁寧に指導します。</div>
         </div>
       </div>
       <div class="why-card fade-up">
@@ -667,8 +654,8 @@ a{text-decoration:none;color:inherit;}
         </div>
         <div class="why-body">
           <div class="why-num">REASON 04</div>
-          <div class="why-title">二次試験を想定した<br>実践形式の添削指導</div>
-          <div class="why-desc">選択肢を選ぶだけでは終わりません。記述式の解答プロセスを講師が一人ひとり添削し、答案作成力を徹底的に鍛えます。二次試験・共通テスト両方に対応した実践的指導です。</div>
+          <div class="why-title">実践形式の添削指導で<br>減点されない答案力を習得</div>
+          <div class="why-desc">入試では最後の答えが合っているかではなく、思考の流れが正しく書かれているかが問われます。Mathriveでは本番を想定した添削指導によって、採点者に減点されない再現性の高い解答力を養います。</div>
         </div>
       </div>
     </div>
@@ -769,21 +756,20 @@ a{text-decoration:none;color:inherit;}
       </div>
       <div class="instructor-body">
         <div>
-          <div class="instructor-career-title">出身・指導歴</div>
+          <div class="instructor-career-title">経歴・実績</div>
           <ul class="career-list">
-            <li>（出身大学・経歴を記載）</li>
-            <li>高校数学の集団・個別指導に従事</li>
-            <li>Mathriveの構造理解メソッドを実践する指導者</li>
-          </ul>
-        </div>
-        <div>
-          <div class="instructor-career-title">指導実績</div>
-          <ul class="career-list">
-            <li>（合格実績・実績データを記載）</li>
+            <li>京都大学 理学部 卒業</li>
+            <li>京都大学大学院 理学研究科 数学・数理解析専攻 修了（確率論専攻・学術雑誌に論文掲載）</li>
+            <li>独自の学習法を研究し、高3夏の東大模試（偏差値39.2）→ 浪人秋の京大模試（偏差値86.6・ほぼ満点）を達成</li>
+            <li>京都大学 二次試験 数学 9割超え</li>
+            <li>個別指導・集団指導・オンライン・家庭教師など多様な形式での指導経験あり</li>
+            <li>数学アレルギーから難関大志望まで、幅広い生徒の数学を武器に変えることに成功</li>
           </ul>
         </div>
         <div class="instructor-message">
-          （講師のメッセージを記載）
+          「数学はしっかり勉強してきたはずなのに、模試になると手が止まる」<br><br>
+          そう感じている生徒は、決して少なくありません。かつて、私自身も同じでした。
+          <a href="instructor.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:16px;font-size:.82rem;font-weight:700;color:var(--primary);text-decoration:none;border-bottom:1px solid var(--primary);padding-bottom:1px;">続きを読む →</a>
         </div>
       </div>
     </div>
