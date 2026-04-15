@@ -101,19 +101,20 @@ a{text-decoration:none;color:inherit;}
 .btn-ghost:hover{background:var(--primary);color:#fff;}
 
 /* HERO */
-.hero{position:relative;height:90vh;min-height:580px;max-height:900px;overflow:hidden;background:#EDE8FF;}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right 20%;z-index:0;}
-.hero-overlay{display:none;}
-.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:100px;}
-.hero-content{max-width:var(--content-width);margin:0 auto;padding:0 64px;width:100%;}
+.hero{position:relative;height:72vh;min-height:480px;max-height:720px;overflow:hidden;background:#EDE8FF;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;}
+.hero-overlay{display:block;position:absolute;inset:0;background:rgba(245,243,255,.72);z-index:1;}
+.hero-inner{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:60px;padding-left:100px;}
+.hero-content{max-width:var(--content-width);margin:0;padding:0 64px 0 0;width:100%;}
 .hero-content .hero-catch,.hero-content .hero-sub,.hero-content .hero-cta-group,.hero-content .hero-note,.hero-content .hero-tag{max-width:480px;}
 .hero-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--primary);padding:5px 18px;border-radius:50px;margin-bottom:20px;letter-spacing:.1em;}
-.hero-catch{font-size:clamp(1.9rem,4.2vw,2.8rem);font-weight:900;color:var(--text-dark);line-height:1.48;letter-spacing:.03em;margin-bottom:14px;overflow-wrap:break-word;word-break:keep-all;}
-.hero-catch em{color:var(--text-dark);font-style:normal;}
-.hero-sub{font-size:clamp(1rem,1.6vw,1.15rem);color:var(--text-body);line-height:1.75;margin-bottom:28px;max-width:460px;}
-.hero-sub strong{color:var(--text-dark);}
+.hero-catch{font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:900;color:#1E1B4B;line-height:1.6;letter-spacing:.03em;margin-bottom:14px;overflow-wrap:break-word;word-break:keep-all;}
+.hero-catch em{color:var(--primary);font-style:normal;}
+.hero-sub{font-size:clamp(.88rem,1.3vw,.98rem);color:#3B3A55;line-height:1.9;margin-bottom:28px;max-width:460px;}
+.hero-sub strong{color:#1E1B4B;}
 .hero-cta-group{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-.hero-note{margin-top:14px;font-size:.73rem;color:var(--text-muted);}
+.hero-note{margin-top:14px;font-size:.73rem;color:#666;}
+.hero-content-inner{background:transparent;padding:0;display:inline-block;max-width:480px;}
 .hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text-muted);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;animation:bounce 2.4s ease-in-out infinite;}
 .hero-scroll svg{opacity:.6;}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
@@ -450,15 +451,17 @@ a{text-decoration:none;color:inherit;}
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero-catch">数学が、最も合格を左右する。<br><em>本質を理解できるかどうかで、<br>結果は決まる。</em></h1>
-      <p class="hero-sub">本質から理解し、数学の構造が見えてくる。<br>だから、<strong>どんな問題でも対応できる。</strong></p>
-      <div class="hero-cta-group" style="max-width:400px;align-items:stretch;flex-direction:column;gap:10px;">
-        <div>
-          <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent" style="width:100%;">無料模試診断に申し込む →</a>
-          <p class="hero-cta-desc" style="margin-top:4px;margin-bottom:0;">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
+      <div class="hero-content-inner">
+        <h1 class="hero-catch">数学が、最も合格を左右する。<em style="display:block;">本質を理解できるかどうかで、<br>結果は決まる。</em></h1>
+        <p class="hero-sub">本質から理解し、数学の構造が見えてくる。<br>だから、<strong>どんな問題でも対応できる。</strong></p>
+        <div class="hero-cta-group" style="max-width:400px;align-items:stretch;flex-direction:column;gap:10px;">
+          <div>
+            <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent" style="width:auto;display:inline-flex;">無料模試診断に申し込む →</a>
+            <p class="hero-cta-desc" style="margin-top:6px;margin-bottom:0;font-size:.72rem;color:#000;line-height:1.6;">あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断！</p>
+          </div>
         </div>
+        <p class="hero-note" style="color:#000;">※ 入塾義務なし・完全無料</p>
       </div>
-      <p class="hero-note">※ 入塾義務なし・完全無料</p>
     </div>
   </div>
   <div class="hero-scroll">

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講師紹介｜数学特化塾 Mathrive</title>
+<meta name="description" content="Mathrive講師・緒方宏記のプロフィールと指導への想いをご紹介します。京都大学大学院数学専攻修了。数学の本質を伝える指導法を確立。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --primary:#b01eff;
+  --primary-pale:#F6F3FB;
+  --accent:#EC4899;
+  --bg-white:#ffffff;
+  --bg-gray:#FAF5FF;
+  --text-dark:#1E1B4B;
+  --text-body:#6B7280;
+  --text-muted:#9CA3AF;
+  --border:#E5E7EB;
+  --shadow:0 4px 24px rgba(0,0,0,0.07);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.1);
+  --radius:16px;
+  --content-width:1080px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text-body);line-height:1.9;background:var(--bg-white);font-size:15px;overflow-x:hidden;}
+img{max-width:100%;height:auto;}
+a{text-decoration:none;color:inherit;}
+.inner{max-width:var(--content-width);margin:0 auto;padding:0 24px;}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(229,231,235,.5);}
+.header-inner{max-width:var(--content-width);margin:0 auto;padding:0 24px;height:68px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.5rem;font-weight:900;color:var(--primary);letter-spacing:.02em;}
+.header-cta{background:var(--primary);color:#fff;padding:10px 20px;border-radius:6px;font-size:.84rem;font-weight:700;}
+
+/* BREADCRUMB */
+.breadcrumb{padding:14px 24px;background:var(--bg-white);border-bottom:1px solid var(--border);margin-top:68px;}
+.breadcrumb-inner{max-width:var(--content-width);margin:0 auto;font-size:.78rem;color:var(--text-muted);display:flex;align-items:center;gap:0;}
+.breadcrumb-inner a{color:var(--text-muted);}
+.breadcrumb-inner a:hover{color:var(--primary);}
+.bc-sep{margin:0 8px;color:var(--border);}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,#f5f0ff 0%,#ede8ff 100%);padding:64px 24px 72px;text-align:center;border-bottom:1px solid var(--border);}
+.page-hero-label{font-family:'Roboto',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:12px;}
+.page-hero-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:var(--text-dark);line-height:1.4;margin-bottom:12px;}
+.page-hero-sub{font-size:.95rem;color:var(--text-body);}
+
+/* PROFILE SECTION */
+.profile{padding:80px 24px;}
+.profile-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start;}
+.profile-photo{border-radius:var(--radius);overflow:hidden;background:linear-gradient(160deg,#ede0ff 0%,#d8b8ff 50%,#c89aff 100%);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;}
+.profile-photo-placeholder{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:2.4rem;}
+.profile-name-block{margin-bottom:28px;}
+.profile-name{font-size:1.5rem;font-weight:900;color:var(--text-dark);margin-bottom:4px;}
+.profile-role{font-size:.78rem;font-weight:700;color:var(--primary);background:var(--primary-pale);display:inline-block;padding:4px 14px;border-radius:50px;}
+.career-title{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;margin-bottom:12px;}
+.career-list{list-style:none;margin-bottom:32px;}
+.career-list li{font-size:.9rem;color:var(--text-body);padding:8px 0;border-bottom:1px dashed var(--border);display:flex;gap:10px;align-items:baseline;line-height:1.7;}
+.career-list li:last-child{border-bottom:none;}
+.career-list li::before{content:"▸";color:var(--primary);font-size:.65rem;flex-shrink:0;}
+
+/* MESSAGE SECTION */
+.message-section{padding:0 24px 80px;}
+.message-inner{max-width:800px;margin:0 auto;}
+.message-title{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;margin-bottom:28px;}
+.message-block{background:var(--bg-gray);border-radius:var(--radius);padding:48px 52px;position:relative;}
+.message-block::before{content:'\201C';font-size:6rem;color:var(--primary);opacity:.12;position:absolute;top:-8px;left:20px;line-height:1;font-family:Georgia,serif;}
+.message-lead{font-size:1.05rem;font-weight:700;color:var(--text-dark);line-height:1.75;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.message-body{font-size:.93rem;line-height:2.3;color:var(--text-body);}
+.message-body p{margin-bottom:20px;}
+.message-body p:last-child{margin-bottom:0;}
+.message-sign{margin-top:32px;padding-top:20px;border-top:1px solid var(--border);font-size:.85rem;color:var(--text-muted);text-align:right;}
+
+/* CTA */
+.instructor-cta{padding:72px 24px;background:var(--bg-gray);text-align:center;}
+.instructor-cta h2{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:900;color:var(--text-dark);margin-bottom:12px;}
+.instructor-cta p{font-size:.9rem;color:var(--text-body);margin-bottom:36px;}
+.btn-accent{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;padding:15px 40px;border-radius:50px;font-size:.95rem;font-weight:700;box-shadow:0 4px 16px rgba(236,72,153,.28);}
+
+/* FOOTER */
+.footer{background:var(--primary);color:rgba(255,255,255,.5);padding:40px 24px 32px;text-align:center;}
+.footer-logo{font-size:1.1rem;font-weight:900;color:rgba(255,255,255,.85);margin-bottom:16px;}
+.footer-links{margin-bottom:16px;}
+.footer-links a{color:rgba(255,255,255,.5);font-size:.78rem;margin:0 12px;}
+.footer-copy{font-size:.7rem;font-family:'Roboto',sans-serif;}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .profile-inner{grid-template-columns:1fr;gap:32px;}
+  .profile-photo{max-width:160px;margin:0 auto;}
+  .message-block{padding:32px 28px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="business-individual.html" class="logo">Mathrive</a>
+    <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="header-cta">無料模試診断に申し込む</a>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="business-individual.html">Mathrive</a>
+    <span class="bc-sep">›</span>
+    <span>講師紹介</span>
+  </div>
+</div>
+
+<div class="page-hero">
+  <span class="page-hero-label">Instructor</span>
+  <h1 class="page-hero-title">講師紹介</h1>
+  <p class="page-hero-sub">数学の本質を伝える、Mathrive講師のプロフィールと指導への想い</p>
+</div>
+
+
+<section class="message-section">
+  <div class="message-inner">
+    <div class="message-title">Message</div>
+    <div class="message-block">
+      <p class="message-lead">「数学はしっかり勉強してきたはずなのに、<br>模試になると手が止まる」<br><br>そう感じている生徒は、決して少なくありません。かつて、私自身も同じでした。</p>
+      <div class="message-body">
+        <p>私は大学・大学院で数学を専門的に学びましたが、そこで強く感じたのは、「定理や公式など一つ一つの知識は、ばらばらに存在しているのではなく、ある構造の中で必ずつながっている」ということです。</p>
+        <p>そしてその構造が見えるようになると、それまで点で覚えていた知識が整理され、少ない負担で扱えるようになり、連鎖的に理解が深まります。</p>
+        <p>さらに、初見問題であっても、その問題の情報を数学的な構造として整理し、何から考察すべきかという方針が正しく立てられるようになります。</p>
+        <p>この知見を踏まえて多くの生徒を指導してきましたが、再現性がかなり高い学習方法だと考えています。つまり、数学は"運に左右される科目"ではなく、安定して得点できる武器に変わります。</p>
+        <p>みなさんもご存じの通り、数学は最も点差が開きやすい科目です。だからこそ、ここを武器にできるかどうかで、合否は大きく変わります。</p>
+        <p>そして一度その感覚を掴むと、まず自信に繋がります。さらに、何をどのように積み重ねれば伸びるのかが分かり、他の科目にも良い影響が出てくる。</p>
+        <p>数学を、ただの一科目で終わらせるのではなく、自分の強みとして使える状態にする。その経験は大学受験にとどまらず、これから先も役に立つはずです。</p>
+        <p>あなたも、数学を武器にしてみませんか。</p>
+      </div>
+      <div class="message-sign">Mathrive 講師 緒方 宏記</div>
+    </div>
+  </div>
+</section>
+
+<section class="instructor-cta">
+  <h2>まずは無料模試診断から</h2>
+  <p>あなたの数学の弱点・解答の癖・優先対策分野をプロが無料で診断します。</p>
+  <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener" class="btn-accent">無料模試診断に申し込む →</a>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Mathrive</div>
+  <div class="footer-links">
+    <a href="business-individual.html">トップへ戻る</a>
+    <a href="contact.html">お問い合わせ</a>
+  </div>
+  <div class="footer-copy">© 2025 Mathrive / 合同会社Henceforth</div>
+</footer>
+
+</body>
+</html>
