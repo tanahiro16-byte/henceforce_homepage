@@ -126,7 +126,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* Dropdown */
-.nav-dropdown { position: relative; }
+.nav-dropdown { position: relative; cursor: pointer; }
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -140,7 +140,8 @@ a { text-decoration: none; color: inherit; }
   min-width: 240px;
   z-index: 10;
 }
-.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown:hover .dropdown-menu,
+.dropdown-menu.touch-open { display: block; }
 .dropdown-menu::before {
   content: '';
   position: absolute;
@@ -302,15 +303,16 @@ a { text-decoration: none; color: inherit; }
   gap: 8px;
   background: var(--primary);
   color: #fff;
-  padding: 14px 24px;
+  padding: 9px 20px;
   border-radius: 50px;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
   transition: all 0.3s;
   box-shadow: 0 4px 20px rgba(176,30,255,0.3);
   flex: 0 0 auto;
+  width: 220px;
 }
 .hero-btn-primary:hover {
   transform: translateY(-2px);
@@ -323,14 +325,15 @@ a { text-decoration: none; color: inherit; }
   gap: 8px;
   border: 2px solid var(--primary);
   color: var(--primary);
-  padding: 12px 24px;
+  padding: 9px 20px;
   border-radius: 50px;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.4;
   text-align: center;
   transition: all 0.3s;
   flex: 0 0 auto;
+  width: 220px;
 }
 .hero-btn-secondary:hover {
   background: var(--primary);
@@ -711,6 +714,8 @@ a { text-decoration: none; color: inherit; }
   .hero-image { width: 200px; max-width: 200px; margin: 0 auto; flex: none; }
   .hero-image img { width: 100% !important; margin-left: 0 !important; transform: scale(1) !important; transform-origin: center !important; }
   .hero-catch { font-size: 1.9rem; }
+  .hero-btn-primary, .hero-btn-secondary { min-width: 0; width: 200px; max-width: 80vw; }
+  .hero-cta-group { gap: 8px; }
   .business-grid { grid-template-columns: 1fr; max-width: 480px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
@@ -876,6 +881,24 @@ window.addEventListener('scroll', () => {
 document.getElementById('hamburger').addEventListener('click', function() {
   this.classList.toggle('active');
   document.getElementById('mobileNav').classList.toggle('open');
+});
+
+// Dropdown touch support for tablet
+document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+  dropdown.addEventListener('click', function(e) {
+    const menu = this.querySelector('.dropdown-menu');
+    if (!menu) return;
+    const isOpen = menu.classList.contains('touch-open');
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('touch-open'));
+    if (!isOpen) {
+      menu.classList.add('touch-open');
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('touch-open'));
 });
 
 // Scroll animations
