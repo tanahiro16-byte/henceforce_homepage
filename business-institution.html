@@ -261,12 +261,13 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-dark); border-bottom: 1px solid var(--border); cursor: default;
 }
 .hamburger { display: flex; }
-  .detail-hero { height: 220px; }
-  .detail-hero-content { padding: 0 24px; bottom: 24px; }
+  .detail-hero { height: auto; }
+  .detail-hero img { object-fit: contain; object-position: center center; background: #1e1e1e; height: auto; max-height: 260px; }
+  .detail-hero-content { padding: 0 24px; bottom: 16px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
 @media (max-width: 551px) {
-  .detail-hero { height: 180px; }
+  .detail-hero img { max-height: 200px; }
   .detail-content { padding: 56px 24px 72px; }
   .cases { padding: 56px 24px 72px; }
   .back-link-section { padding: 0 24px 56px; }
