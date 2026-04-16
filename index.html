@@ -714,8 +714,8 @@ a { text-decoration: none; color: inherit; }
   .hero-image { width: 200px; max-width: 200px; margin: 0 auto; flex: none; }
   .hero-image img { width: 100% !important; margin-left: 0 !important; transform: scale(1) !important; transform-origin: center !important; }
   .hero-catch { font-size: 1.9rem; }
-  .hero-btn-primary, .hero-btn-secondary { min-width: 0; width: 200px; max-width: 80vw; }
-  .hero-cta-group { gap: 8px; }
+  .hero-cta-group { display: grid; grid-template-columns: max-content; gap: 8px; justify-content: center; }
+  .hero-btn-primary, .hero-btn-secondary { width: 100%; min-width: 0; white-space: nowrap; }
   .business-grid { grid-template-columns: 1fr; max-width: 480px; }
   .cases-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
